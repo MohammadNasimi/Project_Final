@@ -45,3 +45,12 @@ class BaseModel(models.Model):
     def activate(self):
         self.is_active = True
         self.save()
+
+
+class BaseDiscount(BaseModel):
+    value = models.PositiveIntegerField(null=False)
+    type = models.CharField(max_length=10, choices=[('price', 'Price'), ('percent', 'Percent')], null=False)
+    max_price = models.PositiveIntegerField(null=True, blank=True)
+
+    class Meta:
+        abstract = True
