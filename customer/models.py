@@ -17,6 +17,10 @@ class Address(BaseModel):
     def __str__(self):
         return f'{self.city}:{self.zip_code}'
 
+    class Meta:
+        verbose_name = _('Address')
+        verbose_name_plural = _('Addresses')
+
 
 class Customer(User):
     pass
