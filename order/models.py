@@ -9,6 +9,8 @@ from model_utils import Choices
 
 from django.utils import timezone
 
+from django.utils.translation import gettext_lazy as _
+
 
 # Create your models here.
 
@@ -18,6 +20,10 @@ class Of_code(BaseDiscount):
 
     def __str__(self):
         return f'{self.type}:{self.value}'
+
+    class Meta:
+        verbose_name = _('Off_code')
+        verbose_name_plural = _('Off_codes')
 
 
 class Order_item(BaseModel):
@@ -31,6 +37,10 @@ class Order_item(BaseModel):
     def get_cost_end_product(self):
         return ((self.Product.price - self.Product.category.discount.profit_value(self.Product.price)) -
                 self.Product.discount.profit_value(self.Product.price)) * self.Count
+
+    class Meta:
+        verbose_name = _('Order item')
+        verbose_name_plural = _('Order items')
 
 
 ORDER_STATUS = Choices(
@@ -57,3 +67,7 @@ class Order(BaseModel):
 
     def __str__(self):
         return f'{self.customer}:{self.date.year}'
+
+    class Meta:
+        verbose_name = _('Order')
+        verbose_name_plural = _('Order')
