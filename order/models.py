@@ -18,6 +18,11 @@ class Order_item(BaseModel):
     Count = models.PositiveIntegerField(null=True, blank=True, default=1)
     Price_product = models.PositiveIntegerField(null=False, default=0)
 
+    @property
+    def get_cost_end_product(self):
+        return ((self.Product.price - self.Product.category.discount.profit_value(self.Product.price)) -
+                self.Product.discount.profit_value(self.Product.price)) * self.Count
+
 
 ORDER_STATUS = Choices(
     (1, 'Current', 'Current'),
