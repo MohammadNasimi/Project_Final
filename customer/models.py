@@ -14,6 +14,9 @@ class Address(BaseModel):
     Plaque = models.IntegerField(unique=True, null=False)
     zip_code = models.IntegerField(unique=True, null=False)
 
+    def __str__(self):
+        return f'{self.city}:{self.zip_code}'
+
 
 class Customer(User):
     pass
