@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-14 04:43+0330\n"
+"POT-Creation-Date: 2022-02-15 22:10+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,4 +40,52 @@ msgstr ""
 
 #: core/models.py:27
 msgid "This is active status"
+msgstr ""
+
+#: customer/models.py:21
+msgid "Address"
+msgstr ""
+
+#: customer/models.py:22
+msgid "Addresses"
+msgstr ""
+
+#: order/models.py:25
+msgid "Off_code"
+msgstr ""
+
+#: order/models.py:26
+msgid "Off_codes"
+msgstr ""
+
+#: order/models.py:42
+msgid "Order item"
+msgstr ""
+
+#: order/models.py:43
+msgid "Order items"
+msgstr ""
+
+#: order/models.py:72 order/models.py:73
+msgid "Order"
+msgstr ""
+
+#: product/models.py:11
+msgid "Discount"
+msgstr ""
+
+#: product/models.py:12
+msgid "Discounts"
+msgstr ""
+
+#: product/models.py:26 product/models.py:27
+msgid "Category"
+msgstr ""
+
+#: product/models.py:45
+msgid "Product"
+msgstr ""
+
+#: product/models.py:46
+msgid "Products"
 msgstr ""
