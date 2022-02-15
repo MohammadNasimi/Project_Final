@@ -54,3 +54,15 @@ class BaseDiscount(BaseModel):
 
     class Meta:
         abstract = True
+
+    def profit_value(self, price: int):
+        """
+        Calculate and Return the profit of the discount
+        :param price: int (item value)
+        :return: profit
+        """
+        if self.type == 'price':
+            return min(self.value, price)
+        else:  # percent
+            raw_profit = int((self.value / 100) * price)
+            return int(min(raw_profit, int(self.max_price))) if self.max_price else raw_profit
