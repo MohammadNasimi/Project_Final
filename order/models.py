@@ -14,9 +14,9 @@ class Of_code(BaseDiscount):
 
 
 class Order_item(BaseModel):
-    Product = models.ForeignKey(Product, on_delete=models.RESTRICT, null=True, blank=True)
+    Product = models.ForeignKey(Product, on_delete=models.RESTRICT, null=False)
     Count = models.PositiveIntegerField(null=True, blank=True, default=1)
-    Price_product = models.PositiveIntegerField(null=True, default=0)
+    Price_product = models.PositiveIntegerField(null=False, default=0)
 
 
 ORDER_STATUS = Choices(
@@ -27,7 +27,7 @@ ORDER_STATUS = Choices(
 
 
 class Order(BaseModel):
-    customer = models.ForeignKey(Customer, on_delete=models.RESTRICT, null=True, blank=True)
+    customer = models.ForeignKey(Customer, on_delete=models.RESTRICT, null=False)
     order_items = models.ManyToManyField(Order_item)
     status_Order = models.IntegerField(choices=ORDER_STATUS, default=1, null=True, blank=True)
     date = models.DateTimeField()
