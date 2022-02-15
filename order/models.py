@@ -16,7 +16,6 @@ class Of_code(BaseDiscount):
 class Order_item(BaseModel):
     Product = models.ForeignKey(Product, on_delete=models.RESTRICT, null=False)
     Count = models.PositiveIntegerField(null=True, blank=True, default=1)
-    Price_product = models.PositiveIntegerField(null=False, default=0)
 
     @property
     def get_cost_end_product(self):
