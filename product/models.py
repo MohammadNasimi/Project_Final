@@ -24,4 +24,4 @@ class Product(BaseModel):
     status = models.CharField(max_length=15, choices=(('exist', True), ('Not exist', False)), default=False)
     category = models.ForeignKey(Category, on_delete=models.RESTRICT, null=False)
     image = models.FileField(default='NO_pic.png', upload_to='Product_pic/%Y/%m/%d')
-    discount = models.ForeignKey(Discount, on_delete=models.RESTRICT, null=True, blank=True)
+    discount = models.ForeignKey(Discount, on_delete=models.CASCADE)
