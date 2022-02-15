@@ -1,11 +1,6 @@
 from django.contrib import admin
 from order.models import Order_item, Of_code, Order
 
-# Register your models here.
-from django.contrib import admin
-from product.models import Discount, Category, Product
-from django.contrib import admin
-
 
 # Register your models here.
 class Of_codeAdmin(admin.ModelAdmin):
