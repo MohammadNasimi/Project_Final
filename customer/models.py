@@ -6,15 +6,16 @@ from core.models import BaseModel
 
 
 class Address(BaseModel):
-    province = models.CharField(max_length=20, null=True, blank=True)
-    city = models.CharField(max_length=20, null=True, blank=True)
-    town = models.CharField(max_length=20, null=True, blank=True)
-    street = models.CharField(max_length=20, null=True, blank=True)
-    alley = models.CharField(max_length=20, null=True, blank=True)
-    Plaque = models.IntegerField(unique=True, null=True, blank=True)
-    zip_code = models.IntegerField(unique=True, null=True, blank=True)
+    province = models.CharField(max_length=20, null=False)
+    city = models.CharField(max_length=20, null=False)
+    town = models.CharField(max_length=20, null=False)
+    street = models.CharField(max_length=20, null=False)
+    alley = models.CharField(max_length=20, null=False)
+    Plaque = models.IntegerField(unique=True, null=False)
+    zip_code = models.IntegerField(unique=True, null=False)
 
 
 class Customer(User):
-    phone = models.CharField(max_length=20, null=True, blank=True)
-    address = models.ForeignKey(Address, on_delete=models.RESTRICT)
+    pass
+    # phone = models.CharField(max_length=20, null=True, blank=True)
+    # address = models.ForeignKey(Address, on_delete=models.RESTRICT)
