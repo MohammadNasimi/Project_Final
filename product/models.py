@@ -12,7 +12,10 @@ class Category(BaseModel):
     category_root = models.ForeignKey('self', on_delete=models.CASCADE, related_name='sub_categories',
                                       verbose_name='Parent Category',
                                       null=True, blank=True)
-    discount = models.ForeignKey(Discount, on_delete=models.CASCADE,  null=True, blank=True)
+    discount = models.ForeignKey(Discount, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.category_name}'
 
 
 class Product(BaseModel):
@@ -25,3 +28,6 @@ class Product(BaseModel):
     category = models.ForeignKey(Category, on_delete=models.RESTRICT, null=False)
     image = models.FileField(default='NO_pic.png', upload_to='Product_pic/%Y/%m/%d')
     discount = models.ForeignKey(Discount, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.name_product}'
