@@ -45,17 +45,17 @@
         <div class="collapse navbar-collapse row m-4" id="navbarTogglerDemo01">
             <div class="navbar-nav me-auto ms-2 d-flex justify-content-center">
                 <div class="col-2">
-                    <a class="navbar-brand" href="#">OnlineShop</a>
+                    <a class="navbar-brand" href="#">{% trans 'OnlineShop' %}</a>
                 </div>
                 <div class="col-1 nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">{% trans 'Home' %}</a>
                 </div>
                 <div class="col-1 nav-item">
-                    <a class="nav-link active" href="#">Category</a>
+                    <a class="nav-link active" href="#">{% trans 'Category' %}</a>
                 </div>
                 <form class="col-6 d-flex">
-                    <input class="form-control me-4" type="search" placeholder="Search product" aria-label="Search">
-                    <button class="btn btn-outline-light text-dark" type="submit">Search</button>
+                    <input class="form-control me-4" type="search" placeholder="{% trans 'Search product' %}" aria-label="Search">
+                    <button class="btn btn-outline-light text-dark" type="submit">{% trans 'Search' %}</button>
                 </form>
                 <div class="col-1 nav-item d-flex justify-content-end">
                     <span>
@@ -135,8 +135,8 @@
 
   <!-- Copyright -->
   <div class="text-center p-3 bg-primary">
-    © 2020 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/"> online shop</a>
+    {% trans '© 2020 Copyright:' %}
+    <a class="text-white" href="https://mdbootstrap.com/"> {% trans 'OnlineShop' %}</a>
   </div>
   <!-- Copyright -->
 </footer>
