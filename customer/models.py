@@ -1,8 +1,7 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
-from core.models import BaseModel
+from core.models import BaseModel, User
 
 
 class Address(BaseModel):
@@ -22,7 +21,10 @@ class Address(BaseModel):
         verbose_name_plural = _('Addresses')
 
 
-class Customer(User):
-    pass
-    # phone = models.CharField(max_length=20, null=True, blank=True)
-    # address = models.ForeignKey(Address, on_delete=models.RESTRICT)
+class Customer(BaseModel):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.RESTRICT)
+
+    class Meta:
+        verbose_name = _('Customer')
+        verbose_name_plural = _('Customers')
