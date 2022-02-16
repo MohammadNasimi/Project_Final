@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 22:10+0330\n"
+"POT-Creation-Date: 2022-02-16 18:02+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,6 +79,7 @@ msgid "Discounts"
 msgstr ""
 
 #: product/models.py:26 product/models.py:27
+#: templates/landing/base/_base.html:54
 msgid "Category"
 msgstr ""
 
@@ -88,4 +89,24 @@ msgstr ""
 
 #: product/models.py:46
 msgid "Products"
+msgstr ""
+
+#: templates/landing/base/_base.html:48 templates/landing/base/_base.html:139
+msgid "OnlineShop"
+msgstr ""
+
+#: templates/landing/base/_base.html:51
+msgid "Home"
+msgstr ""
+
+#: templates/landing/base/_base.html:57
+msgid "Search product"
+msgstr ""
+
+#: templates/landing/base/_base.html:58
+msgid "Search"
+msgstr ""
+
+#: templates/landing/base/_base.html:138
+msgid "© 2020 Copyright:"
 msgstr ""

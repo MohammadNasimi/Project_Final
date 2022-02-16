@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 22:10+0330\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2022-02-16 18:02+0330\n"
+"PO-Revision-Date: 2022-02-16 18:02+0330\n"
+"Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
 
 #: core/models.py:16
 msgid "Deleted Datetime"
@@ -44,48 +45,69 @@ msgstr ""
 
 #: customer/models.py:21
 msgid "Address"
-msgstr ""
+msgstr "آدرس"
 
 #: customer/models.py:22
 msgid "Addresses"
-msgstr ""
+msgstr "آدرس ها"
 
 #: order/models.py:25
 msgid "Off_code"
-msgstr ""
+msgstr "کد تخفیف"
 
 #: order/models.py:26
 msgid "Off_codes"
-msgstr ""
+msgstr "کدتخفیف ها"
 
 #: order/models.py:42
 msgid "Order item"
-msgstr ""
+msgstr "سفارش"
 
 #: order/models.py:43
 msgid "Order items"
-msgstr ""
+msgstr "سفارش ها"
 
 #: order/models.py:72 order/models.py:73
 msgid "Order"
-msgstr ""
+msgstr "سبد خرید"
 
 #: product/models.py:11
 msgid "Discount"
-msgstr ""
+msgstr "تخفیف"
 
 #: product/models.py:12
 msgid "Discounts"
-msgstr ""
+msgstr "تخفیف ها"
 
 #: product/models.py:26 product/models.py:27
+#: templates/landing/base/_base.html:54
 msgid "Category"
-msgstr ""
+msgstr "دسته بندی"
 
 #: product/models.py:45
 msgid "Product"
-msgstr ""
+msgstr "محصول"
 
 #: product/models.py:46
 msgid "Products"
-msgstr ""
+msgstr "محصول ها "
+
+#: templates/landing/base/_base.html:48 templates/landing/base/_base.html:139
+msgid "OnlineShop"
+msgstr "فروشگاه آنلاین"
+
+#: templates/landing/base/_base.html:51
+msgid "Home"
+msgstr "خانه"
+
+#: templates/landing/base/_base.html:57
+msgid "Search product"
+msgstr "جستجو محصول "
+
+#: templates/landing/base/_base.html:58
+msgid "Search"
+msgstr "جستجو"
+
+#: templates/landing/base/_base.html:138
+msgid "© 2020 Copyright:"
+msgstr "تمامی حقوق محفوظ و متعلق به فروشگاه اينترنتی می باشد. (1400)"
