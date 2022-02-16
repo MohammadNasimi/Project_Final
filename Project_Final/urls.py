@@ -18,9 +18,11 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.conf import settings
+from landing.views import HomeView
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta/', include('rosetta.urls')),
+    path('', HomeView.as_view()),
     prefix_default_language=True
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
