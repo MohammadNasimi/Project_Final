@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from core.manager import BaseManager
+from django.contrib.auth.models import AbstractUser, UserManager
 
 
 class BaseModel(models.Model):
@@ -66,3 +67,15 @@ class BaseDiscount(BaseModel):
         else:  # percent
             raw_profit = int((self.value / 100) * price)
             return int(min(raw_profit, int(self.max_price))) if self.max_price else raw_profit
+
+
+class MyUserManager(UserManager):
+    def create_superuser(self, username=None, email=None, password=None, **extra_fields):
+        username = extra_fields['phone']
+        return self._create_user(username, email, password, **extra_fields)
+
+
+class User(AbstractUser):
+    phone = models.CharField(max_length=20, null=True, blank=True, unique=True)
+    USERNAME_FIELD = 'phone'
+    objects = MyUserManager()
