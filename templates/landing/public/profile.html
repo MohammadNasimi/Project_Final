@@ -1,0 +1,9 @@
+{% extends "landing/base/_base.html" %}
+{% block title %} Login {% endblock %}
+{% block content %}
+
+    <h1>{{ user }}</h1>
+    <a class="bg-primary" href="{% url 'landing:logout' %}">Logout</a>
+
+
+{% endblock %}
