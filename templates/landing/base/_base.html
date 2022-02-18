@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!doctype html>
-<html lang="en">
+<html lang="en"  dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -31,8 +31,6 @@
         .color-cart {
             color: #e9f3f1;
         }
-
-
     </style>
 </head>
 <body>
@@ -53,93 +51,94 @@
                 <div class="col-1 nav-item">
                     <a class="nav-link active" href="#">{% trans 'Category' %}</a>
                 </div>
-                <form class="col-6 d-flex">
-                    <input class="form-control me-4" type="search" placeholder="{% trans 'Search product' %}" aria-label="Search">
+                <form class="col-5 d-flex">
+                    <input class="form-control me-4" type="search" placeholder="{% trans 'Search product' %}"
+                           aria-label="Search">
                     <button class="btn btn-outline-light text-dark" type="submit">{% trans 'Search' %}</button>
                 </form>
-                <div class="col-1 nav-item d-flex justify-content-end">
-                    <span>
-                        <a href="{% url 'landing:login' %}"><i class="fa fa-user color-cart"  style="font-size:28px"></i></a>
-
-                    </span>
+                <div class="col-2 nav-item d-flex justify-content-end">
                     <span class="fa-stack fa-1x  bg-primary" data-count="5">
                         <a href="#"><i class="fa fa-shopping-cart fa-stack-2x color-cart "></i></a>
                     </span>
+                    <span>
+                        <a href="{% url 'landing:login' %}"><i class="fa fa-user color-cart"
+                                                               style="font-size:28px">{{ user.first_name }}</i></a>
+                    </span>
+
                 </div>
             </div>
         </div>
     </div>
 </nav>
 {% block content %}{% endblock %}
-
 <footer class="bg-light text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #3b5998;"
-        href="#!"
-        role="button"
-        ><i class="fa fa-facebook-f"></i
-      ></a>
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #3b5998;"
+                    href="#!"
+                    role="button"
+            ><i class="fa fa-facebook-f"></i
+            ></a>
 
-      <!-- Twitter -->
-      <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #55acee;"
-        href="#!"
-        role="button"
-        ><i class="fa fa-twitter"></i
-      ></a>
+            <!-- Twitter -->
+            <a
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #55acee;"
+                    href="#!"
+                    role="button"
+            ><i class="fa fa-twitter"></i
+            ></a>
 
-      <!-- Google -->
-      <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #dd4b39;"
-        href="#!"
-        role="button"
-        ><i class="fa fa-google"></i
-      ></a>
+            <!-- Google -->
+            <a
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #dd4b39;"
+                    href="#!"
+                    role="button"
+            ><i class="fa fa-google"></i
+            ></a>
 
-      <!-- Instagram -->
-      <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #ac2bac;"
-        href="#!"
-        role="button"
-        ><i class="fa fa-instagram"></i
-      ></a>
+            <!-- Instagram -->
+            <a
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #ac2bac;"
+                    href="#!"
+                    role="button"
+            ><i class="fa fa-instagram"></i
+            ></a>
 
-      <!-- Linkedin -->
-      <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #0082ca;"
-        href="#!"
-        role="button"
-        ><i class="fa fa-linkedin-square"></i
-      ></a>
-      <!-- Github -->
-      <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #333333;"
-        href="#!"
-        role="button"
-        ><i class="fa fa-github"></i
-      ></a>
-    </section>
-    <!-- Section: Social media -->
-  </div>
-  <!-- Grid container -->
+            <!-- Linkedin -->
+            <a
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #0082ca;"
+                    href="#!"
+                    role="button"
+            ><i class="fa fa-linkedin-square"></i
+            ></a>
+            <!-- Github -->
+            <a
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #333333;"
+                    href="#!"
+                    role="button"
+            ><i class="fa fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3 bg-primary">
-    {% trans '© 2020 Copyright:' %}
-    <a class="text-white" href="https://mdbootstrap.com/"> {% trans 'OnlineShop' %}</a>
-  </div>
-  <!-- Copyright -->
+    <!-- Copyright -->
+    <div class="text-center p-3 bg-primary">
+        {% trans '© 2020 Copyright:' %}
+        <a class="text-white" href="https://mdbootstrap.com/"> {% trans 'OnlineShop' %}</a>
+    </div>
+    <!-- Copyright -->
 </footer>
 </body>
-</html>
+</>
