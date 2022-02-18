@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 23:26+0330\n"
-"PO-Revision-Date: 2022-02-16 23:28+0330\n"
-"Last-Translator:   <>\n"
+"POT-Creation-Date: 2022-02-18 23:44+0330\n"
+"PO-Revision-Date: 2022-02-18 23:45+0330\n"
+"Last-Translator: Mohammad  <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgid "Discounts"
 msgstr "تخفیف ها"
 
 #: product/models.py:26 product/models.py:27
-#: templates/landing/base/_base.html:54
+#: templates/landing/base/_base.html:52
 msgid "Category"
 msgstr "دسته بندی"
 
@@ -112,22 +112,48 @@ msgstr "محصول"
 msgid "Products"
 msgstr "محصول ها "
 
-#: templates/landing/base/_base.html:48 templates/landing/base/_base.html:139
+#: templates/landing/base/_base.html:46 templates/landing/base/_base.html:139
 msgid "OnlineShop"
 msgstr "فروشگاه آنلاین"
 
-#: templates/landing/base/_base.html:51
+#: templates/landing/base/_base.html:49
 msgid "Home"
 msgstr "خانه"
 
-#: templates/landing/base/_base.html:57
+#: templates/landing/base/_base.html:55
 msgid "Search product"
 msgstr "جستجو محصول "
 
-#: templates/landing/base/_base.html:58
+#: templates/landing/base/_base.html:57
 msgid "Search"
 msgstr "جستجو"
 
 #: templates/landing/base/_base.html:138
 msgid "© 2020 Copyright:"
 msgstr "تمامی حقوق محفوظ و متعلق به فروشگاه اينترنتی می باشد. (1400)"
+
+#: templates/landing/public/Login.html:11
+msgid "Welcome OnlineShop"
+msgstr " خوش امدید "
+
+#: templates/landing/public/Login.html:13
+#: templates/landing/public/Login.html:14
+msgid "Phone"
+msgstr "تلفن همراه"
+
+#: templates/landing/public/Login.html:17
+#: templates/landing/public/Login.html:19
+msgid "Password"
+msgstr "رمز ورود "
+
+#: templates/landing/public/Login.html:22
+msgid "Login "
+msgstr "ورود"
+
+#: templates/landing/public/Login.html:26
+msgid "Have not account yet? "
+msgstr "آیا حساب کاربری ندارید ؟"
+
+#: templates/landing/public/Login.html:26
+msgid "Signup"
+msgstr "ایجاد حساب کاربری"
