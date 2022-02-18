@@ -25,8 +25,9 @@ urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta/', include('rosetta.urls')),
     path('', include('landing.urls'), name='landing'),
+    path('product/', include('product.urls'), name='product'),
     # serializers
-    path('product/', product_list_api),
+    # path('product/', product_list_api),
     path('product_list/', productListApi.as_view()),
     path('product_Detail/<int:pk>', productDetailApi.as_view()),
     path('category/', category_list_api),
