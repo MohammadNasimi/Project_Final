@@ -9,7 +9,7 @@ from customer.forms import CustomerForm
 
 
 class HomeView(TemplateView):
-    template_name = "landing/base/_base.html"
+    template_name = "landing/public/Home.html"
 
 
 class registerView(View):
@@ -45,11 +45,13 @@ class LoginView(View):
         user = {
             'user': user,
         }
-        return render(request, 'landing/base/_base.html', context=user)
+        return render(request, 'landing/public/Home.html', context=user)
 
 
 class LogoutView(View):
 
     def get(self, request):
+        if request.session.get('uid', None) is None:
+            return render(request, 'landing/public/Home.html')
         del request.session['uid']
-        return render(request, 'landing/base/_base.html')
+        return render(request, 'landing/public/Home.html')
