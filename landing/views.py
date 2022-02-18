@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.views import View
 
 from core.models import User
+from customer.forms import CustomerForm
 
 
 class HomeView(TemplateView):
@@ -12,15 +13,27 @@ class HomeView(TemplateView):
 
 
 class registerView(View):
+    form_class = CustomerForm
+    template_name = 'landing/register'
 
     def get(self, request):
-        return render(request, 'landing/public/register.html')
+        return render(request, 'landing/public/register.html', {'form': self.form_class})
+
+    def post(self, request):
+        ...
 
 
 class LoginView(View):
 
     def get(self, request):
-        return render(request, 'landing/public/Login.html')
+        if request.session.get('uid', None) is None:
+            return render(request, 'landing/public/Login.html')
+        user = User.objects.get(id=request.session.get('uid', None))
+        user = {
+            'user': user
+
+        }
+        return render(request, 'landing/public/profile.html', context=user)
 
     def post(self, request):
         phone = request.POST['phone']
@@ -33,3 +46,10 @@ class LoginView(View):
             'user': user,
         }
         return render(request, 'landing/base/_base.html', context=user)
+
+
+class LogoutView(View):
+
+    def get(self, request):
+        del request.session['uid']
+        return render(request, 'landing/base/_base.html')
