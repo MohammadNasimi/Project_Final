@@ -11,6 +11,12 @@ class HomeView(TemplateView):
     template_name = "landing/base/_base.html"
 
 
+class registerView(View):
+
+    def get(self, request):
+        return render(request, 'landing/public/register.html')
+
+
 class LoginView(View):
 
     def get(self, request):
