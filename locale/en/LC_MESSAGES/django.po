@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-16 18:02+0330\n"
+"POT-Creation-Date: 2022-02-16 23:26+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,36 +18,56 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/models.py:16
-msgid "Deleted Datetime"
+#: core/admin.py:9
+msgid "Personal info"
+msgstr ""
+
+#: core/admin.py:10
+msgid "Permissions"
+msgstr ""
+
+#: core/admin.py:13
+msgid "Important dates"
 msgstr ""
 
 #: core/models.py:17
+msgid "Deleted Datetime"
+msgstr ""
+
+#: core/models.py:18
 msgid "This is deleted datetime"
 msgstr ""
 
-#: core/models.py:21
+#: core/models.py:22
 msgid "Deleted status"
 msgstr ""
 
-#: core/models.py:22
+#: core/models.py:23
 msgid "This is deleted status"
 msgstr ""
 
-#: core/models.py:26
+#: core/models.py:27
 msgid "Active status"
 msgstr ""
 
-#: core/models.py:27
+#: core/models.py:28
 msgid "This is active status"
 msgstr ""
 
-#: customer/models.py:21
+#: customer/models.py:20
 msgid "Address"
 msgstr ""
 
-#: customer/models.py:22
+#: customer/models.py:21
 msgid "Addresses"
+msgstr ""
+
+#: customer/models.py:29
+msgid "Customer"
+msgstr ""
+
+#: customer/models.py:30
+msgid "Customers"
 msgstr ""
 
 #: order/models.py:25
