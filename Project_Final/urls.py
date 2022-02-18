@@ -24,7 +24,7 @@ from product.views import product_list_api, category_list_api, productListApi, p
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta/', include('rosetta.urls')),
-    path('', HomeView.as_view()),
+    path('', include('landing.urls'), name='landing'),
     # serializers
     path('product/', product_list_api),
     path('product_list/', productListApi.as_view()),
