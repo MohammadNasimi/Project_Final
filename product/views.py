@@ -3,7 +3,7 @@ from django.http import Http404, JsonResponse
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-
+from django.views import View
 from product.serializers import ProductSerializer, CategorySerializer
 from product.models import Product, Category
 from rest_framework.response import Response
@@ -75,3 +75,9 @@ class productListApi(generics.ListAPIView, generics.CreateAPIView):
 class productDetailApi(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class CategoryView(View):
+
+    def get(self, request):
+        return render(request, 'landing/product/Category.html')
