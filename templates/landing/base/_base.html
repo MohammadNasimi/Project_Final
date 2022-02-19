@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!doctype html>
-<html lang="en"  dir="ltr">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -46,7 +46,8 @@
                     <a class="navbar-brand" href="#">{% trans 'OnlineShop' %}</a>
                 </div>
                 <div class="col-1 nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'landing:Home' %}">{% trans 'Home' %}</a>
+                    <a class="nav-link active" aria-current="page"
+                       href="{% url 'landing:Home' %}">{% trans 'Home' %}</a>
                 </div>
                 <div class="col-1 nav-item">
                     <a class="nav-link active" href="{% url 'product:category' %}">{% trans 'Category' %}</a>
@@ -141,4 +142,4 @@
     <!-- Copyright -->
 </footer>
 </body>
-</>
+</html>
