@@ -12,6 +12,7 @@ class Address(BaseModel):
     alley = models.CharField(max_length=20, null=False)
     Plaque = models.IntegerField(unique=True, null=False)
     zip_code = models.IntegerField(unique=True, null=False)
+    customer = models.ForeignKey('Customer', on_delete=models.RESTRICT)
 
     def __str__(self):
         return f'{self.city}:{self.zip_code}'
@@ -23,7 +24,6 @@ class Address(BaseModel):
 
 class Customer(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address = models.ForeignKey(Address, on_delete=models.RESTRICT)
 
     class Meta:
         verbose_name = _('Customer')
