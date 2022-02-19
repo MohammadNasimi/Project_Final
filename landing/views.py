@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Permission, ContentType
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render, HttpResponse
-
+from django.contrib import messages
 # Create your views here.
 from django.views.generic import TemplateView
 from django.views import View
@@ -27,9 +27,20 @@ class registerView(View):
         email = request.POST['email']
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        password = request.POST['password1']
+        password1 = request.POST['password1']
+        password2 = request.POST['password1']
+        for i in User.objects.all():
+            if i.phone == phone:
+                messages.add_message(request, messages.ERROR, "phone is exist")
+                return render(request, 'landing/public/register.html', {'form': self.form_class})
+        if password2 == password1:
+            messages.add_message(request, messages.ERROR, "your password not equal")
+            return render(request, 'landing/public/register.html', {'form': self.form_class})
+        if len(password1) > 8:
+            messages.add_message(request, messages.ERROR, "your password should more than 8")
+            return render(request, 'landing/public/register.html', {'form': self.form_class})
         new_user = User.objects.create_user(username=phone, email=email,
-                                            first_name=first_name, last_name=last_name, password=password, phone=phone)
+                                            first_name=first_name, last_name=last_name, password=password1, phone=phone)
         Customer.objects.create(user=new_user)
         # code add permission see-profile in terminal
         # content_type = ContentType.objects.get_for_model(User)
@@ -45,9 +56,8 @@ class registerView(View):
         return render(request, 'landing/public/Login.html')
 
 
-class LoginView(PermissionRequiredMixin, View):
-    permission_required = "auth.see_profile"
-
+class LoginView(View):
+    # permission_required = "auth.see_profile"
     def get(self, request):
         if request.session.get('uid', None) is None:
             return render(request, 'landing/public/Login.html')
