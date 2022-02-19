@@ -3,7 +3,7 @@ import datetime
 from django.db import models
 from core.models import BaseModel, BaseDiscount
 from product.models import Product
-from customer.models import Customer
+from customer.models import Address
 
 from model_utils import Choices
 
@@ -51,7 +51,7 @@ ORDER_STATUS = Choices(
 
 
 class Order(BaseModel):
-    customer = models.ForeignKey(Customer, on_delete=models.RESTRICT, null=False)
+    address = models.ForeignKey(Address, on_delete=models.RESTRICT, null=False)
     order_items = models.ManyToManyField(Order_item)
     status_Order = models.IntegerField(choices=ORDER_STATUS, default=1, null=True, blank=True)
     date = models.DateTimeField(default=timezone.now)
