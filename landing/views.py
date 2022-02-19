@@ -72,9 +72,15 @@ class LoginView(View):
     def post(self, request):
         phone = request.POST['phone']
         password = request.POST['password']
+
+        for i in User.objects.all():
+            if i.phone == phone:
+                messages.add_message(request, messages.ERROR, "your phone not exist")
+                return render(request, 'landing/public/Login.html')
         user = User.objects.get(phone=phone)
         if not user.check_password(password):
-            return HttpResponse('pass not correct', status=400)
+            messages.add_message(request, messages.ERROR, "your password wrong")
+            return render(request, 'landing/public/Login.html')
         request.session['uid'] = user.id
         user = {
             'user': user,
