@@ -66,7 +66,7 @@ class Order(BaseModel):
         return [item.Product.name_product for item in self.order_items.all()]
 
     def __str__(self):
-        return f'{self.customer}:{self.date.year}'
+        return f'{self.address}:{self.date.year}'
 
     class Meta:
         verbose_name = _('Order')
