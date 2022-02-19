@@ -4,10 +4,10 @@ from customer.models import Address, Customer
 
 # Register your models here.
 class AddressAdmin(admin.ModelAdmin):
-    fields = ['province', 'city', 'town', 'street', 'alley', 'Plaque', 'zip_code']
+    fields = ['province', 'city', 'town', 'street', 'alley', 'Plaque', 'zip_code', 'customer']
     list_display = ['province', 'city', 'town']
     list_filter = ['province', 'city', 'town']
-    search_fields = ['province', 'city', 'town', 'zip_code']
+    search_fields = ['province', 'city', 'town', 'zip_code', 'customer']
 
 
 class CustomerAdmin(admin.ModelAdmin):
