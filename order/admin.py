@@ -20,12 +20,12 @@ class Order_itemAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     fieldsets = (
         ('General',
-         {'fields': ['customer', 'status_Order', 'date']}),
+         {'fields': ['address', 'status_Order', 'date']}),
         ('order items', {'fields': ['order_items']}),
         ('off_code', {'fields': ['off_code']})
     )
-    list_filter = ['customer', 'date']
-    search_fields = ['customer', 'date', 'price']
+    list_filter = ['address', 'date']
+    search_fields = ['address', 'date', 'price']
 
 
 admin.site.register(Of_code, Of_codeAdmin)
