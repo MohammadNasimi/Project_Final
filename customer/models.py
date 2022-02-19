@@ -12,7 +12,7 @@ class Address(BaseModel):
     alley = models.CharField(max_length=20, null=False)
     Plaque = models.IntegerField(unique=True, null=False)
     zip_code = models.IntegerField(unique=True, null=False)
-    customer = models.ForeignKey('Customer', on_delete=models.RESTRICT)
+    customer = models.ForeignKey('Customer', on_delete=models.RESTRICT,null=True,blank=True)
 
     def __str__(self):
         return f'{self.city}:{self.zip_code}'
