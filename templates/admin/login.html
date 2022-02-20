@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n static %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}">
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login_.css" %}">
 {{ form.media }}
 {% endblock %}
 
@@ -42,16 +42,21 @@
 {% endblocktranslate %}
 </p>
 {% endif %}
-
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-  <div class="form-row">
+<div class="wrapper">
+    <div class="logo"> <img src="https://www.freepnglogos.com/uploads/shopping-bag-png/shopping-bag-png-25.png"  alt=""> </div>
+    <div class="text-center mt-4 name glyphicon-text-background"> {% translate 'Laptez' %} </div>
+<form action="{{ app_path }}" method="post" id="login-form" class="p-3 mt-3">{% csrf_token %}
+    <div class="login_form">
+  <div class="form-field d-flex align-items-center">
+      <span class="fa fa-user"></span>
     {{ form.username.errors }}
-    {{ form.username.label_tag }} {{ form.username }}
+      <input type="text" name="username"  maxlength="20" required="" id="id_username">
   </div>
-  <div class="form-row">
+  <div class="form-field d-flex align-items-center">
+      <span class="fa fa-key"></span>
     {{ form.password.errors }}
-    {{ form.password.label_tag }} {{ form.password }}
-    <input type="hidden" name="next" value="{{ next }}">
+      <input type="password" name="password"  required="" id="id_password">
+  </div>
   </div>
   {% url 'admin_password_reset' as password_reset_url %}
   {% if password_reset_url %}
@@ -59,10 +64,15 @@
     <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
   </div>
   {% endif %}
-  <div class="submit-row">
-    <input type="submit" value="{% translate 'Log in' %}">
-  </div>
+      <div class="text-center fs-6"> <input type="submit" value="{% translate 'Log in' %}"> </div>
 </form>
 
 </div>
+</div>
 {% endblock %}
+
+    <form class="p-3 mt-3">
+        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="userName" id="userName" placeholder="Username"> </div>
+        <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="pwd" placeholder="Password"> </div> <button class="btn mt-3">Login</button>
+    </form>
+    <div class="text-center fs-6"> <a href="#">Forget password?</a> or <a href="#">Sign up</a> </div>
