@@ -1,6 +1,6 @@
 from django.contrib.auth.models import Permission, ContentType
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.contrib import messages
 # Create your views here.
 from django.views.generic import TemplateView
@@ -33,10 +33,10 @@ class registerView(View):
             if i.phone == phone:
                 messages.add_message(request, messages.ERROR, "phone is exist")
                 return render(request, 'landing/public/register.html', {'form': self.form_class})
-        if password2 == password1:
+        if password2 != password1:
             messages.add_message(request, messages.ERROR, "your password not equal")
             return render(request, 'landing/public/register.html', {'form': self.form_class})
-        if len(password1) > 8:
+        if len(password1) < 8:
             messages.add_message(request, messages.ERROR, "your password should more than 8")
             return render(request, 'landing/public/register.html', {'form': self.form_class})
         new_user = User.objects.create_user(username=phone, email=email,
@@ -73,10 +73,6 @@ class LoginView(View):
         phone = request.POST['phone']
         password = request.POST['password']
 
-        for i in User.objects.all():
-            if i.phone == phone:
-                messages.add_message(request, messages.ERROR, "your phone not exist")
-                return render(request, 'landing/public/Login.html')
         user = User.objects.get(phone=phone)
         if not user.check_password(password):
             messages.add_message(request, messages.ERROR, "your password wrong")
