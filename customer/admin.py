@@ -11,7 +11,9 @@ class AddressAdmin(admin.ModelAdmin):
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    fields = ['user']
+    list_filter = ['user']
+    search_fields = ['user']
 
 
 admin.site.register(Address, AddressAdmin)
