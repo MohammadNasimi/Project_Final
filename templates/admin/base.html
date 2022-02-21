@@ -44,7 +44,7 @@
                         {% if has_permission %}
                             <div id="user-tools">
                                 {% block welcome-msg %}
-                                    {% translate 'Welcome,' %}
+                                    {% translate 'Welcome to Laptez' %}
                                     <strong>{% firstof user.get_short_name user.get_username %}</strong>.
                                 {% endblock %}
                                 {% block userlinks %}
@@ -95,7 +95,7 @@
                 <!-- Content -->
                 <div id="content" class="{% block coltype %}colM{% endblock %}">
                     {% block pretitle %}{% endblock %}
-                    {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+                    {% block content_title %}{% if title %}<h1>OnlineShop Laptez administration</h1>{% endif %}{% endblock %}
                     {% block content_subtitle %}{% if subtitle %}<h2>{{ subtitle }}</h2>{% endif %}{% endblock %}
                     {% block content %}
                         {% block object-tools %}{% endblock %}
