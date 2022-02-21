@@ -4,6 +4,7 @@ from django.http import Http404, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from django.views import View
+from django.views.generic import ListView
 from product.serializers import ProductSerializer, CategorySerializer
 from product.models import Product, Category
 from rest_framework.response import Response
@@ -77,7 +78,18 @@ class productDetailApi(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
 
 
-class CategoryView(View):
+# class CategoryView(View):
+#
+#     def get(self, request):
+#         category_serializer = CategorySerializer(Category.objects.all(), many=True)
+#         print(category_serializer)
+#         context = {
+#             'data': category_serializer
+#         }
+#         return render(request, 'landing/product/Category.html', context=context)
 
-    def get(self, request):
-        return render(request, 'landing/product/Category.html')
+
+class CategoryListview(ListView):
+    model = Category
+    template_name = 'landing/product/Category.html'
+    context_object_name = 'Category_list'
