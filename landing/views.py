@@ -28,7 +28,7 @@ class registerView(View):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         password1 = request.POST['password1']
-        password2 = request.POST['password1']
+        password2 = request.POST['password2']
         for i in User.objects.all():
             if i.phone == phone:
                 messages.add_message(request, messages.ERROR, "phone is exist")
