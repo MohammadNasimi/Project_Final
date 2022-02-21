@@ -25,7 +25,7 @@
     --breadcrumbs-link-fg: var(--body-bg);
     --breadcrumbs-bg: var(--primary);
 
-    --link-fg: #f5f5f5;
+    --link-fg: #343434;
     --link-hover-color: #036;
     --link-selected-fg: #5b80b2;
 
@@ -70,7 +70,7 @@
         --breadcrumbs-link-fg: #e0e0e0;
         --breadcrumbs-bg: var(--primary);
 
-        --link-fg: #fafafa;
+        --link-fg: #4f4f4f;
         --link-hover-color: #4ac1f7;
         --link-selected-fg: #6f94c6;
 
@@ -518,7 +518,7 @@ select[multiple] {
 /* FORM BUTTONS */
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: var(--button-bg);
+    background: var(--button-bg)!important;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
