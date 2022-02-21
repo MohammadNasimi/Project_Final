@@ -25,7 +25,7 @@
     --breadcrumbs-link-fg: var(--body-bg);
     --breadcrumbs-bg: var(--primary);
 
-    --link-fg: #447e9b;
+    --link-fg: #f5f5f5;
     --link-hover-color: #036;
     --link-selected-fg: #5b80b2;
 
@@ -70,7 +70,7 @@
         --breadcrumbs-link-fg: #e0e0e0;
         --breadcrumbs-bg: var(--primary);
 
-        --link-fg: #81d4fa;
+        --link-fg: #fafafa;
         --link-hover-color: #4ac1f7;
         --link-selected-fg: #6f94c6;
 
@@ -107,7 +107,7 @@ body {
 /* LINKS */
 
 a:link, a:visited {
-    color: var(--link-fg);
+    color: var(--link-fg)!important;
     text-decoration: none;
     transition: color 0.15s, background 0.15s;
 }
