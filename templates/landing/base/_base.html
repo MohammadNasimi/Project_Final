@@ -24,7 +24,7 @@
             line-height: .75em;
             color: #136dc7;
             text-align: center;
-            min-width: 2em;
+            min-width: 0.5em;
             font-weight: bold;
             background: #e9f3f1;
             border-style: solid;
@@ -64,8 +64,13 @@
                         <a href="#"><i class="fa fa-shopping-cart fa-stack-2x color-cart "></i></a>
                     </span>
                     <span>
-                        <a href="{% url 'landing:login' %}"><i class="fa fa-user color-cart"
-                                                               style="font-size:28px">{{ user.first_name }}</i></a>
+                        <a href=" {% if request.session.uid %}
+                            {% url 'landing:profile' %}
+                        {% else %}
+                            {% url 'landing:login' %}
+                        {% endif %}"><i class="fa fa-user color-cart"
+                                        style="font-size:28px">{{ user.first_name }}</i></a>
+
                     </span>
 
                 </div>
