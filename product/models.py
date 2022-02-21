@@ -7,6 +7,9 @@ from django.utils.translation import gettext_lazy as _
 class Discount(BaseDiscount):
     pass
 
+    def __str__(self):
+        return f'{self.type}:{self.value}'
+
     class Meta:
         verbose_name = _('Discount')
         verbose_name_plural = _('Discounts')
