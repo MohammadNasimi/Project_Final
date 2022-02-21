@@ -42,17 +42,17 @@
     --selected-bg: #e4e4e4; /* E.g. selected table cells */
     --selected-row: #ffc;
 
-    --button-fg: #fff;
+    --button-fg: #ffffff;
     --button-bg: var(--primary);
     --button-hover-bg: #609ab6;
     --default-button-bg: var(--secondary);
     --default-button-hover-bg: #205067;
     --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
     --close-button-hover-bg: #747474;
-    --delete-button-bg: #ba2121;
-    --delete-button-hover-bg: #a41515;
+    --delete-button-bg: #960606;
+    --delete-button-hover-bg: #ffffff;
 
-    --object-tools-fg: var(--button-fg);
+    --object-tools-fg: white;
     --object-tools-bg: var(--close-button-bg);
     --object-tools-hover-bg: var(--close-button-hover-bg);
 }
@@ -522,7 +522,7 @@ select[multiple] {
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
-    color: var(--button-fg);
+    color: var(--button-fg) !important;
     cursor: pointer;
     transition: background 0.15s;
 }
@@ -778,7 +778,7 @@ a.deletelink:focus, a.deletelink:hover {
     float: left;
     padding: 3px 12px;
     background: var(--object-tools-bg);
-    color: var(--object-tools-fg);
+    color: var(--object-tools-fg)!important;
     font-weight: 400;
     font-size: 11px;
     text-transform: uppercase;
