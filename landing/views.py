@@ -57,17 +57,9 @@ class registerView(View):
 
 
 class LoginView(View):
-    # permission_required = "auth.see_profile"
     def get(self, request):
-        if request.session.get('uid', None) is None:
-            return render(request, 'landing/public/Login.html')
-        user = User.objects.get(id=request.session.get('uid', None))
-        user = {
-            'user': user
-
-        }
-
-        return render(request, 'landing/public/profile.html', context=user)
+        # if request.session.get('uid', None) is None:
+        return render(request, 'landing/public/Login.html')
 
     def post(self, request):
         phone = request.POST['phone']
@@ -91,3 +83,16 @@ class LogoutView(View):
             return render(request, 'landing/public/Home.html')
         del request.session['uid']
         return render(request, 'landing/public/Home.html')
+
+
+class profileView(View):
+    # permission_required = "landing.see_profile"
+
+    def get(self, request):
+        user = User.objects.get(id=request.session.get('uid', None))
+        user = {
+            'user': user
+
+        }
+
+        return render(request, 'landing/public/profile.html', context=user)
