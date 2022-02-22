@@ -16,11 +16,12 @@ class HomeView(TemplateView):
 
 
 class registerView(View):
-    form_class = CustomerForm
-    template_name = 'landing/register'
+    # form_class = CustomerForm
+    # template_name = 'public/register'
 
     def get(self, request):
-        return render(request, 'landing/public/register.html', {'form': self.form_class})
+        form = CustomerForm()
+        return render(request, 'landing/public/register.html', {'form': form})
 
     def post(self, request):
         phone = request.POST['phone']
