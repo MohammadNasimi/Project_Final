@@ -9,7 +9,9 @@
                     {% if messages %}
                         {% for msg in messages %}
                             {% if msg.level != DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                                <h5 class="{{ msg.tags }}">{{ msg }}</h5>
+                                <div class="alert alert-danger mt-4 {{ msg.tags }}" role="alert">
+                                    <strong>{{ msg }}</strong>
+                                </div>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
