@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "landing/product/Category.html" %}
+{% block title %} product {% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="container mt-3 mb-3 d-flex justify-content-between">
+        <div class="row">
+            {% for product in product_list %}
+                <div class="card  m-2" style="width: 15rem;">
+                    <img src="{{ product.image.url }}" class="card-img-top" data-bs-toggle="modal"
+                         data-bs-target="#{{ product.name_product }}"
+                         alt="{{ product.name_product }}" width="350" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name_product }}</h5>
+                        <p class="card-text">{{ product.price }} Rial</p>
+                        <a href="#" class="btn btn-primary">add to cart</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-</body>
-</html>
+    {% for product in product_list %}
+        <div class="modal fade" id="{{ product.name_product }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ product.name_product }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ product.image.url }}" class="card-img-top" data-bs-toggle="modal"
+                             data-bs-target="#{{ product.name_product }}"
+                             alt="{{ product.name_product }}" width="350" height="200">
+                        <h1>{{ product.name_product }}</h1>
+                        <h1>{{ product.descriptions }}</h1>
+                        <h1>{{ product.name_product }}</h1>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
