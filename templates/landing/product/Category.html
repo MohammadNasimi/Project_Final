@@ -2,23 +2,29 @@
 {% block title %} Category {% endblock %}
 {% block content %}
     {% load static %}
-
     <link rel="stylesheet" type="text/css" href="{% static "landing/css/category.css" %}">
     <div class="container mt-1">
         {% for i in Category_list %}
             <div class="dropdown">
-            {% if  i.category_root  == None %}
-                <p type="button" class=" dropdown-toggle" data-bs-toggle="dropdown">
-                    {{ i.category_name }}</p>
-                <ul class="dropdown-menu">
-                    {% for j in Category_list %}
-                        {% if j.category_root == i %}
-                            <li><a class="dropdown-item" href="#">{{ j.category_name }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            {% endif %}
+                {% if  i.category_root  == None %}
+                    <p type="button" class=" dropdown-toggle" data-bs-toggle="dropdown">
+                        {{ i.category_name }}</p>
+                    <ul class="dropdown-menu">
+                        {% for j in Category_list %}
+                            {% if j.category_root == i %}
+                                <li><a class="dropdown-item" href="{% url 'product:product' %}" id="{{ j.category_name }}"
+                                       data-id="{{ j.category_name }}">{{ j.category_name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
+    <script>
+        $("#Pitzzaa").on("click", function () {
+            var dataId = $(this).attr("data-id");
+            alert("The data-id of clicked item is: " + dataId);
+        });
+    </script>
 {% endblock %}
