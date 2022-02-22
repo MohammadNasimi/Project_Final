@@ -3,10 +3,10 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static "landing/css/product.css" %}">
-    <div class="container mt-3 mb-3 d-flex justify-content-between">
-        <div class="row">
+    <div class="container mt-3 mb-3 d-flex justify-content-center">
+        <div class="row d-flex justify-content-center">
             {% for product in product_list %}
-                <div class="card  m-2" style="width: 15rem;">
+                <div class="card  m-2 " style="width: 15rem;">
                     <img src="{{ product.image.url }}" class="card-img-top" data-bs-toggle="modal"
                          data-bs-target="#{{ product.name_product }}"
                          alt="{{ product.name_product }}" width="350" height="200">
@@ -21,7 +21,7 @@
             {% endfor %}
         </div>
     </div>
-
+    {#modal code for product#}
     {% for product in product_list %}
         <div class="modal fade" id="{{ product.name_product }}" tabindex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
