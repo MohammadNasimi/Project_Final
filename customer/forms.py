@@ -20,5 +20,4 @@ class CustomerForm(UserCreationForm):
         'last_name': forms.TextInput(
             attrs={'name': 'Category', 'class': 'bg-warning  justify-content-center form-control',
                    'id': 'name_id'}, )
-
     }
