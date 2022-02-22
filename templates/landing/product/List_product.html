@@ -2,6 +2,7 @@
 {% block title %} product {% endblock %}
 {% block content %}
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "landing/css/product.css" %}">
     <div class="container mt-3 mb-3 d-flex justify-content-between">
         <div class="row">
             {% for product in product_list %}
@@ -12,7 +13,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name_product }}</h5>
                         <p class="card-text">{{ product.price }} Rial</p>
-                        <a href="#" class="btn btn-primary">add to cart</a>
+                        <a class="btn btn-primary" href="#">Add to cart
+                            <i class="fa fa-cart-plus ml-2" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             {% endfor %}
@@ -25,23 +28,49 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">{{ product.name_product }}</h5>
+                        <h5 class="modal-title text-justify  font-weight-light text-primary"
+                            id="exampleModalLabel">{{ product.name_product }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{ product.image.url }}" class="card-img-top" data-bs-toggle="modal"
-                             data-bs-target="#{{ product.name_product }}"
-                             alt="{{ product.name_product }}" width="350" height="200">
-                        <h1>{{ product.name_product }}</h1>
-                        <h1>{{ product.descriptions }}</h1>
-                        <h1>{{ product.name_product }}</h1>
+                        <img src="{{ product.image.url }}" class="card-img-top"
+                             alt="{{ product.name_product }}" width="400" height="400">
+                        <p class="bg-info text-center text-light">{{ product.name_product }}</p>
+                        <p class="text-dark">descriptions:</p>
+                        <p class="text-dark">{{ product.descriptions }}</p>
+                        <p class="text-dark">brand:</p>
+                        <p class="text-dark">{{ product.brand }}</p>
+                        <div class="qty">
+                            <span class="minus bg-primary">-</span>
+                            <input type="number" class="count" name="qty" value="1"
+                                   max="{{ product.number_store }}">
+                            <span class="plus bg-primary">+</span>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">add to cart</button>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"
+                                    data-dismiss="modal">Close
+                            </button>
+                            <button class="btn btn-primary">Add to cart
+                                <i class="fa fa-cart-plus ml-2" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     {% endfor %}
+    <script>
+        $('.count').prop('disabled', true);
+        $(document).on('click', '.plus', function () {
+            $('.count').val(parseInt($('.count').val()) + 1);
+        });
+        $(document).on('click', '.minus', function () {
+            $('.count').val(parseInt($('.count').val()) - 1);
+            if ($('.count').val() == 0) {
+                $('.count').val(1);
+            }
+        });
+    </script>
 {% endblock %}
