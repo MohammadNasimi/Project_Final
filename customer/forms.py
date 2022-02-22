@@ -8,3 +8,17 @@ class CustomerForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['phone', 'email', 'first_name', 'last_name']
+
+    widgets = {
+        'phone': forms.TextInput(
+            attrs={'name': 'phone', 'class': 'bg-warning  justify-content-center form-control', 'id': 'phone_id'}, ),
+        'email': forms.EmailInput(
+            attrs={'name': 'price', 'class': 'bg-warning  justify-content-center form-control', 'id': 'email_id'}, ),
+        'first_name': forms.TextInput(
+            attrs={'name': 'Category', 'class': 'bg-warning  justify-content-center form-control',
+                   'id': 'name_id'}, ),
+        'last_name': forms.TextInput(
+            attrs={'name': 'Category', 'class': 'bg-warning  justify-content-center form-control',
+                   'id': 'name_id'}, )
+
+    }
