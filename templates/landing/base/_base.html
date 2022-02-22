@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <style>
         .fa-stack[data-count]:after {
@@ -49,8 +50,8 @@
                     <a class="navbar-brand" href="#">{% trans 'OnlineShop' %}</a>
                 </div>
                 <div class="col-1 nav-item">
-                    <p class="nav-link active" id="home" aria-current="page"
-                       href="">{% trans 'Home' %}</p>
+                    <a class="nav-link active" id="home" aria-current="page"
+                       href="">{% trans 'Home' %}</a>
                 </div>
                 <div class="col-1 nav-item">
                     <a class="nav-link active" href="{% url 'product:category' %}">{% trans 'Category' %}</a>
@@ -145,7 +146,7 @@
     <!-- Copyright -->
     <div class="text-center p-3 bg-primary">
         {% trans '© 2020 Copyright:' %}
-        <a class="text-white" href="https://mdbootstrap.com/"> {% trans 'OnlineShop' %}</a>
+        <a class="text-white" href=""> {% trans 'OnlineShop' %}</a>
     </div>
     <!-- Copyright -->
 </footer>
