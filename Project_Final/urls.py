@@ -28,8 +28,8 @@ urlpatterns = i18n_patterns(
     path('product/', include('product.urls'), name='product'),
     # serializers
     # path('product/', product_list_api),
-    path('product_list/', productListApi.as_view()),
-    path('product_Detail/<int:pk>', productDetailApi.as_view()),
-    path('category/', category_list_api),
+    # path('product_list/', productListApi.as_view()),
+    # path('product_Detail/<int:pk>', productDetailApi.as_view()),
+    # path('category/', category_list_api),
     prefix_default_language=True
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
