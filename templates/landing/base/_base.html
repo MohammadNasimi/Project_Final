@@ -1,7 +1,8 @@
 {% load static %}
 {% load i18n %}
 <!doctype html>
-<html lang="en" dir="ltr">
+{% get_current_language as CUREENT_LANG %}
+<html lang="{{ CUREENT_LANG }}" dir="{% if CUREENT_LANG == 'fa' %}rtl{% else %}ltr{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
