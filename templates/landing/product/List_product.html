@@ -26,9 +26,11 @@
         <div class="row d-flex justify-content-center">
             {% for product in product_list %}
                 <div class="card  m-2 " style="width: 15rem;">
+                <a href="{% url 'product:Detail_product' product.id%}">
                     <img src="{{ product.image.url }}" class="card-img-top" data-bs-toggle="modal"
                          data-bs-target="#{{ product.name_product }}"
                          alt="{{ product.name_product }}" width="350" height="200">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name_product }}</h5>
                         <p class="card-text">{{ product.price }} Rial</p>
@@ -41,55 +43,55 @@
         </div>
     </div>
     {#modal code for product#}
-    {% for product in product_list %}
-        <div class="modal fade" id="{{ product.name_product }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-justify  font-weight-light text-primary"
-                            id="exampleModalLabel">{{ product.name_product }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="{{ product.image.url }}" class="card-img-top"
-                             alt="{{ product.name_product }}" width="400" height="400">
-                        <p class="bg-info text-center text-light">{{ product.name_product }}</p>
-                        <p class="text-dark">descriptions:</p>
-                        <p class="text-dark">{{ product.descriptions }}</p>
-                        <p class="text-dark">brand:</p>
-                        <p class="text-dark">{{ product.brand }}</p>
-                        <div class="qty">
-                            <span class="minus bg-primary">-</span>
-                            <input type="number" class="count" name="qty" value="1"
-                                   max="{{ product.number_store }}">
-                            <span class="plus bg-primary">+</span>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="text-center">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"
-                                    data-dismiss="modal">Close
-                            </button>
-                            <button class="btn btn-primary">Add to cart
-                                <i class="fa fa-cart-plus ml-2" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-    <script>
-        $('.count').prop('disabled', true);
-        $(document).on('click', '.plus', function () {
-            $('.count').val(parseInt($('.count').val()) + 1);
-        });
-        $(document).on('click', '.minus', function () {
-            $('.count').val(parseInt($('.count').val()) - 1);
-            if ($('.count').val() == 0) {
-                $('.count').val(1);
-            }
-        });
-    </script>
+{#    {% for product in product_list %}#}
+{#        <div class="modal fade" id="{{ product.name_product }}" tabindex="-1" aria-labelledby="exampleModalLabel"#}
+{#             aria-hidden="true">#}
+{#            <div class="modal-dialog">#}
+{#                <div class="modal-content">#}
+{#                    <div class="modal-header">#}
+{#                        <h5 class="modal-title text-justify  font-weight-light text-primary"#}
+{#                            id="exampleModalLabel">{{ product.name_product }}</h5>#}
+{#                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#                    </div>#}
+{#                    <div class="modal-body">#}
+{#                        <img src="{{ product.image.url }}" class="card-img-top"#}
+{#                             alt="{{ product.name_product }}" width="400" height="400">#}
+{#                        <p class="bg-info text-center text-light">{{ product.name_product }}</p>#}
+{#                        <p class="text-dark">descriptions:</p>#}
+{#                        <p class="text-dark">{{ product.descriptions }}</p>#}
+{#                        <p class="text-dark">brand:</p>#}
+{#                        <p class="text-dark">{{ product.brand }}</p>#}
+{#                        <div class="qty">#}
+{#                            <span class="minus bg-primary">-</span>#}
+{#                            <input type="number" class="count" name="qty" value="1"#}
+{#                                   max="{{ product.number_store }}">#}
+{#                            <span class="plus bg-primary">+</span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="modal-footer">#}
+{#                        <div class="text-center">#}
+{#                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"#}
+{#                                    data-dismiss="modal">Close#}
+{#                            </button>#}
+{#                            <button class="btn btn-primary">Add to cart#}
+{#                                <i class="fa fa-cart-plus ml-2" aria-hidden="true"></i>#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#    <script>#}
+{#        $('.count').prop('disabled', true);#}
+{#        $(document).on('click', '.plus', function () {#}
+{#            $('.count').val(parseInt($('.count').val()) + 1);#}
+{#        });#}
+{#        $(document).on('click', '.minus', function () {#}
+{#            $('.count').val(parseInt($('.count').val()) - 1);#}
+{#            if ($('.count').val() == 0) {#}
+{#                $('.count').val(1);#}
+{#            }#}
+{#        });#}
+{#    </script>#}
 {% endblock %}
