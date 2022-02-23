@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 23:44+0330\n"
-"PO-Revision-Date: 2022-02-18 23:45+0330\n"
+"POT-Creation-Date: 2022-02-23 00:01+0330\n"
+"PO-Revision-Date: 2022-02-23 00:02+0326\n"
 "Last-Translator: Mohammad  <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -55,11 +55,11 @@ msgstr ""
 msgid "This is active status"
 msgstr ""
 
-#: customer/models.py:20
+#: customer/models.py:21
 msgid "Address"
 msgstr "آدرس"
 
-#: customer/models.py:21
+#: customer/models.py:22
 msgid "Addresses"
 msgstr "آدرس ها"
 
@@ -91,69 +91,136 @@ msgstr "سفارش ها"
 msgid "Order"
 msgstr "سبد خرید"
 
-#: product/models.py:11
+#: product/models.py:14
 msgid "Discount"
 msgstr "تخفیف"
 
-#: product/models.py:12
+#: product/models.py:15
 msgid "Discounts"
 msgstr "تخفیف ها"
 
-#: product/models.py:26 product/models.py:27
-#: templates/landing/base/_base.html:52
+#: product/models.py:29 product/models.py:30
+#: templates/landing/base/_base.html:58
 msgid "Category"
 msgstr "دسته بندی"
 
-#: product/models.py:45
+#: product/models.py:48
 msgid "Product"
 msgstr "محصول"
 
-#: product/models.py:46
+#: product/models.py:49
 msgid "Products"
 msgstr "محصول ها "
 
-#: templates/landing/base/_base.html:46 templates/landing/base/_base.html:139
-msgid "OnlineShop"
-msgstr "فروشگاه آنلاین"
+#: templates/admin/base.html:47
+msgid "Welcome to Laptez"
+msgstr "به لاپتز خوش امدید"
 
-#: templates/landing/base/_base.html:49
+#: templates/admin/base.html:52
+msgid "View site"
+msgstr "دیدن سایت"
+
+#: templates/admin/base.html:57
+msgid "Documentation"
+msgstr "مدارک"
+
+#: templates/admin/base.html:61
+#, fuzzy
+#| msgid "Password"
+msgid "Change password"
+msgstr "رمز ورود "
+
+#: templates/admin/base.html:64
+msgid "Log out"
+msgstr "خروج"
+
+#: templates/admin/base.html:75 templates/admin/change_form.html:18
+#: templates/landing/base/_base.html:55
 msgid "Home"
 msgstr "خانه"
 
-#: templates/landing/base/_base.html:55
+#: templates/admin/base.html:98
+msgid "OnlineShop Laptez administration"
+msgstr "مدیریت فروشگاه لاپتز"
+
+#: templates/admin/base_site.html:3 templates/admin/login.html:47
+msgid "Laptez"
+msgstr "لاپتز"
+
+#: templates/admin/change_form.html:21
+#, python-format
+msgid "Add %(name)s"
+msgstr "افزودن"
+
+#: templates/admin/change_form.html:43 templates/admin/login.html:23
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/admin/change_form.html:43 templates/admin/login.html:23
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/admin/login.html:39
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this"
+" page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/admin/login.html:64
+msgid "Forgotten your password or username?"
+msgstr "شماره یا رمز خود را فراموش کردید؟"
+
+#: templates/admin/login.html:67
+msgid "Log in"
+msgstr "ورود"
+
+#: templates/landing/base/_base.html:51 templates/landing/base/_base.html:168
+msgid "OnlineShop"
+msgstr "فروشگاه آنلاین"
+
+#: templates/landing/base/_base.html:61 templates/landing/base/_base.html:84
 msgid "Search product"
 msgstr "جستجو محصول "
 
-#: templates/landing/base/_base.html:57
+#: templates/landing/base/_base.html:63 templates/landing/base/_base.html:86
 msgid "Search"
 msgstr "جستجو"
 
-#: templates/landing/base/_base.html:138
+#: templates/landing/base/_base.html:167
 msgid "© 2020 Copyright:"
 msgstr "تمامی حقوق محفوظ و متعلق به فروشگاه اينترنتی می باشد. (1400)"
 
-#: templates/landing/public/Login.html:11
+#: templates/landing/public/Login.html:20
 msgid "Welcome OnlineShop"
 msgstr " خوش امدید "
 
-#: templates/landing/public/Login.html:13
-#: templates/landing/public/Login.html:14
+#: templates/landing/public/Login.html:22
+#: templates/landing/public/Login.html:23
 msgid "Phone"
 msgstr "تلفن همراه"
 
-#: templates/landing/public/Login.html:17
-#: templates/landing/public/Login.html:19
+#: templates/landing/public/Login.html:26
+#: templates/landing/public/Login.html:28
 msgid "Password"
 msgstr "رمز ورود "
 
-#: templates/landing/public/Login.html:22
+#: templates/landing/public/Login.html:31
 msgid "Login "
 msgstr "ورود"
 
-#: templates/landing/public/Login.html:26
+#: templates/landing/public/Login.html:35
 msgid "Have not account yet? "
 msgstr "آیا حساب کاربری ندارید ؟"
 
-#: templates/landing/public/Login.html:26
+#: templates/landing/public/Login.html:36
 msgid "Signup"
 msgstr "ایجاد حساب کاربری"
+
+#: templates/landing/public/profile.html:11
+msgid "Logout"
+msgstr "خروج"
+
+#: templates/landing/public/register.html:21
+msgid "create User"
+msgstr "ایجاد کاربر "
