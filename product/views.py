@@ -81,11 +81,9 @@ class productDetailApi(generics.RetrieveUpdateDestroyAPIView):
 class CategoryListview(View):
 
     def get(self, request):
-        category_serializer = Category.objects.all()
-        product_serializer = Product.objects.all()
+        category_list = Category.objects.all()
         context = {
-            'Category_list': category_serializer,
-            'Product_list': product_serializer
+            'Category_list': category_list,
         }
         return render(request, 'landing/product/Category.html', context=context)
 
@@ -96,7 +94,18 @@ class CategoryListview(View):
 #     context_object_name = 'Category_list'
 
 
-class productListview(ListView):
-    model = Product
-    template_name = 'landing/product/List_product.html'
-    context_object_name = 'product_list'
+# class productListview(ListView):
+#     model = Product
+#     template_name = 'landing/product/List_product.html'
+#     context_object_name = 'product_list'
+
+
+class product_for_categoryListview(View):
+
+    def get(self, request, pk):
+        product_category = Product.objects.filter(category_id=pk)
+        print(product_category)
+        context = {
+            'product_list': product_category
+        }
+        return render(request, 'landing/product/List_product.html', context=context)
