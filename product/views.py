@@ -78,14 +78,14 @@ class productDetailApi(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
 
 
-class CategoryListview(View):
-
-    def get(self, request):
-        category_list = Category.objects.all()
-        context = {
-            'Category_list': category_list,
-        }
-        return render(request, 'landing/product/Category.html', context=context)
+# class CategoryListview(View):
+#
+#     def get(self, request):
+#         category_list = Category.objects.all()
+#         context = {
+#             'Category_list': category_list,
+#         }
+#         return render(request, 'landing/product/Category.html', context=context)
 
 
 # class CategoryListview(View):
@@ -103,9 +103,11 @@ class CategoryListview(View):
 class product_for_categoryListview(View):
 
     def get(self, request, pk):
+        category_list = Category.objects.all()
         product_category = Product.objects.filter(category_id=pk)
         print(product_category)
         context = {
-            'product_list': product_category
+            'product_list': product_category,
+            'Category_list': category_list
         }
         return render(request, 'landing/product/List_product.html', context=context)
