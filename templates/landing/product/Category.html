@@ -12,7 +12,7 @@
                     <ul class="dropdown-menu">
                         {% for j in Category_list %}
                             {% if j.category_root == i %}
-                                <li><a class="dropdown-item" href="{% url 'product:product' %}" id="{{ j.category_name }}"
+                                <li><a class="dropdown-item" href="{% url 'product:category_product' j.id%}" id="{{ j.category_name }}"
                                        data-id="{{ j.category_name }}">{{ j.category_name }}</a></li>
                             {% endif %}
                         {% endfor %}
@@ -21,10 +21,4 @@
             </div>
         {% endfor %}
     </div>
-    <script>
-        $("#Pitzzaa").on("click", function () {
-            var dataId = $(this).attr("data-id");
-            alert("The data-id of clicked item is: " + dataId);
-        });
-    </script>
 {% endblock %}
