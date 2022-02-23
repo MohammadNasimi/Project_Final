@@ -4,7 +4,7 @@ from django.http import Http404, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from product.serializers import ProductSerializer, CategorySerializer
 from product.models import Product, Category
 from rest_framework.response import Response
@@ -111,3 +111,10 @@ class product_for_categoryListview(View):
             'Category_list': category_list
         }
         return render(request, 'landing/product/List_product.html', context=context)
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    context_object_name = 'Detail_product'
+    # queryset = Product.objects.filter(id=pk)
+    template_name = 'landing/product/Detail_view_product.html'
