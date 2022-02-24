@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from customer.permissions import IsOwnerPermission
+from customer.permissions import IsOwnerPermission, IsSuperuserPermission
 from customer.serializers import AddressSerializer, CustomerSerializer
 from rest_framework import generics, permissions
 from core.models import User
@@ -11,13 +11,13 @@ from customer.models import Address
 class UserlistViewApi(generics.ListAPIView):
     serializer_class = CustomerSerializer
     queryset = User.objects.all()
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAdminUser, IsSuperuserPermission]
 
 
 class UserDetailViewApi(generics.RetrieveAPIView):
     serializer_class = CustomerSerializer
     queryset = User.objects.all()
-    permission_classes = [permissions.IsAuthenticated, IsOwnerPermission]
+    permission_classes = [permissions.IsAuthenticated, IsSuperuserPermission]
 
 
 class AddresslistViewApi(generics.ListAPIView):
