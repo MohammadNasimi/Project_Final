@@ -4,8 +4,9 @@ from customer.permissions import IsOwnerPermission, IsSuperuserPermission
 from customer.serializers import AddressSerializer, CustomerSerializer
 from rest_framework import generics, permissions, authentication
 from core.models import User
-from customer.models import Address,Customer
+from customer.models import Address, Customer
 import logging
+from rest_framework import renderers
 
 
 # Create your views here.
@@ -36,6 +37,9 @@ class AddresslistViewApi(generics.ListAPIView):
 
     def get_queryset(self):
         return Address.objects.filter(customer__user=self.request.user)
+
+    renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
+    template_name = 'landing/customer/address_customer.html'
 
 
 class AddressDetailViewApi(generics.RetrieveAPIView):
