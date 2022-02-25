@@ -4,16 +4,16 @@ from customer.permissions import IsOwnerPermission, IsSuperuserPermission
 from customer.serializers import AddressSerializer, CustomerSerializer
 from rest_framework import generics, permissions, authentication
 from core.models import User
-from customer.models import Address
+from customer.models import Address,Customer
 import logging
 
 
 # Create your views here.
 class UserlistViewApi(generics.ListAPIView):
     serializer_class = CustomerSerializer
-    queryset = User.objects.all()
+    queryset = Customer.objects.all()
     permission_classes = [permissions.IsAdminUser, IsSuperuserPermission]
-    authentication_classes = [authentication.BasicAuthentication]
+    # authentication_classes = [authentication.BasicAuthentication]
 
 
 class UserDetailViewApi(generics.RetrieveAPIView):
@@ -22,8 +22,8 @@ class UserDetailViewApi(generics.RetrieveAPIView):
     logger.error("see user detail view ")
 
     serializer_class = CustomerSerializer
-    queryset = User.objects.all()
-    permission_classes = [permissions.IsAuthenticated, IsSuperuserPermission]
+    queryset = Customer.objects.all()
+    permission_classes = [permissions.IsAuthenticated, IsOwnerPermission]
     # authentication_classes = [authentication.BasicAuthentication]
 
 
