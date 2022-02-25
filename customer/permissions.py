@@ -12,6 +12,6 @@ class IsSuperuserPermission(BasePermission):
 
 class IsOwnerPermission(BasePermission):
     def has_object_permission(self, request, view, obj):
-        # print('user use', obj.customer.user)
+        # print('user use', obj.user)
         # print('user', request.user)
-        return request.user == obj.customer.user
+        return request.user == obj.user
