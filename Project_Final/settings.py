@@ -136,3 +136,58 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.User'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname}|{asctime}|{funcName}|{filename}|{lineno}:{message}'
+                      ' at {module} (process: {process}, thread: {thread}',
+            'style': '{'
+        },
+        'short': {
+            'format': '%(levelname)s|%(asctime): %(message)s',
+            'style': '%'
+        },
+    },
+    'filters': {
+        'min-len-filter_class': {
+            '()': 'customer.logging_filters.MinLenFilter',
+        },
+        'min-len-filter_method': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': lambda record: len(record.getMessage()) > 20,
+        }
+    },
+    'handlers': {
+        'console_handler': {
+            'class': 'logging.StreamHandler',  # just print in console
+            'formatter': 'short',
+            'filters': ['min-len-filter_method']
+        },
+        'file_handler': {
+            'class': 'logging.FileHandler',  # write in log_customer.log file
+            'filename': BASE_DIR / 'log_project.log',
+            'formatter': 'verbose',
+            'level': 'ERROR',
+            'filters': ['min-len-filter_method']
+        },
+    },
+    'root': {
+        'handlers': ['console_handler'],
+        'level': 'DEBUG',
+    },
+    'loggers': {
+        'project': {
+            'handlers': ['file_handler'],
+            'level': 'ERROR',
+            'propagate': True,  # Default: True
+        },
+        'project.developers': {
+            'handlers': ['file_handler'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
