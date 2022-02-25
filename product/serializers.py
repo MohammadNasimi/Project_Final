@@ -19,9 +19,10 @@ class ProductSerializer(serializers.Serializer):
     price = serializers.IntegerField()
     number_store = serializers.IntegerField()
     status = serializers.ChoiceField(choices=[('exist', True), ('Not exist', False)], default=False)
-    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    # category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
     image = serializers.FileField(default='NO_pic.png')
     discount = serializers.PrimaryKeyRelatedField(queryset=Discount.objects.all())
+    category = CategorySerializer(read_only=True)
 
     def update(self, instance: Product, validated_data: dict) -> Product:
         pass
