@@ -23,7 +23,7 @@ class UserDetailViewApi(generics.RetrieveAPIView):
 
     serializer_class = CustomerSerializer
     queryset = Customer.objects.all()
-    permission_classes = [permissions.IsAuthenticated, IsOwnerPermission]
+    permission_classes = [permissions.IsAuthenticated, IsSuperuserPermission]
     # authentication_classes = [authentication.BasicAuthentication]
 
 
