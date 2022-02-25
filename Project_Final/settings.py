@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import rest_framework.authentication
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -137,6 +139,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.User'
 
+# setting rest_framework
+REST_FRAMEWORK = {
+    # 'DEFAULT_AUTHENTICATION_CLASSES': 'rest_framework.authentication.BasicAuthentication',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3,
+}
+# setting LOGGING
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
