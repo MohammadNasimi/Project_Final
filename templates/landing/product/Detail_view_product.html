@@ -1,8 +1,11 @@
 {% extends "landing/base/_base.html" %}
 {% block title %} Category {% endblock %}
+{% load i18n %}
 {% block content %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static "landing/css/detail_product.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "landing/css/product.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "landing/css/category.css" %}">
     <div class="container">
         <div class="card">
             <div class="container-fliud">
@@ -37,14 +40,36 @@
                         <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong>
                         </p>
                         <div class="action">
-                            <a href="{% url 'product:category_product' Detail_product.category_id%}">
-                            <button class="like btn btn-default" type="button"><span class="fa fa-arrow-left"></span>
-                            </button></a>
-                            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                            <form action="#">
+                                <div class="qty mt-1 mb-2">
+                                    <span class="minus  btn-danger">-</span>
+                                    <input type="number" class=" add-to-cart count" name="number" value="1" min="1" max="{{ Detail_product.number_store }}">
+                                    <span class="plus btn-success">+</span>
+                                </div>
+                                <button class="add-to-cart btn btn-default fa-cart-plus" type="button">{% trans 'add to cart' %}</button>
+                            </form>
+                            <a href="{% url 'product:category_product' Detail_product.category_id %}">
+                                <button class="like btn btn-default w-50 mt-2" type="button"><span
+                                        class="fa fa-arrow-left"></span>
+                                </button>
+                            </a>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $('.count').prop('disabled', true);
+        $(document).on('click', '.plus', function () {
+            $('.count').val(parseInt($('.count').val()) + 1);
+        });
+        $(document).on('click', '.minus', function () {
+            $('.count').val(parseInt($('.count').val()) - 1);
+            if ($('.count').val() == 0) {
+                $('.count').val(1);
+            }
+        });
+    </script>
 {% endblock %}
