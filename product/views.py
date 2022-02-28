@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from django.http import Http404, JsonResponse
+from django.shortcuts import render, redirect, reverse
+from django.http import Http404, JsonResponse, HttpResponse
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from django.views import View
 from django.views.generic import ListView, DetailView
+
+from order.models import Order_item
 from product.serializers import ProductSerializer, CategorySerializer
 from product.models import Product, Category
 from rest_framework.response import Response
@@ -105,7 +107,7 @@ class product_for_categoryListview(View):
     def get(self, request, pk):
         category_list = Category.objects.all()
         product_category = Product.objects.filter(category_id=pk)
-        print(product_category)
+        # print(product_category)
         context = {
             'product_list': product_category,
             'Category_list': category_list
@@ -118,3 +120,22 @@ class ProductDetailView(DetailView):
     context_object_name = 'Detail_product'
     # queryset = Product.objects.filter(id=pk)
     template_name = 'landing/product/Detail_view_product.html'
+
+
+class add_to_OrderView(View):
+    def post(self, request, pk):
+        if not request.COOKIES.get('list_order_item'):
+            list_order_item = ''
+        else:
+            list_order_item = request.COOKIES['list_order_item']
+
+        number = int(request.POST['number'])
+        print(list_order_item)
+        list_order_item = list_order_item + ','+f'{pk,number}'
+        response = redirect('product:Detail_product', pk)
+        response.set_cookie('list_order_item', list_order_item)
+        # product_choice = Product.objects.get(id=pk)
+        # Order_item.objects.create(Product_id=pk,Count=number)
+        # product_choice.number_store = product_choice.number_store - int(data)
+        # product_choice.save()
+        return response
