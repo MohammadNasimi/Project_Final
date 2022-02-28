@@ -19,5 +19,6 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     address = AddressSerializer(read_only=True)
-    # order_item_set = serializers.HyperlinkedRelatedField(view_name='order:Order_item',
-    #                                                       queryset=Order_item.objects.all(), many=True)
+    order_items = Order_itemSerializer(read_only=True,many=True)
+    # Order.order_items_set = serializers.HyperlinkedRelatedField(view_name='order:Order_item',
+    #                                                          queryset=Order_item.objects.all(), many=True)
