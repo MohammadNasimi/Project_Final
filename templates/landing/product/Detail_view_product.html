@@ -36,17 +36,24 @@
                         </div>
                         <p class="product-brand">{{ Detail_product.brand }}</p>
                         <p class="product-description">{{ Detail_product.descriptions }}</p>
-                        <h4 class="price">current price: <span>{{ Detail_product.price }} Rial</span></h4>
+                        <p class="number">number in shop: <span>{{ Detail_product.number_store }} </span></p>
+                        <h5 class="price">current price: <span>{{ Detail_product.price }} Rial</span></h5>
                         <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong>
                         </p>
                         <div class="action">
-                            <form action="#">
+                            <form action="{% url 'product:add_product' Detail_product.id %}" method="post">
+                                {% csrf_token %}
                                 <div class="qty mt-1 mb-2">
                                     <span class="minus  btn-danger">-</span>
-                                    <input type="number" class=" add-to-cart count" name="number" value="1" min="1" max="{{ Detail_product.number_store }}">
+                                    {#                                    <input type="number" class="add-to-cart count" name="number" value="1" min="1"#}
+                                    {#                                           max="{{ Detail_product.number_store }}">#}
+                                    <input type="number" class="me-3 ms-3 btn-warning" name="number" value="1" min="1"
+                                           max="{{ Detail_product.number_store }}">
+
                                     <span class="plus btn-success">+</span>
                                 </div>
-                                <button class="add-to-cart btn btn-default fa-cart-plus" type="button">{% trans 'add to cart' %}</button>
+                                <input class="add-to-cart btn btn-default fa-cart-plus w-50"
+                                       type="submit"  value=" {% trans 'add to cart' %}">
                             </form>
                             <a href="{% url 'product:category_product' Detail_product.category_id %}">
                                 <button class="like btn btn-default w-50 mt-2" type="button"><span
@@ -71,5 +78,13 @@
                 $('.count').val(1);
             }
         });
+
+        function add_product() {
+            Swal.fire({
+                icon: 'success',
+                title: 'product add to cart',
+                timer: 100000
+            })
+        }
     </script>
 {% endblock %}
