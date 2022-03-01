@@ -14,7 +14,7 @@
                     <ul class="dropdown-menu">
                         {% for j in Category_list %}
                             {% if j.category_root == i %}
-                                <li><a class="dropdown-item" href="{% url 'product:category_product' j.id %}"
+                                <li><a class="dropdown-item" href="{% url 'product:category_product' pk=j.id%}?page=1"
                                        id="{{ j.category_name }}"
                                        data-id="{{ j.category_name }}">{{ j.category_name }}</a></li>
                             {% endif %}
@@ -27,7 +27,7 @@
     </div>
     <div class="container mt-3 mb-3 d-flex justify-content-center">
         <div class="row d-flex justify-content-center">
-            {% for product in product_list %}
+            {% for product in product_category_page.object_list %}
                 <div class="card  m-2 " style="width: 15rem;">
                     <a href="{% url 'product:Detail_product' product.id %}">
                         <img src="{{ product.image.url }}" class="card-img-top" data-bs-toggle="modal"
@@ -47,50 +47,12 @@
         </div>
     </div>
     <div class="inline mb-2 d-flex flex-row-reverse bd-highlight ">
-          <a href="#" class="badge bg-primary text-wrap m-1 me-5"  style="text-decoration: none;">Next &raquo;</a>
-        <a href="#" class="badge bg-primary text-wrap m-1 " style="text-decoration: none;">&laquo;
+        {% if product_category_page.has_next %}
+                      <a href="{% url 'product:category_product' 8 %}?page={{ product_category_page.next_page_number }}" class="badge bg-primary text-wrap m-1 me-3"  style="text-decoration: none;">Next &raquo;</a>
+        {% endif %}
+    {% if product_category_page.has_previous %}
+                <a href="{% url 'product:category_product' 8 %}?page={{ product_category_page.previous_page_number }}" class="badge bg-primary text-wrap m-1 me-3" style="text-decoration: none;">&laquo;
             Previous</a>
-
+    {% endif %}
     </div>
-    {#modal code for product#}
-    {#    {% for product in product_list %}#}
-    {#        <div class="modal fade" id="{{ product.name_product }}" tabindex="-1" aria-labelledby="exampleModalLabel"#}
-    {#             aria-hidden="true">#}
-    {#            <div class="modal-dialog">#}
-    {#                <div class="modal-content">#}
-    {#                    <div class="modal-header">#}
-    {#                        <h5 class="modal-title text-justify  font-weight-light text-primary"#}
-    {#                            id="exampleModalLabel">{{ product.name_product }}</h5>#}
-    {#                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
-    {#                    </div>#}
-    {#                    <div class="modal-body">#}
-    {#                        <img src="{{ product.image.url }}" class="card-img-top"#}
-    {#                             alt="{{ product.name_product }}" width="400" height="400">#}
-    {#                        <p class="bg-info text-center text-light">{{ product.name_product }}</p>#}
-    {#                        <p class="text-dark">descriptions:</p>#}
-    {#                        <p class="text-dark">{{ product.descriptions }}</p>#}
-    {#                        <p class="text-dark">brand:</p>#}
-    {#                        <p class="text-dark">{{ product.brand }}</p>#}
-    {#                        <div class="qty">#}
-    {#                            <span class="minus bg-primary">-</span>#}
-    {#                            <input type="number" class="count" name="qty" value="1"#}
-    {#                                   max="{{ product.number_store }}">#}
-    {#                            <span class="plus bg-primary">+</span>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                    <div class="modal-footer">#}
-    {#                        <div class="text-center">#}
-    {#                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"#}
-    {#                                    data-dismiss="modal">Close#}
-    {#                            </button>#}
-    {#                            <button class="btn btn-primary">Add to cart#}
-    {#                                <i class="fa fa-cart-plus ml-2" aria-hidden="true"></i>#}
-    {#                            </button>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    {% endfor %}#}
-
 {% endblock %}
