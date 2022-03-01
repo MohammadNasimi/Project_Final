@@ -17,8 +17,8 @@ class OrderViewSets(viewsets.ModelViewSet):
     def get_queryset(self):
         return Order.objects.filter(address__customer__user=self.request.user)
 
-    # renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
-    # template_name = 'landing/order/order_customer.html'
+    renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
+    template_name = 'landing/order/order_customer.html'
 
 
 class Order_itemViewSets(viewsets.ModelViewSet):
