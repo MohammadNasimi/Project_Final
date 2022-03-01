@@ -32,12 +32,12 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <span class="review-no">{% trans '41 review' %}s</span>
+                            <span class="review-no">{% trans '41 reviews' %}</span>
                         </div>
                         <p class="product-brand">{{ Detail_product.brand }}</p>
                         <p class="product-description">{{ Detail_product.descriptions }}</p>
-                        <p class="number">number in shop: <span>{{ Detail_product.number_store }} </span></p>
-                        <h5 class="price">current price: <span>{{ Detail_product.price }} {% trans 'Rial' %}</span></h5>
+                        <p class="number">{% trans 'number in shop:' %} <span>{{ Detail_product.number_store }} </span></p>
+                        <h5 class="price">{% trans 'current price:' %} <span>{{ Detail_product.price }} {% trans 'Rial' %}</span></h5>
                         <p class="vote"><strong>{% trans '91%' %} </strong> {% trans 'of buyers enjoyed this product!' %} <strong>{% trans '87 votes' %}</strong>
                         </p>
                         <div class="action">
