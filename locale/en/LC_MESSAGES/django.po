@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-23 00:01+0330\n"
+"POT-Creation-Date: 2022-03-01 12:07+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgid "Discounts"
 msgstr ""
 
 #: product/models.py:29 product/models.py:30
-#: templates/landing/base/_base.html:58
+#: templates/landing/base/_base.html:61
 msgid "Category"
 msgstr ""
 
@@ -132,7 +132,7 @@ msgid "Log out"
 msgstr ""
 
 #: templates/admin/base.html:75 templates/admin/change_form.html:18
-#: templates/landing/base/_base.html:55
+#: templates/landing/base/_base.html:57
 msgid "Home"
 msgstr ""
 
@@ -172,20 +172,65 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: templates/landing/base/_base.html:51 templates/landing/base/_base.html:168
+#: templates/landing/base/_base.html:53 templates/landing/base/_base.html:204
 msgid "OnlineShop"
 msgstr ""
 
-#: templates/landing/base/_base.html:61 templates/landing/base/_base.html:84
+#: templates/landing/base/_base.html:64 templates/landing/base/_base.html:104
 msgid "Search product"
 msgstr ""
 
-#: templates/landing/base/_base.html:63 templates/landing/base/_base.html:86
+#: templates/landing/base/_base.html:66 templates/landing/base/_base.html:106
 msgid "Search"
 msgstr ""
 
-#: templates/landing/base/_base.html:167
+#: templates/landing/base/_base.html:203
 msgid "© 2020 Copyright:"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:35
+msgid "41 reviews"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:39
+msgid "number in shop:"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:40
+msgid "current price:"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:40
+msgid "Rial"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:41
+#, python-format
+msgid "91%%"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:41
+msgid "of buyers enjoyed this product!"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:41
+msgid "87 votes"
+msgstr ""
+
+#: templates/landing/product/Detail_view_product.html:56
+msgid "add to cart"
+msgstr ""
+
+#: templates/landing/product/List_product.html:41
+msgid "Detail products"
+msgstr ""
+
+#: templates/landing/product/List_product.html:52
+msgid "Next"
+msgstr ""
+
+#: templates/landing/product/List_product.html:56
+msgid "Previous"
 msgstr ""
 
 #: templates/landing/public/Login.html:20

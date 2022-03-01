@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-23 00:01+0330\n"
-"PO-Revision-Date: 2022-02-23 00:02+0326\n"
+"POT-Creation-Date: 2022-03-01 12:07+0330\n"
+"PO-Revision-Date: 2022-03-01 12:10+0326\n"
 "Last-Translator: Mohammad  <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -100,7 +100,7 @@ msgid "Discounts"
 msgstr "تخفیف ها"
 
 #: product/models.py:29 product/models.py:30
-#: templates/landing/base/_base.html:58
+#: templates/landing/base/_base.html:61
 msgid "Category"
 msgstr "دسته بندی"
 
@@ -135,7 +135,7 @@ msgid "Log out"
 msgstr "خروج"
 
 #: templates/admin/base.html:75 templates/admin/change_form.html:18
-#: templates/landing/base/_base.html:55
+#: templates/landing/base/_base.html:57
 msgid "Home"
 msgstr "خانه"
 
@@ -166,6 +166,8 @@ msgid ""
 "You are authenticated as %(username)s, but are not authorized to access this"
 " page. Would you like to login to a different account?"
 msgstr ""
+"شما به عنوان %(username)s احراز هویت شده اید، اما مجاز به دسترسی به این صفحه"
+" نیستید. آیا می خواهید به حساب دیگری وارد شوید؟"
 
 #: templates/admin/login.html:64
 msgid "Forgotten your password or username?"
@@ -175,21 +177,67 @@ msgstr "شماره یا رمز خود را فراموش کردید؟"
 msgid "Log in"
 msgstr "ورود"
 
-#: templates/landing/base/_base.html:51 templates/landing/base/_base.html:168
+#: templates/landing/base/_base.html:53 templates/landing/base/_base.html:204
 msgid "OnlineShop"
 msgstr "فروشگاه آنلاین"
 
-#: templates/landing/base/_base.html:61 templates/landing/base/_base.html:84
+#: templates/landing/base/_base.html:64 templates/landing/base/_base.html:104
 msgid "Search product"
 msgstr "جستجو محصول "
 
-#: templates/landing/base/_base.html:63 templates/landing/base/_base.html:86
+#: templates/landing/base/_base.html:66 templates/landing/base/_base.html:106
 msgid "Search"
 msgstr "جستجو"
 
-#: templates/landing/base/_base.html:167
+#: templates/landing/base/_base.html:203
 msgid "© 2020 Copyright:"
 msgstr "تمامی حقوق محفوظ و متعلق به فروشگاه اينترنتی می باشد. (1400)"
+
+#: templates/landing/product/Detail_view_product.html:35
+#| msgid "41 review"
+msgid "41 reviews"
+msgstr "۴۱ بار دیده شده"
+
+#: templates/landing/product/Detail_view_product.html:39
+msgid "number in shop:"
+msgstr "تعداد موجود در فروشگاه:"
+
+#: templates/landing/product/Detail_view_product.html:40
+msgid "current price:"
+msgstr "قیمت:"
+
+#: templates/landing/product/Detail_view_product.html:40
+msgid "Rial"
+msgstr "ریال"
+
+#: templates/landing/product/Detail_view_product.html:41
+#, python-format
+msgid "91%%"
+msgstr "91٪"
+
+#: templates/landing/product/Detail_view_product.html:41
+msgid "of buyers enjoyed this product!"
+msgstr "خریداران از این محصول لذت بردند!"
+
+#: templates/landing/product/Detail_view_product.html:41
+msgid "87 votes"
+msgstr "87 نظر داده شده"
+
+#: templates/landing/product/Detail_view_product.html:56
+msgid "add to cart"
+msgstr "افزودن به سبد خرید"
+
+#: templates/landing/product/List_product.html:41
+msgid "Detail products"
+msgstr "جزئیات محصول"
+
+#: templates/landing/product/List_product.html:52
+msgid "Next"
+msgstr "بعدی"
+
+#: templates/landing/product/List_product.html:56
+msgid "Previous"
+msgstr "قبلی"
 
 #: templates/landing/public/Login.html:20
 msgid "Welcome OnlineShop"
