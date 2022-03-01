@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 15:51+0330\n"
+"POT-Creation-Date: 2022-03-01 17:08+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,6 +255,21 @@ msgstr ""
 
 #: templates/landing/customer/customer_page.html:35
 msgid "Save Profile"
+msgstr ""
+
+#: templates/landing/order/order_customer.html:13
+#: templates/landing/order/order_customer.html:34
+msgid "Canceled"
+msgstr ""
+
+#: templates/landing/order/order_customer.html:19
+#: templates/landing/order/order_customer.html:45
+msgid "Current"
+msgstr ""
+
+#: templates/landing/order/order_customer.html:25
+#: templates/landing/order/order_customer.html:55
+msgid "Delivered"
 msgstr ""
 
 #: templates/landing/product/Detail_view_product.html:35
