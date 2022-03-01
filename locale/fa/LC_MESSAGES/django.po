@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-01 17:08+0330\n"
-"PO-Revision-Date: 2022-03-01 17:09+0326\n"
+"PO-Revision-Date: 2022-03-01 17:53+0326\n"
 "Last-Translator: Mohammad Nasimi <mohammadnasimi6803@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -222,7 +222,7 @@ msgstr "کوی"
 
 #: templates/landing/customer/address_customer.html:33
 msgid "codeـhome"
-msgstr "کد پستی:"
+msgstr "کد پستی"
 
 #: templates/landing/customer/address_customer.html:37
 msgid "create new Address"
