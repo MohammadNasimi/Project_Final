@@ -41,17 +41,22 @@
                     </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                         <ul class="list-group">
-                        <ul class="list-group">
-                            <li class="list-group-item bg-warning" aria-current="true">{% trans 'Current' %}</li>
-                            {% for res in results %}
-                                {% if   res.status_Order == 1 %}
-                                    <li class="list-group-item">{{ res.address.id}}</li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
+                            <ul class="list-group">
+                                <li class="list-group-item bg-warning" aria-current="true">{% trans 'Current' %}</li>
+                                {% for res in results %}
+                                    <li class="list-group-item">{{ res.address.id }}</li>
+                                    {% if   res.status_Order == 1 %}
+                                        <li class="list-group-item">{{ res.order_items }}</li>
+                                        {% for order_item in res.order_items %}
+                                            <h1>{{ order_item.id }}</h1>
+                                        {% endfor %}
+
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
                     </div>
                     <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                                                <ul class="list-group">
+                        <ul class="list-group">
                             <li class="list-group-item bg-success" aria-current="true">{% trans 'Delivered' %}</li>
                             {% for res in results %}
                                 {% if   res.status_Order == 2 %}
