@@ -23,6 +23,7 @@
                 {% endif %}
             </div>
         {% endfor %}
+
     </div>
     <div class="container mt-3 mb-3 d-flex justify-content-center">
         <div class="row d-flex justify-content-center">
@@ -37,13 +38,19 @@
                         <h5 class="card-title">{{ product.name_product }}</h5>
                         <p class="card-text">{{ product.price }} Rial</p>
 
-                            <a class="btn btn-primary" href="{% url 'product:Detail_product' product.id %}">Detail product
-                                <i class="fa fa-info-circle  ml-2" aria-hidden="true"></i>
-                            </a>
+                        <a class="btn btn-primary" href="{% url 'product:Detail_product' product.id %}">Detail product
+                            <i class="fa fa-info-circle  ml-2" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </div>
             {% endfor %}
         </div>
+    </div>
+    <div class="inline mb-2 d-flex flex-row-reverse bd-highlight ">
+          <a href="#" class="badge bg-primary text-wrap m-1 me-5"  style="text-decoration: none;">Next &raquo;</a>
+        <a href="#" class="badge bg-primary text-wrap m-1 " style="text-decoration: none;">&laquo;
+            Previous</a>
+
     </div>
     {#modal code for product#}
     {#    {% for product in product_list %}#}
