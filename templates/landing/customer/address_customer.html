@@ -2,8 +2,39 @@
 {% load i18n %}
 {% block title %} Address List {% endblock %}
 {% block profile %}
-                {% for res in results %}
-                    <h1>{{ res }}</h1>
-                {% endfor %}
+    <div class="list-group me-2">
+        <a href="#" class="list-group-item bg-danger border-danger list-group-item-action active" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List Address</h5>
+            </div>
+            <p class="mb-1">please Check the address information before ordering </p>
+        </a>
+        {% for address in  results %}
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <div>
+                        <h5 class="mb-1">province:</h5>
+                        <h5 class="mb-1">{{ address.province }}</h5>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">city:</h5>
+                        <h5 class="mb-1">{{ address.city }}</h5>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">town:</h5>
+                        <h5 class="mb-1">{{ address.town }}</h5>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">street:</h5>
+                        <h5 class="mb-1">{{ address.street }}</h5>
+                    </div>
+                </div>
+                <p class="mb-1">alley:{{ address.alley }}</p>
+                <small class="text-muted">zip_code: {{ address.zip_code }}</small>
+            </a>
+        {% endfor %}
+        <input class="btn btn-danger text-light justify-content-center mt-3"
+               type="submit" value=" {% trans 'create new Address' %}">
+    </div>
 {% endblock %}
 
