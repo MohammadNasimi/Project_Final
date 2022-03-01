@@ -36,7 +36,7 @@
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name_product }}</h5>
-                        <p class="card-text">{{ product.price }} Rial</p>
+                        <p class="card-text">{{ product.price }} {% trans 'Rial'%}</p>
 
                         <a class="btn btn-primary" href="{% url 'product:Detail_product' product.id %}">{% trans 'Detail products' %}
                             <i class="fa fa-info-circle  ml-2" aria-hidden="true"></i>
