@@ -57,7 +57,8 @@
                        href="{% url 'landing:Home' %}">{% trans 'Home' %}</a>
                 </div>
                 <div class="col-1 nav-item ">
-                    <a class="nav-link active" href="{% url 'product:category_product' 8 %}?page=1">{% trans 'Category' %}</a>
+                    <a class="nav-link active"
+                       href="{% url 'product:category_product' 8 %}?page=1">{% trans 'Category' %}</a>
                 </div>
                 <form class=" col-5 col-md-5 d-flex pe-4 display">
                     <input class="form-control me-4" type="search" placeholder="{% trans 'Search product' %}"
@@ -75,22 +76,40 @@
                         {% endif %}"><i class="fa fa-user color-cart"
                                         style="font-size:28px">{{ user.first_name }}</i></a>
                 </span>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                <div class="dropdown m-1 display">
+                    <p type="button" class=" dropdown-toggle text-light" data-bs-toggle="dropdown">
+                        {{ CUREENT_LANG }}</p>
+                    <ul class="dropdown-menu">
+                        {% for lang in languages %}
+                            <li>
+                                <a href="/{{ lang.code }}/" {% if lang.code == LANGUAGE_CODE %}
+                                   class="selected"{% endif %}>
+                                    {{ lang.name_local }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </nav>
 <div class="display_988" style="background-color: #286ffd ;display: none">
-<div class="container-fluid d-flex justify-content-center  " >
-    <div class="row d-flex justify-content-center">
-        <form class="col-12 col-md-12 d-flex mt-1 d-flex justify-content-center ">
-            <input class="form-control me-4 "  type="search" placeholder="{% trans 'Search product' %}"
-                   aria-label="Search">
-            <button class="btn btn-outline-light text-dark" type="submit">{% trans 'Search' %}</button>
-        </form>
-        <span class="col-1 d-flex justify-content-center fa-stack fa-1x  bg-primary" data-count="5">
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="row d-flex justify-content-center ">
+            <form class="col-12 col-md-12 d-flex mt-1 d-flex justify-content-center ">
+                <input class="form-control me-4 " type="search" placeholder="{% trans 'Search product' %}"
+                       aria-label="Search">
+                <button class="btn btn-outline-light text-dark" type="submit">{% trans 'Search' %}</button>
+            </form>
+        <div class="d-inline-flex ">
+            <span class=" d-flex justify-content-end fa-stack fa-1x  bg-primary" data-count="5">
                         <a href="#"><i class="fa fa-shopping-cart fa-stack-2x color-cart "></i></a>
                 </span>
-        <span class="col-1 d-flex justify-content-center">
+            <span class=" d-flex justify-content-center">
                         <a href=" {% if request.session.uid %}
                             {% url 'landing:profile' %}
                         {% else %}
@@ -98,8 +117,23 @@
                         {% endif %}"><i class="fa fa-user color-cart"
                                         style="font-size:28px">{{ user.first_name }}</i></a>
                 </span>
+            <div class="dropdown m-1   d-flex justify-content-start ">
+                <p type="button" class=" dropdown-toggle text-light" data-bs-toggle="dropdown">
+                    {{ CUREENT_LANG }}</p>
+                <ul class="dropdown-menu">
+                    {% for lang in languages %}
+                        <li>
+                            <a href="/{{ lang.code }}/" {% if lang.code == LANGUAGE_CODE %}
+                               class="selected"{% endif %}>
+                                {{ lang.name_local }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        </div>
     </div>
-</div>
 </div>
 {% block content %}{% endblock %}
 <footer class="bg-light text-center text-white">
