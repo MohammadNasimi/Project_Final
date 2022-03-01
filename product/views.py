@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, reverse
 from django.http import Http404, JsonResponse, HttpResponse
 # Create your views here.
@@ -104,12 +105,14 @@ class productDetailApi(generics.RetrieveUpdateDestroyAPIView):
 
 class product_for_categoryListview(View):
 
-    def get(self, request, pk):
+    def get(self, request, pk, page_id=1):
         category_list = Category.objects.all()
         product_category = Product.objects.filter(category_id=pk)
+        page_number = Paginator(product_category, 2)
+        product_category_page = page_number.page(page_id)
         # print(product_category)
         context = {
-            'product_list': product_category,
+            'product_list': product_category_page.object_list,
             'Category_list': category_list
         }
         return render(request, 'landing/product/List_product.html', context=context)
@@ -131,7 +134,7 @@ class add_to_OrderView(View):
 
         number = int(request.POST['number'])
         print(list_order_item)
-        list_order_item = list_order_item + ','+f'{pk,number}'
+        list_order_item = list_order_item + ',' + f'{pk, number}'
         response = redirect('product:Detail_product', pk)
         response.set_cookie('list_order_item', list_order_item)
         # product_choice = Product.objects.get(id=pk)
