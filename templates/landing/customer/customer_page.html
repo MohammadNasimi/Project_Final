@@ -4,35 +4,35 @@
 {% block profile %}
     <div class="container rounded bg-white mb-5 ">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-5 border-right ">
+            <div class="col-md-10 border-right ">
                 <div class="p-3">
                     <div class="d-flex justify-content-center align-items-center mb-3">
                         <h4 class="text-right">Profile </h4>
                     </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
+                    <div class="row mt-2 ">
+                        <div class="col-md-6"><label class="labels">{% trans 'Name' %}</label><input type="text" class="form-control"
                                                                                        placeholder="first name"
                                                                                        value="{{ user.first_name }}"></div>
-                        <div class="col-md-6"><label class="labels">Surname</label><input type="text"
+                        <div class="col-md-6"><label class="labels">{% trans 'Surname' %}</label><input type="text"
                                                                                           class="form-control" value="{{ user.last_name }}"
                                                                                           placeholder="surname"></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
+                        <div class="col-md-12"><label class="labels">{% trans 'Mobile Number' %}</label><input type="text"
                                                                                                  class="form-control"
                                                                                                  placeholder="enter phone number"
                                                                                                  value="{{ user.phone }}"></div>
-                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text"
+                        <div class="col-md-12"><label class="labels">{% trans 'Email ID' %}</label><input type="text"
                                                                                             class="form-control"
                                                                                             placeholder="enter email id"
                                                                                             value="{{ user.email }}"></div>
-                        <div class="col-md-12"><label class="labels">last login</label>
+                        <div class="col-md-12"><label class="labels">{% trans 'last login' %}</label>
                             <p type="text" class="form-control">{{ user.last_login}} {% now "SHORT_DATETIME_FORMAT" %}</p></div>
                     </div>
 
                     <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="button">Change password</button>
-                        <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                        <button class="btn btn-primary profile-button" type="button">{% trans 'Change password' %}</button>
+                        <button class="btn btn-primary profile-button" type="button">{% trans 'Save Profile' %}</button>
                     </div>
                 </div>
             </div>
