@@ -105,14 +105,18 @@ class productDetailApi(generics.RetrieveUpdateDestroyAPIView):
 
 class product_for_categoryListview(View):
 
-    def get(self, request, pk, page_id=1):
+    def get(self, request, pk):
         category_list = Category.objects.all()
         product_category = Product.objects.filter(category_id=pk)
-        page_number = Paginator(product_category, 2)
-        product_category_page = page_number.page(page_id)
+        # paginator
+        page = Paginator(product_category, 1)
+        page_number = request.GET.get('page')
+
+        product_category_page = page.page(page_number)
+
         # print(product_category)
         context = {
-            'product_list': product_category_page.object_list,
+            'product_category_page': product_category_page,
             'Category_list': category_list
         }
         return render(request, 'landing/product/List_product.html', context=context)
