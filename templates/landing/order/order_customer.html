@@ -1,9 +1,67 @@
 {% extends "landing/public/profile.html" %}
 {% load i18n %}
-{% block title %} order List {% endblock %}
+{% block title %} Order list {% endblock %}
 {% block profile %}
-    {% for res in results %}
-    <h1>{{ res }}</h1>
-{% endfor %}
+    <div class="container "></div>
+    <div class="row ">
+        <div class="list-group mt-3 ">
+            <div class="col-md-12 m-2 d-flex justify-content-center">
+                <div class="d-inline m-2 btn btn btn-danger text-white"><a class="" id="list-profile-list"
+                                                                           data-bs-toggle="list"
+                                                                           href="#list-profile" role="tab"
+                                                                           aria-controls="list-profile"
+                                                                           style="color: white;text-decoration: none">{% trans 'Canceled' %}</a>
+                </div>
+                <div class="d-inline m-2 btn btn-warning text-white"><a class="" id="list-messages-list"
+                                                                        data-bs-toggle="list"
+                                                                        href="#list-messages" role="tab"
+                                                                        aria-controls="list-messages"
+                                                                        style="color: white;text-decoration: none">{% trans 'Current' %}</a>
+                </div>
+                <div class="d-inline m-2 btn btn-success text-white"><a class="" id="list-settings-list"
+                                                                        data-bs-toggle="list"
+                                                                        href="#list-settings" role="tab"
+                                                                        aria-controls="list-settings"
+                                                                        style="color: white;text-decoration: none">{% trans 'Delivered' %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="tab-content " id="nav-tabContent">
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <ul class="list-group">
+                            <li class="list-group-item bg-danger" aria-current="true">{% trans 'Canceled' %}</li>
+                            {% for res in results %}
+                                {% if   res.status_Order == 3 %}
+                                    <li class="list-group-item">{{ res.status_Order }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                        <ul class="list-group">
+                        <ul class="list-group">
+                            <li class="list-group-item bg-warning" aria-current="true">{% trans 'Current' %}</li>
+                            {% for res in results %}
+                                {% if   res.status_Order == 1 %}
+                                    <li class="list-group-item">{{ res.address.id}}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                                                <ul class="list-group">
+                            <li class="list-group-item bg-success" aria-current="true">{% trans 'Delivered' %}</li>
+                            {% for res in results %}
+                                {% if   res.status_Order == 2 %}
+                                    <li class="list-group-item">{{ res.status_Order }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-
