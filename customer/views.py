@@ -26,6 +26,8 @@ class UserDetailViewApi(generics.RetrieveAPIView):
     queryset = Customer.objects.all()
     permission_classes = [permissions.IsAuthenticated, IsSuperuserPermission]
     # authentication_classes = [authentication.BasicAuthentication]
+    renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
+    template_name = 'landing/customer/customer_page.html'
 
 
 class AddresslistViewApi(generics.ListAPIView):
