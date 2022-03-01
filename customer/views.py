@@ -49,3 +49,10 @@ class AddressDetailViewApi(generics.RetrieveAPIView):
     queryset = Address.objects.all()
     permission_classes = [permissions.IsAuthenticated, IsOwnerPermission]
     # authentication_classes = [authentication.BasicAuthentication]
+
+
+class AddressupdateViewApi(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AddressSerializer
+    queryset = Address.objects.all()
+    permission_classes = [permissions.IsAuthenticated, IsOwnerPermission]
+    # authentication_classes = [authentication.BasicAuthentication]
