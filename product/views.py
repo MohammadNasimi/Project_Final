@@ -117,7 +117,8 @@ class product_for_categoryListview(View):
         # print(product_category)
         context = {
             'product_category_page': product_category_page,
-            'Category_list': category_list
+            'Category_list': category_list,
+            'cat_id': pk
         }
         return render(request, 'landing/product/List_product.html', context=context)
 
