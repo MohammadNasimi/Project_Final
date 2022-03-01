@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 12:07+0330\n"
+"POT-Creation-Date: 2022-03-01 15:51+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,7 +132,7 @@ msgid "Log out"
 msgstr ""
 
 #: templates/admin/base.html:75 templates/admin/change_form.html:18
-#: templates/landing/base/_base.html:57
+#: templates/landing/base/_base.html:57 templates/landing/public/profile.html:8
 msgid "Home"
 msgstr ""
 
@@ -186,6 +186,75 @@ msgstr ""
 
 #: templates/landing/base/_base.html:203
 msgid "© 2020 Copyright:"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:8
+msgid "List Address"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:10
+msgid "please Check the address information before ordering "
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:16
+msgid "province"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:20
+msgid "city"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:24
+msgid "town"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:28
+msgid "street"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:32
+msgid "alley"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:33
+msgid "codeـhome"
+msgstr ""
+
+#: templates/landing/customer/address_customer.html:37
+msgid "create new Address"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:10
+#: templates/landing/public/profile.html:9
+msgid "Profile"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:13
+msgid "Name"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:16
+msgid "Surname"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:21
+msgid "Mobile Number"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:25
+msgid "Email ID"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:29
+msgid "last login"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:34
+msgid "Change password user name"
+msgstr ""
+
+#: templates/landing/customer/customer_page.html:35
+msgid "Save Profile"
 msgstr ""
 
 #: templates/landing/product/Detail_view_product.html:35
@@ -259,7 +328,15 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
+#: templates/landing/public/profile.html:10
+msgid "Address list"
+msgstr ""
+
 #: templates/landing/public/profile.html:11
+msgid "List Order"
+msgstr ""
+
+#: templates/landing/public/profile.html:12
 msgid "Logout"
 msgstr ""
 

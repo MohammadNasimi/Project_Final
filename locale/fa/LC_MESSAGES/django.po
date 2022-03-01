@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 12:07+0330\n"
-"PO-Revision-Date: 2022-03-01 12:10+0326\n"
-"Last-Translator: Mohammad  <>\n"
+"POT-Creation-Date: 2022-03-01 15:51+0330\n"
+"PO-Revision-Date: 2022-03-01 15:53+0326\n"
+"Last-Translator: Mohammad Nasimi <mohammadnasimi6803@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -125,8 +125,6 @@ msgid "Documentation"
 msgstr "مدارک"
 
 #: templates/admin/base.html:61
-#, fuzzy
-#| msgid "Password"
 msgid "Change password"
 msgstr "رمز ورود "
 
@@ -136,6 +134,7 @@ msgstr "خروج"
 
 #: templates/admin/base.html:75 templates/admin/change_form.html:18
 #: templates/landing/base/_base.html:57
+#: templates/landing/public/profile.html:8
 msgid "Home"
 msgstr "خانه"
 
@@ -193,8 +192,77 @@ msgstr "جستجو"
 msgid "© 2020 Copyright:"
 msgstr "تمامی حقوق محفوظ و متعلق به فروشگاه اينترنتی می باشد. (1400)"
 
+#: templates/landing/customer/address_customer.html:8
+msgid "List Address"
+msgstr "آدرس"
+
+#: templates/landing/customer/address_customer.html:10
+msgid "please Check the address information before ordering "
+msgstr "لطفا قبل از سفارش از ادرس خود مطمین باشید"
+
+#: templates/landing/customer/address_customer.html:16
+msgid "province"
+msgstr "استان"
+
+#: templates/landing/customer/address_customer.html:20
+msgid "city"
+msgstr "شهر"
+
+#: templates/landing/customer/address_customer.html:24
+msgid "town"
+msgstr "شهرک"
+
+#: templates/landing/customer/address_customer.html:28
+msgid "street"
+msgstr "خیابان"
+
+#: templates/landing/customer/address_customer.html:32
+msgid "alley"
+msgstr "کوی"
+
+#: templates/landing/customer/address_customer.html:33
+msgid "codeـhome"
+msgstr "کد پستی:"
+
+#: templates/landing/customer/address_customer.html:37
+msgid "create new Address"
+msgstr "ایجاد ادرس جدید"
+
+#: templates/landing/customer/customer_page.html:10
+#: templates/landing/public/profile.html:9
+msgid "Profile"
+msgstr " پروفایل"
+
+#: templates/landing/customer/customer_page.html:13
+msgid "Name"
+msgstr "نام:"
+
+#: templates/landing/customer/customer_page.html:16
+msgid "Surname"
+msgstr "نام خانوادگی:"
+
+#: templates/landing/customer/customer_page.html:21
+msgid "Mobile Number"
+msgstr "شماره همراه:"
+
+#: templates/landing/customer/customer_page.html:25
+msgid "Email ID"
+msgstr "ایمیل:"
+
+#: templates/landing/customer/customer_page.html:29
+msgid "last login"
+msgstr "اخرین ورود:"
+
+#: templates/landing/customer/customer_page.html:34
+#| msgid "Change password"
+msgid "Change password user name"
+msgstr " تغییر رمز ورود "
+
+#: templates/landing/customer/customer_page.html:35
+msgid "Save Profile"
+msgstr "بروز رسانی پروفایل"
+
 #: templates/landing/product/Detail_view_product.html:35
-#| msgid "41 review"
 msgid "41 reviews"
 msgstr "۴۱ بار دیده شده"
 
@@ -265,10 +333,21 @@ msgstr "آیا حساب کاربری ندارید ؟"
 msgid "Signup"
 msgstr "ایجاد حساب کاربری"
 
+#: templates/landing/public/profile.html:10
+msgid "Address list"
+msgstr "آدرس ها"
+
 #: templates/landing/public/profile.html:11
+msgid "List Order"
+msgstr "سبد خرید"
+
+#: templates/landing/public/profile.html:12
 msgid "Logout"
 msgstr "خروج"
 
 #: templates/landing/public/register.html:21
 msgid "create User"
 msgstr "ایجاد کاربر "
+
+#~ msgid "zip_code"
+#~ msgstr "کد تخفیف"
