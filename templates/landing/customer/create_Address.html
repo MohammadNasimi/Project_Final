@@ -3,6 +3,15 @@
 {% block profile %}
 <div class="container mt-10 justify-content-center">
     <h1 class="mr-30"> CREATE Address</h1>
+        {% if messages %}
+            {% for msg in messages %}
+                {% if msg.level != DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alert alert-warning mt-4 {{ msg.tags }}" role="alert">
+                        <strong>{{ msg }}</strong>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     <form action="{% url 'customer:Address_create' %}"  method="post">
         {% csrf_token %}
         <div class="row mt-3 justify-content-center">
