@@ -96,12 +96,12 @@ class AddresscreateView(View):
             town = request.POST["town"]
             street = request.POST["street"]
             alley = request.POST["alley"]
-            Plaque = request.POST["Plaque"]
+            plaque = request.POST["Plaque"]
             zip_code = request.POST["zip_code"]
             id_user = self.request.user.id
             customer = Customer.objects.get(user_id=id_user)
             address_new = Address.objects.create(province=province, city=city, town=town, street=street, alley=alley,
-                                                 Plaque=Plaque
+                                                 Plaque=plaque
                                                  , zip_code=zip_code, customer=customer)
             address_new.save()
             messages.add_message(request, messages.ERROR, "create success")
