@@ -33,8 +33,8 @@
                 <small class="text-muted">{% trans 'codeـhome' %}: {{ address.zip_code }}</small>
             </a>
         {% endfor %}
-        <input class="btn btn-danger text-light justify-content-center mt-3"
-               type="submit" value=" {% trans 'create new Address' %}">
+        <a href="{% url 'customer:Address_create' %}" class="justify-content-center"><input class="btn btn-danger text-light justify-content-center mt-3"
+               type="submit" value=" {% trans 'create new Address' %}"></a>
     </div>
 {% endblock %}
 
