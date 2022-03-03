@@ -1,0 +1,35 @@
+{% extends "landing/public/profile.html" %}
+{% load i18n %}
+{% block title %} Address Detail {% endblock %}
+{% block profile %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">province</th>
+            <th scope="col">town</th>
+            <th scope="col">city</th>
+            <th scope="col">street</th>
+            <th scope="col">alley</th>
+            <th scope="col">Plaque</th>
+            <th scope="col">zip_code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ province }}</td>
+            <td>{{ town }}</td>
+            <td>{{ city }}</td>
+            <td>{{ street }}</td>
+            <td>{{ alley }}</td>
+            <td>{{ Plaque }}</td>
+            <td>{{ zip_code }}</td>
+            <td><a href="" class="">
+            <i class="fa fa-pencil-square " style="font-size:20px"></i>
+            </a></td>
+            <td><a href="" class="">
+            <i class="fa fa-trash " style="font-size:20px"></i>
+        </a></td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
