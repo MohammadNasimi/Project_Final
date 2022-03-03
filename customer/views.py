@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DeleteView
 from customer.forms import AddressForm
 from customer.permissions import IsOwnerPermission, IsSuperuserPermission
 from customer.serializers import AddressSerializer, CustomerSerializer
@@ -117,4 +117,11 @@ class AddressUpdateView(UpdateView):
     model = Address
     fields = ['province', 'city', 'town', 'street', 'alley', 'Plaque', 'zip_code']
     template_name = 'landing/customer/Address_update.html'
+    success_url = reverse_lazy('customer:Address_list')
+
+
+class AddressDeleteView(DeleteView):
+    model = Address
+    fields = ['province', 'city', 'town', 'street', 'alley', 'Plaque', 'zip_code']
+    template_name = 'landing/customer/Address_delete.html'
     success_url = reverse_lazy('customer:Address_list')
