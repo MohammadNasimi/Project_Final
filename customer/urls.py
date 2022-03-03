@@ -11,4 +11,5 @@ urlpatterns = [
     path('Address_Detail/<int:pk>', AddressDetailViewApi.as_view(), name='Address_Detail'),
     path('Address_create/', AddresscreateView.as_view(), name='Address_create'),
     path('Address_update/<int:pk>', AddressUpdateView.as_view(), name='Address_update'),
+    path('Address_delete/<int:pk>', AddressUpdateView.as_view(), name='Address_delete'),
 ]
