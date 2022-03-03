@@ -1,6 +1,7 @@
 from django import forms
 from customer.models import Customer
 from core.models import User
+from customer.models import Address
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -21,3 +22,9 @@ class CustomerForm(UserCreationForm):
             attrs={'name': 'Category', 'class': 'bg-warning  justify-content-center form-control',
                    'id': 'name_id'}, )
     }
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ['province', 'city', 'town', 'street', 'alley', 'Plaque', 'zip_code']
