@@ -10,7 +10,7 @@
             <p class="mb-1">{% trans 'please Check the address information before ordering ' %}</p>
         </a>
         {% for address in  results %}
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="{% url 'customer:Address_Detail' address.id %}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                     <div>
                         <h5 class="mb-1">{% trans 'province' %}:</h5>
