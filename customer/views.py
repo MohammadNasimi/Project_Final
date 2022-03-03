@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic import UpdateView
 from customer.forms import AddressForm
 from customer.permissions import IsOwnerPermission, IsSuperuserPermission
 from customer.serializers import AddressSerializer, CustomerSerializer
@@ -49,7 +51,8 @@ class AddressDetailViewApi(generics.RetrieveAPIView):
     serializer_class = AddressSerializer
     queryset = Address.objects.all()
     permission_classes = [permissions.IsAuthenticated, IsOwnerPermission]
-    # authentication_classes = [authentication.BasicAuthentication]
+    renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
+    template_name = 'landing/customer/detail_address.html'
 
 
 # class AddresscreateViewApi(generics.CreateAPIView):
@@ -108,3 +111,10 @@ class AddresscreateView(View):
             return render(request, 'landing/customer/create_Address.html', {'form': self.form_class})
         messages.add_message(request, messages.ERROR, "zip code use before")
         return render(request, 'landing/customer/create_Address.html', {'form': self.form_class})
+
+
+class AddressUpdateView(UpdateView):
+    model = Address
+    fields = ['province', 'city', 'town', 'street', 'alley', 'Plaque', 'zip_code']
+    template_name = 'landing/customer/Address_update.html'
+    success_url = reverse_lazy('customer:Address_list')
