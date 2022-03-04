@@ -6,7 +6,7 @@ from customer.forms import AddressForm
 from customer.permissions import IsOwnerPermission, IsSuperuserPermission
 from customer.serializers import AddressSerializer, CustomerSerializer
 from rest_framework import generics, permissions
-from customer.models import Address, Customer
+from customer.models import Address, Customer, User
 import logging
 from rest_framework import renderers
 from django.contrib import messages
@@ -31,6 +31,20 @@ class UserDetailViewApi(generics.RetrieveAPIView):
     # authentication_classes = [authentication.BasicAuthentication]
     renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
     template_name = 'landing/customer/customer_page.html'
+
+
+class UpdateUserView(View):
+    def post(self, request, pk):
+        user_update = User.objects.get(id=pk)
+        user_update.first_name = request.POST['firstname']
+        user_update.last_name = request.POST['lastname']
+        user_update.phone = request.POST['phone']
+        user_update.email = request.POST['email']
+        user_update.save()
+        context = {
+            'user': self.request.user
+        }
+        return render(request, 'landing/customer/customer_page.html', context)
 
 
 class AddresslistViewApi(generics.ListAPIView):
