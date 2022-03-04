@@ -1,3 +1,4 @@
+from django.contrib.auth.views import PasswordResetView,PasswordChangeView
 from django.urls import path
 
 from customer.views import UserlistViewApi, UserDetailViewApi, AddressDetailViewApi, AddresslistViewApi, \
@@ -13,4 +14,5 @@ urlpatterns = [
     path('Address_create/', AddresscreateView.as_view(), name='Address_create'),
     path('Address_update/<int:pk>', AddressUpdateView.as_view(), name='Address_update'),
     path('Address_delete/<int:pk>', AddressDeleteView.as_view(), name='Address_delete'),
+    path('password_change', PasswordChangeView.as_view(), name='password_change'),
 ]
