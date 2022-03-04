@@ -55,7 +55,6 @@
                                                     <td>{{ order_item.Product.name_product }}</td>
                                                     <td>{{ order_item.Product.price }}</td>
                                                     <td>{{ order_item.Count }}</td>
-                                                    <td>{{ order_item.Count }}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
@@ -76,7 +75,6 @@
                                         <table class="table">
                                             <thead>
                                             <tr>
-                                                <th scope="col">#</th>
                                                 <th scope="col">{% trans 'name product' %}</th>
                                                 <th scope="col">{% trans 'price' %}</th>
                                                 <th scope="col">{% trans 'count' %}</th>
@@ -85,11 +83,15 @@
                                             <tbody>
                                             {% for order_item in res.order_items %}
                                                 <tr>
-                                                    <th scope="row">1</th>
                                                     <td>{{ order_item.Product.name_product }}</td>
                                                     <td>{{ order_item.Product.price }}</td>
                                                     <td>{{ order_item.Count }}</td>
-                                                    <td>{{ order_item.Count }}</td>
+                                                    <td><input type="number" id="tentacles" name="tentacles"
+                                                               min="1" max="100" value="{{ order_item.Count }}"></td>
+                                                    <td><a href="{% url 'order:delete_order_item' order_item.id %}" class="">
+                                                        <i class="fa fa-trash " style="font-size:20px"></i>
+                                                    </a></td>
+                                                </tr>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
@@ -119,12 +121,11 @@
                                             <tbody>
                                             {% for order_item in res.order_items %}
                                                 <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>{{ order_item.Product.name_product }}</td>
-                                                    <td>{{ order_item.Product.price }}</td>
-                                                    <td>{{ order_item.Count }}</td>
-                                                    <td>{{ order_item.Count}}</td>
-                                                </tr>
+                                                <th scope="row">1</th>
+                                                <td>{{ order_item.Product.name_product }}</td>
+                                                <td>{{ order_item.Product.price }}</td>
+                                                <td>{{ order_item.Count }}</td>
+
                                             {% endfor %}
                                             </tbody>
                                         </table>
