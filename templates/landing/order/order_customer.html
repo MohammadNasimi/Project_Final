@@ -2,6 +2,8 @@
 {% load i18n %}
 {% block title %} Order list {% endblock %}
 {% block profile %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "landing/css/Order_customer.css" %}">
     <div class="container "></div>
     <div class="row ">
         <div class="list-group mt-3 ">
@@ -30,40 +32,106 @@
             <div class="col-12">
                 <div class="tab-content " id="nav-tabContent">
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                        <ul class="list-group">
-                            <li class="list-group-item bg-danger" aria-current="true">{% trans 'Canceled' %}</li>
-                            {% for res in results %}
-                                {% if   res.status_Order == 3 %}
-                                    <li class="list-group-item">{{ res.status_Order }}</li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
+                        <p class="bg-danger  rounded-pill p-2 d-flex justify-content-center"
+                           aria-current="true">{% trans 'Canceled' %}</p>
+                        {% for res in results %}
+                            {% if res.status_Order == 3 %}
+                                <section>
+                                    <details>
+                                        <summary>{% trans 'Address Order' %}:{{ res.address.city }},{{ res.address.zip_code }}</summary>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">{% trans 'name product' %}</th>
+                                                <th scope="col">{% trans 'price' %}</th>
+                                                <th scope="col">{% trans 'count' %}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for order_item in res.order_items %}
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>{{ order_item.Product.name_product }}</td>
+                                                    <td>{{ order_item.Product.price }}</td>
+                                                    <td>{{ order_item.Count }}</td>
+                                                    <td>{{ order_item.Count }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </details>
+                                </section>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                        <ul class="list-group">
-                            <ul class="list-group">
-                                <li class="list-group-item bg-warning" aria-current="true">{% trans 'Current' %}</li>
-                                {% for res in results %}
-                                    <li class="list-group-item">{{ res.address.id }}</li>
-                                    {% if   res.status_Order == 1 %}
-                                        <li class="list-group-item">{{ res.order_items }}</li>
-                                        {% for order_item in res.order_items %}
-                                            <h1>{{ order_item.id }}</h1>
-                                        {% endfor %}
-
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
+                        <p class="bg-warning  rounded-pill p-2 d-flex justify-content-center"
+                           aria-current="true">{% trans 'Current' %}</p>
+                        {% for res in results %}
+                            {% if res.status_Order == 1 %}
+                                <section>
+                                    <details>
+                                        <summary>{% trans 'Address Order' %}:{{ res.address.city }},{{ res.address.zip_code }}</summary>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">{% trans 'name product' %}</th>
+                                                <th scope="col">{% trans 'price' %}</th>
+                                                <th scope="col">{% trans 'count' %}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for order_item in res.order_items %}
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>{{ order_item.Product.name_product }}</td>
+                                                    <td>{{ order_item.Product.price }}</td>
+                                                    <td>{{ order_item.Count }}</td>
+                                                    <td>{{ order_item.Count }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </details>
+                                </section>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                     <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                        <ul class="list-group">
-                            <li class="list-group-item bg-success" aria-current="true">{% trans 'Delivered' %}</li>
-                            {% for res in results %}
-                                {% if   res.status_Order == 2 %}
-                                    <li class="list-group-item">{{ res.status_Order }}</li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
+                        <p class="bg-success  rounded-pill p-2 d-flex justify-content-center"
+                           aria-current="true">{% trans 'Delivered' %}</p>
+                        {% for res in results %}
+                            {% if res.status_Order == 2 %}
+                                <section>
+                                    <details>
+                                        <summary>{% trans 'Address Order' %}:{{ res.address.city }},{{ res.address.zip_code }}</summary>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">{% trans 'name product' %}</th>
+                                                <th scope="col">{% trans 'price' %}</th>
+                                                <th scope="col">{% trans 'count' %}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for order_item in res.order_items %}
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>{{ order_item.Product.name_product }}</td>
+                                                    <td>{{ order_item.Product.price }}</td>
+                                                    <td>{{ order_item.Count }}</td>
+                                                    <td>{{ order_item.Count}}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </details>
+                                </section>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
