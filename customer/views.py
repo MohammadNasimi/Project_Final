@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
@@ -139,3 +141,12 @@ class AddressDeleteView(DeleteView):
     fields = ['province', 'city', 'town', 'street', 'alley', 'Plaque', 'zip_code']
     template_name = 'landing/customer/Address_delete.html'
     success_url = reverse_lazy('customer:Address_list')
+
+
+class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
+    template_name = 'landing/public/password_change_form.html'
+    success_url = reverse_lazy('customer:password_change_done')
+
+
+class PasswordChangeViewDone(LoginRequiredMixin, PasswordChangeDoneView):
+    template_name = 'landing/public/password_change_done.html'
