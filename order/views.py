@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views import View
+from django.views.generic import DeleteView
 from rest_framework import viewsets, renderers
 from rest_framework import permissions
 
@@ -12,6 +14,7 @@ from customer.permissions import IsOwnerPermission, IsSuperuserPermission
 class OrderViewSets(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
     # permission_classes = [IsOwnerPermission, permissions.IsAuthenticated]
 
     def get_queryset(self):
@@ -24,3 +27,12 @@ class OrderViewSets(viewsets.ModelViewSet):
 class Order_itemViewSets(viewsets.ModelViewSet):
     queryset = Order_item.objects.all()
     serializer_class = Order_itemSerializer
+
+
+
+
+class Order_itemsDeleteView(View):
+    def get(self, request, pk):
+        delete_order_item = Order_item.objects.get(id=pk)
+        delete_order_item.delete()
+        return render(request, 'landing/public/profile.html')
