@@ -49,72 +49,81 @@
                                 <span class="minus  btn-danger">-</span>
                                 {#                                    <input type="number" class="add-to-cart count" name="number" value="1" min="1"#}
                                 {#                                           max="{{ Detail_product.number_store }}">#}
-                                <input type="number" id="number" class="me-3 ms-3 btn-warning" name="number" value="1"
+                                <input type="number" id="number" class="count me-3 ms-3 btn-warning" name="number"
+                                       value="1"
                                        min="1"
                                        max="{{ Detail_product.number_store }}">
 
-                                <span class="plus btn-success">+</span>
+                                <span class="plus btn-success"
+                                      onclick="plus({{ Detail_product.number_store }})">+</span>
                             </div>
-                            <button class="add-to-cart btn btn-default fa-cart-plus w-50"
-                                    onclick="add_product('{% url 'product:add_product' Detail_product.id %}',{{ Detail_product.id }})">{% trans 'add to cart' %}</button>
-                            <a href="{% url 'product:category_product' Detail_product.category_id %}?page=1">
-                                <button class="like btn btn-default w-50 mt-2" type="button"><span
-                                        class="fa fa-arrow-left"></span>
-                                </button>
-                            </a>
+                            <div class="mt-5">
+                                <a href="{% url 'product:category_product' Detail_product.category_id %}?page=1"
+                                   style="color: white;text-decoration: none">
+                                    <div class="d-inline like btn btn-default w-40 mt-2"
+                                    >{% trans 'back' %}</div>
+                                </a>
+                                <div class="d-inline add-to-cart btn btn-default fa-cart-plus w-40"
+                                     onclick="add_product('{% url 'product:add_product' Detail_product.id %}',{{ Detail_product.id }});add_product_alert()"
+                                >{% trans 'add to cart' %}</div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        $('.count').prop('disabled', true);
-        $(document).on('click', '.plus', function () {
-            $('.count').val(parseInt($('.count').val()) + 1);
-        });
-        $(document).on('click', '.minus', function () {
-            $('.count').val(parseInt($('.count').val()) - 1);
-            if ($('.count').val() == 0) {
-                $('.count').val(1);
+        <script>
+            $('.count').prop('disabled', true);
+
+            function plus(max) {
+                if (parseInt($('.count').val()) <= max-1) {
+                    $('.count').val(parseInt($('.count').val()) + 1);
+                }
             }
-        });
 
-        function add_product1() {
-            Swal.fire({
-                icon: 'success',
-                title: 'product add to cart',
-                timer: 100000
-            })
-        }
-
-        function add_product(url, id) {
-            var number = $("#number").val();
-            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
-            var sendInfo = {
-                csrfmiddlewaretoken: csrfmiddlewaretoken,
-                id: id,
-                number: number,
-            };
-            console.log(sendInfo)
-            console.log(csrfmiddlewaretoken)
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                headers: {
-                    "X-CSRFToken": csrfmiddlewaretoken
-                },
-                success: function () {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'product add to cart',
-                        timer: 10000
-                    })
-                },
-                data: sendInfo
+            $(document).on('click', '.minus', function () {
+                $('.count').val(parseInt($('.count').val()) - 1);
+                if ($('.count').val() == 0) {
+                    $('.count').val(1);
+                }
             });
-        }
-    </script>
+
+            function add_product_alert() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'product add to cart',
+                    timer: 2000
+                })
+            }
+
+            function add_product(url, id) {
+                var number = $("#number").val();
+                console.log(number)
+                csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+                var sendInfo = {
+                    csrfmiddlewaretoken: csrfmiddlewaretoken,
+                    id: id,
+                    number: parseInt(number),
+                };
+                console.log(sendInfo)
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    headers: {
+                        "X-CSRFToken": csrfmiddlewaretoken
+                    },
+                    success: () => {
+                        alert("add to cart")
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'product add to cart',
+                            timer: 10000
+                        })
+                    },
+                    data: sendInfo
+                });
+            }
+        </script>
 {% endblock %}
