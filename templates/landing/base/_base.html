@@ -206,13 +206,18 @@
     <!-- Copyright -->
 </footer>
 <script>
-    $("#home").on('click', function () {
+    function home(url) {
         $.ajax({
             type: 'GET',
-            url: '{% url 'landing:Home' %}',
+            url: url,
+            success: function (data) {
+                {#$('body').empty()#}
+                $('#home').append(data)
+                console.log(data)
+            }
         });
-        console.log(15)
-    });
+
+    }
 </script>
 </body>
 </html>
