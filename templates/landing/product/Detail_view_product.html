@@ -18,7 +18,6 @@
                         <ul class="preview-thumbnail nav nav-tabs">
                             <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
                                     src="{{ Detail_product.image.url }}"/></a></li>
-
                         </ul>
 
                     </div>
@@ -36,25 +35,28 @@
                         </div>
                         <p class="product-brand">{{ Detail_product.brand }}</p>
                         <p class="product-description">{{ Detail_product.descriptions }}</p>
-                        <p class="number">{% trans 'number in shop:' %} <span>{{ Detail_product.number_store }} </span></p>
-                        <h5 class="price">{% trans 'current price:' %} <span>{{ Detail_product.price }} {% trans 'Rial' %}</span></h5>
-                        <p class="vote"><strong>{% trans '91%' %} </strong> {% trans 'of buyers enjoyed this product!' %} <strong>{% trans '87 votes' %}</strong>
+                        <p class="number">{% trans 'number in shop:' %} <span>{{ Detail_product.number_store }} </span>
+                        </p>
+                        <h5 class="price">{% trans 'current price:' %}
+                            <span>{{ Detail_product.price }} {% trans 'Rial' %}</span></h5>
+                        <p class="vote">
+                            <strong>{% trans '91%' %} </strong> {% trans 'of buyers enjoyed this product!' %}
+                            <strong>{% trans '87 votes' %}</strong>
                         </p>
                         <div class="action">
-                            <form action="{% url 'product:add_product' Detail_product.id %}" method="post">
-                                {% csrf_token %}
-                                <div class="qty mt-1 mb-2">
-                                    <span class="minus  btn-danger">-</span>
-                                    {#                                    <input type="number" class="add-to-cart count" name="number" value="1" min="1"#}
-                                    {#                                           max="{{ Detail_product.number_store }}">#}
-                                    <input type="number" class="me-3 ms-3 btn-warning" name="number" value="1" min="1"
-                                           max="{{ Detail_product.number_store }}">
+                            {% csrf_token %}
+                            <div class="qty mt-1 mb-2">
+                                <span class="minus  btn-danger">-</span>
+                                {#                                    <input type="number" class="add-to-cart count" name="number" value="1" min="1"#}
+                                {#                                           max="{{ Detail_product.number_store }}">#}
+                                <input type="number" id="number" class="me-3 ms-3 btn-warning" name="number" value="1"
+                                       min="1"
+                                       max="{{ Detail_product.number_store }}">
 
-                                    <span class="plus btn-success">+</span>
-                                </div>
-                                <input class="add-to-cart btn btn-default fa-cart-plus w-50"
-                                       type="submit"  value=" {% trans 'add to cart' %}">
-                            </form>
+                                <span class="plus btn-success">+</span>
+                            </div>
+                            <button class="add-to-cart btn btn-default fa-cart-plus w-50"
+                                    onclick="add_product('{% url 'product:add_product' Detail_product.id %}',{{ Detail_product.id }})">{% trans 'add to cart' %}</button>
                             <a href="{% url 'product:category_product' Detail_product.category_id %}?page=1">
                                 <button class="like btn btn-default w-50 mt-2" type="button"><span
                                         class="fa fa-arrow-left"></span>
@@ -79,12 +81,40 @@
             }
         });
 
-        function add_product() {
+        function add_product1() {
             Swal.fire({
                 icon: 'success',
                 title: 'product add to cart',
                 timer: 100000
             })
+        }
+
+        function add_product(url, id) {
+            var number = $("#number").val();
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            var sendInfo = {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                id: id,
+                number: number,
+            };
+            console.log(sendInfo)
+            console.log(csrfmiddlewaretoken)
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": csrfmiddlewaretoken
+                },
+                success: function () {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'product add to cart',
+                        timer: 10000
+                    })
+                },
+                data: sendInfo
+            });
         }
     </script>
 {% endblock %}
