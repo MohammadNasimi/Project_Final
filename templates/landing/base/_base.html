@@ -65,7 +65,7 @@
                            aria-label="Search">
                     <button class="btn btn-outline-light text-dark" type="submit">{% trans 'Search' %}</button>
                 </form>
-                <span class="fa-stack fa-1x  bg-primary display" data-count="5">
+                <span class="fa-stack fa-1x  bg-primary display" data-count="{% if not request.COOKIES.count %} 0 {% else %}{{ request.COOKIES.count }}{% endif %}">
                         <a href="#"><i class="fa fa-shopping-cart fa-stack-2x color-cart "></i></a>
                 </span>
                 <span class="ps-3 display">
