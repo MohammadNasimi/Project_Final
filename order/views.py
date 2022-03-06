@@ -38,4 +38,13 @@ class Order_itemsDeleteView(View):
 
 class card_list(View):
     def get(self, request):
-        return render(request, 'landing/order/cart_list.html')
+        from product.Cart import Cart
+        cart = Cart(request)
+        context = {
+            'data_cart': cart.data_cart(),
+            'data_product': cart.data_product(),
+            'get_total_price': cart.get_total_price(),
+            'len_cart': len(cart),
+
+        }
+        return render(request, 'landing/order/cart_list.html', context=context)
