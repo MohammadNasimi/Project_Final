@@ -132,18 +132,11 @@ class ProductDetailView(DetailView):
 
 class add_to_OrderView(View):
     def post(self, request, pk):
-        if not request.COOKIES.get('list_order_item'):
-            list_order_item = ''
-        else:
-            list_order_item = request.COOKIES['list_order_item']
-
-        number = int(request.POST['number'])
-        print(list_order_item)
-        list_order_item = list_order_item + ',' + f'{pk, number}'
+        from product.Cart import Cart
+        cart = Cart(request)
+        cart.add(pk, request.POST['number'])
+        # cart.__iter__()
+        # print(len(cart))
         response = redirect('product:Detail_product', pk)
-        response.set_cookie('list_order_item', list_order_item)
-        # product_choice = Product.objects.get(id=pk)
-        # Order_item.objects.create(Product_id=pk,Count=number)
-        # product_choice.number_store = product_choice.number_store - int(data)
-        # product_choice.save()
+        # response.set_cookie('count', len(cart))
         return response
