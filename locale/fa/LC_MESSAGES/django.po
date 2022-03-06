@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-01 17:08+0330\n"
-"PO-Revision-Date: 2022-03-01 17:53+0326\n"
+"POT-Creation-Date: 2022-03-06 00:38+0330\n"
+"PO-Revision-Date: 2022-03-06 00:39+0326\n"
 "Last-Translator: Mohammad Nasimi <mohammadnasimi6803@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -152,10 +152,12 @@ msgid "Add %(name)s"
 msgstr "افزودن"
 
 #: templates/admin/change_form.html:43 templates/admin/login.html:23
+#: templates/landing/public/password_change_form.html:11
 msgid "Please correct the error below."
 msgstr ""
 
 #: templates/admin/change_form.html:43 templates/admin/login.html:23
+#: templates/landing/public/password_change_form.html:11
 msgid "Please correct the errors below."
 msgstr ""
 
@@ -233,54 +235,78 @@ msgstr "ایجاد ادرس جدید"
 msgid "Profile"
 msgstr " پروفایل"
 
-#: templates/landing/customer/customer_page.html:13
+#: templates/landing/customer/customer_page.html:15
 msgid "Name"
 msgstr "نام:"
 
-#: templates/landing/customer/customer_page.html:16
+#: templates/landing/customer/customer_page.html:21
 msgid "Surname"
 msgstr "نام خانوادگی:"
 
-#: templates/landing/customer/customer_page.html:21
+#: templates/landing/customer/customer_page.html:29
 msgid "Mobile Number"
 msgstr "شماره همراه:"
 
-#: templates/landing/customer/customer_page.html:25
+#: templates/landing/customer/customer_page.html:35
 msgid "Email ID"
 msgstr "ایمیل:"
 
-#: templates/landing/customer/customer_page.html:29
-msgid "last login"
-msgstr "اخرین ورود:"
-
-#: templates/landing/customer/customer_page.html:34
-msgid "Change password user name"
-msgstr " تغییر رمز ورود "
-
-#: templates/landing/customer/customer_page.html:35
+#: templates/landing/customer/customer_page.html:46
 msgid "Save Profile"
 msgstr "بروز رسانی پروفایل"
 
-#: templates/landing/order/order_customer.html:13
-#: templates/landing/order/order_customer.html:34
+#: templates/landing/customer/customer_page.html:52
+msgid "Change password user name"
+msgstr " تغییر رمز ورود "
+
+#: templates/landing/order/order_customer.html:15
+#: templates/landing/order/order_customer.html:36
 msgid "Canceled"
 msgstr "حذف شده "
 
-#: templates/landing/order/order_customer.html:19
-#: templates/landing/order/order_customer.html:45
+#: templates/landing/order/order_customer.html:21
+#: templates/landing/order/order_customer.html:69
 msgid "Current"
 msgstr "جاری"
 
-#: templates/landing/order/order_customer.html:25
-#: templates/landing/order/order_customer.html:55
+#: templates/landing/order/order_customer.html:27
+#: templates/landing/order/order_customer.html:106
 msgid "Delivered"
 msgstr "پرداخت شده"
 
-#: templates/landing/product/Detail_view_product.html:35
+#: templates/landing/order/order_customer.html:41
+#: templates/landing/order/order_customer.html:74
+#: templates/landing/order/order_customer.html:111
+#, fuzzy
+#| msgid "Addresses"
+msgid "Address Order"
+msgstr "آدرس ها"
+
+#: templates/landing/order/order_customer.html:46
+#: templates/landing/order/order_customer.html:78
+#: templates/landing/order/order_customer.html:116
+#, fuzzy
+#| msgid "Search product"
+msgid "name product"
+msgstr "جستجو محصول "
+
+#: templates/landing/order/order_customer.html:47
+#: templates/landing/order/order_customer.html:79
+#: templates/landing/order/order_customer.html:117
+msgid "price"
+msgstr "rdlj"
+
+#: templates/landing/order/order_customer.html:48
+#: templates/landing/order/order_customer.html:80
+#: templates/landing/order/order_customer.html:118
+msgid "count"
+msgstr "تعداد"
+
+#: templates/landing/product/Detail_view_product.html:34
 msgid "41 reviews"
 msgstr "۴۱ بار دیده شده"
 
-#: templates/landing/product/Detail_view_product.html:39
+#: templates/landing/product/Detail_view_product.html:38
 msgid "number in shop:"
 msgstr "تعداد موجود در فروشگاه:"
 
@@ -288,26 +314,35 @@ msgstr "تعداد موجود در فروشگاه:"
 msgid "current price:"
 msgstr "قیمت:"
 
-#: templates/landing/product/Detail_view_product.html:40
+#: templates/landing/product/Detail_view_product.html:41
+#: templates/landing/product/List_product.html:39
 msgid "Rial"
 msgstr "ریال"
 
-#: templates/landing/product/Detail_view_product.html:41
+#: templates/landing/product/Detail_view_product.html:43
 #, python-format
 msgid "91%%"
 msgstr "91٪"
 
-#: templates/landing/product/Detail_view_product.html:41
+#: templates/landing/product/Detail_view_product.html:43
 msgid "of buyers enjoyed this product!"
 msgstr "خریداران از این محصول لذت بردند!"
 
-#: templates/landing/product/Detail_view_product.html:41
+#: templates/landing/product/Detail_view_product.html:44
 msgid "87 votes"
 msgstr "87 نظر داده شده"
 
-#: templates/landing/product/Detail_view_product.html:56
+#: templates/landing/product/Detail_view_product.html:64
+msgid "back"
+msgstr "برگشت"
+
+#: templates/landing/product/Detail_view_product.html:68
 msgid "add to cart"
 msgstr "افزودن به سبد خرید"
+
+#: templates/landing/product/Detail_view_product.html:95
+msgid "product add to cart !!!!!!"
+msgstr "محصول به سبد خرید اضافه شد."
 
 #: templates/landing/product/List_product.html:41
 msgid "Detail products"
@@ -347,21 +382,40 @@ msgstr "آیا حساب کاربری ندارید ؟"
 msgid "Signup"
 msgstr "ایجاد حساب کاربری"
 
+#: templates/landing/public/password_change_done.html:6
+msgid "your password change"
+msgstr "تغییر رمز وزود"
+
+#: templates/landing/public/password_change_form.html:16
+msgid ""
+"Please enter your old password, for security’s sake, and then enter your new"
+" password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: templates/landing/public/password_change_form.html:49
+#, fuzzy
+#| msgid "Change password"
+msgid "Change my password"
+msgstr "رمز ورود "
+
 #: templates/landing/public/profile.html:10
 msgid "Address list"
 msgstr "آدرس ها"
 
-#: templates/landing/public/profile.html:11
+#: templates/landing/public/profile.html:12
 msgid "List Order"
 msgstr "سبد خرید"
 
-#: templates/landing/public/profile.html:12
+#: templates/landing/public/profile.html:13
 msgid "Logout"
 msgstr "خروج"
 
 #: templates/landing/public/register.html:21
 msgid "create User"
 msgstr "ایجاد کاربر "
+
+#~ msgid "last login"
+#~ msgstr "اخرین ورود:"
 
 #~ msgid "zip_code"
 #~ msgstr "کد تخفیف"
