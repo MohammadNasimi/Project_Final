@@ -138,5 +138,5 @@ class add_to_OrderView(View):
         # cart.__iter__()
         # print(len(cart))
         response = redirect('product:Detail_product', pk)
-        # response.set_cookie('count', len(cart))
+        response.set_cookie('count', len(cart))
         return response
