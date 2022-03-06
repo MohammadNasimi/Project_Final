@@ -17,7 +17,6 @@ class Cart(object):
             count_per = int(self.cart[product_id]['count'])
             self.cart[product_id]['count'] = int(count) + count_per
         self.save()
-        print(self.cart)
 
     def save(self):
         self.session.modified = True
@@ -28,17 +27,25 @@ class Cart(object):
             del self.cart[product_id]
             self.save()
 
-    def __iter__(self):
+    def data_product(self):
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)  # < QuerySet [<Product: soda>, <Product: devo>]>
+        return products
+
+    def data_cart(self):
         cart = self.cart.copy()  # {'6': {'count': '1', 'price': 1000000}, '4': {'count': 10, 'price': 15000}}
         for item in cart.values():
             item['total_price'] = int(item['price']) * int(item['count'])
             self.save()
-            yield item
+            print(item)
+        cart = self.cart.copy()
+        return cart
 
     def __len__(self):
-        return sum(item['count'] for item in self.cart.values())
+        return sum(int(item['count']) for item in self.cart.values())
+
+    def get_total_price(self):
+        return sum(int(item['count']) * int(item['price']) for item in self.cart.values())
 
     def clear(self):
         del self.session['Cart_list']
