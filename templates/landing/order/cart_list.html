@@ -51,19 +51,21 @@
                                                 <!-- Quantity -->
                                                 <div class="d-flex mb-4" style="max-width: 300px">
                                                     <button class="btn btn-primary px-3 me-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                                                        update_item('{% url 'order:update_order_item_session' product.id %}',{{ product.id }});">
                                                         <i class="fa fa-minus"></i>
                                                     </button>
 
                                                     <div class="form-outline">
-                                                        <input id="form1" min="0" name="{{ product.number_store }}"
+                                                        <input id="form1" min="1" name="{{ product.number_store }}"
                                                                value="{{ value.count }}"
                                                                type="number"
                                                                class="form-control"/>
                                                     </div>
 
                                                     <button class="btn btn-primary px-3 ms-2"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                                                        update_item('{% url 'order:update_order_item_session' product.id %}',{{ product.id }});">
                                                         <i class="fa fa-plus"></i>
                                                     </button>
                                                 </div>
@@ -147,10 +149,7 @@
     </section>
     <script>
         function remove_item(url, id) {
-            console.log(url)
-            console.log(id)
             csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
-            console.log(csrfmiddlewaretoken)
             var sendInfo = {
                 csrfmiddlewaretoken: csrfmiddlewaretoken,
                 id: id,
@@ -176,7 +175,8 @@
         }
 
         function update_item(url, id) {
-            var number = $("#number").val();
+            var number = $("#form1").val();
+            console.log(number)
             csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
             console.log(csrfmiddlewaretoken)
             var sendInfo = {
