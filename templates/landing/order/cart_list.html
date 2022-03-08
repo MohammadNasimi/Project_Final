@@ -29,14 +29,14 @@
                                                 </div>
                                                 <!-- Image -->
                                             </div>
-
+                                            {% csrf_token %}
                                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                                 <!-- Data -->
                                                 <p><strong>{{ product.name_product }}</strong></p>
-                                                <p>brans: {{ product.brand }}</p>
+                                                <p>brand: {{ product.brand }}</p>
                                                 <button type="button" class="btn btn-primary btn-sm me-1 mb-2"
                                                         data-mdb-toggle="tooltip"
-                                                        title="Remove item">
+                                                        title="Remove item" onclick="remove_item('{% url 'order:delete_order_item_session' product.id %}')">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-danger btn-sm mb-2"
@@ -56,11 +56,10 @@
                                                     </button>
 
                                                     <div class="form-outline">
-                                                        <input id="form1" min="0" name="quantity"
+                                                        <input id="form1" min="0" name="{{ product.number_store }}"
                                                                value="{{ value.count }}"
                                                                type="number"
                                                                class="form-control"/>
-                                                        <label class="form-label" for="form1">Quantity</label>
                                                     </div>
 
                                                     <button class="btn btn-primary px-3 ms-2"
@@ -115,7 +114,7 @@
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0
                                     px-0 pb-0">
                                     Products price:
                                     <span>{{ get_total_price }} Rial</span>
@@ -125,7 +124,7 @@
                                     <input class="text">
                                 </li>
                                 <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0
                                     px-0 mb-3">
                                     <div>
                                         <strong>Total amount</strong>
@@ -146,4 +145,63 @@
             </div>
         </div>
     </section>
+    <script>
+        function remove_item(url, id) {
+            console.log(url)
+            console.log(id)
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            console.log(csrfmiddlewaretoken)
+            var sendInfo = {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                id: id,
+            };
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": csrfmiddlewaretoken
+                },
+                success: () => {
+                    alert("remove cart_item")
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'remove cart_item',
+                        timer: 10000
+                    })
+                },
+                data: sendInfo
+            });
+
+        }
+
+        function update_item(url, id) {
+            var number = $("#number").val();
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            console.log(csrfmiddlewaretoken)
+            var sendInfo = {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                id: id,
+                number: parseInt(number)
+            };
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": csrfmiddlewaretoken
+                },
+                success: () => {
+                    alert("update cart_item")
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'update cart_item',
+                        timer: 10000
+                    })
+                },
+                data: sendInfo
+            });
+
+        }
+    </script>
 {% endblock %}
