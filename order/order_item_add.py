@@ -25,8 +25,7 @@ class Order_User(object):
 
     def add_session(self, cart):
         data_session = cart.data_cart()
-        product_exist_id = self.get_user()[0]
-        print(product_exist_id)
+        product_exist_id = self.get_user()
         order_get_user_current = self.get_user()[2]
         order_user = Order.objects.get(id=order_get_user_current)
         for product_id, count in data_session.items():
