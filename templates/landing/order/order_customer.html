@@ -85,13 +85,27 @@
                                                 <tr>
                                                     <td>{{ order_item.Product.name_product }}</td>
                                                     <td>{{ order_item.Product.price }}</td>
-                                                    <td>{{ order_item.Count }}</td>
                                                     {% csrf_token %}
-                                                    <td><input type="number" id="tentacles" name="tentacles"
-                                                               min="1" max="100" value="{{ order_item.Count }}"></td>
+                                                    <td>
+                                                        <button class="btn btn-primary px-3 me-2"
+                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                                                        update_item('{% url 'order:update_order_item' order_item.id %}',{{ order_item.id }});">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+
+                                                        <input type="number" id="number" name="tentacles"
+                                                               min="1" max="{{ order_item.Product.number_store }}" value="{{ order_item.Count }}">
+
+                                                        <button class="btn btn-primary px-3 ms-2"
+                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                                                        update_item('{% url 'order:update_order_item' order_item.id %}',{{ order_item.id }});">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+
+                                                    </td>
                                                     <td>
                                                         <button onclick="remove_item('{% url 'order:delete_order_item' order_item.id %}',{{ order_item.id }})"
-                                                                class="">
+                                                                class="btn btn-primary">
                                                             <i class="fa fa-trash " style="font-size:20px"></i>
                                                         </button>
                                                     </td>
@@ -151,6 +165,35 @@
             var sendInfo = {
                 csrfmiddlewaretoken: csrfmiddlewaretoken,
                 id: id,
+            };
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": csrfmiddlewaretoken
+                },
+                success: () => {
+                    alert("remove cart_item")
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'remove cart_item',
+                        timer: 10000
+                    })
+                },
+                data: sendInfo
+            });
+
+        }
+
+        function update_item(url, id) {
+            var number = $("#number").val();
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            console.log(csrfmiddlewaretoken)
+            var sendInfo = {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                id: id,
+                number: parseInt(number)
             };
             $.ajax({
                 type: "POST",
