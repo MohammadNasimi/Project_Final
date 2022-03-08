@@ -73,6 +73,7 @@
                 </div>
             </div>
         </div>
+        </div>
         <script>
             $('.count').prop('disabled', true);
 
@@ -99,14 +100,12 @@
 
             function add_product(url, id) {
                 var number = $("#number").val();
-                console.log(number)
                 csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
                 var sendInfo = {
                     csrfmiddlewaretoken: csrfmiddlewaretoken,
                     id: id,
                     number: parseInt(number),
                 };
-                console.log(sendInfo)
                 $.ajax({
                     type: "POST",
                     url: url,
