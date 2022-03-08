@@ -51,8 +51,17 @@ class Order_itemsUpdateView(View):
         order_item_get = Order_item.objects.get(id=pk)
         order_item_get.Count = int(request.POST['number'])
         order_item_get.save()
-        print(order_item_get.Count)
         return render(request, 'landing/public/profile.html')
+
+
+class Order_itemsUpdate_sessionView(View):
+    def post(self, request, pk):
+        from product.Cart import Cart
+        cart = Cart(request)
+        cart.update(pk, int(request.POST['number']))
+        response = render(request, 'landing/order/cart_list.html')
+        response.set_cookie('count', len(cart))
+        return response
 
 
 class card_list(View):
