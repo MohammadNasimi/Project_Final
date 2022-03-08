@@ -37,6 +37,13 @@ class Order_itemsDeleteView(View):
         return render(request, 'landing/public/profile.html')
 
 
+class Order_itemsupdateView(View):
+    def post(self, request, pk):
+        print(request.POST)
+        print(pk)
+        return render(request, 'landing/public/profile.html')
+
+
 class card_list(View):
     def get(self, request):
         from product.Cart import Cart
