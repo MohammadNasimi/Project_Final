@@ -21,7 +21,7 @@ class Order_User(object):
                             'order_items__Product_id')  # get list order_item id
                         Order_id = Order.objects.filter(address_id=i, status_Order=1).values_list('id',
                                                                                                   flat=True).first()  # get list order_item id
-                        return Order_item_user, Address_Order, Order_id
+                        return Order_item_user, Address_Order, Order_id, len(Order_item_user)
 
     def add_session(self, cart):
         data_session = cart.data_cart()
