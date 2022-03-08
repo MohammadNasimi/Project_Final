@@ -80,4 +80,14 @@ class card_list(View):
 
 class card_list_orderView(View):
     def get(self, request):
-        return render(request, 'landing/order/cart_list_order_customer.html')
+        from core.models import User
+        user = User.objects.get(id=request.session.get('uid'))
+        from order.order_item_add import Order_User
+        user = Order_User(user)
+        print(user.get_user())
+        order_id = user.get_user()[2]
+        order_list = Order.objects.get(id=order_id)
+        context = {
+            'context': order_list
+        }
+        return render(request, 'landing/order/cart_list_order_customer.html', context=context)
