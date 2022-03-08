@@ -71,7 +71,8 @@
                             {% if res.status_Order == 1 %}
                                 <section>
                                     <details>
-                                        <summary>{% trans 'Address Order' %}:{{ res.address.city }},{{ res.address.zip_code }}</summary>
+                                        <summary>{% trans 'Address Order' %}:{{ res.address.city }},{{ res.address.zip_code }}    {% trans 'date order' %}:{{ res.date }}
+                                            </summary>
                                         <table class="table">
                                             <thead>
                                             <tr>
