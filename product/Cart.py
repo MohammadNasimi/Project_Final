@@ -22,7 +22,7 @@ class Cart(object):
         self.session.modified = True
 
     def remove(self, product):
-        product_id = str(product.id)
+        product_id = str(product)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
@@ -37,7 +37,6 @@ class Cart(object):
         for item in cart.values():
             item['total_price'] = int(item['price']) * int(item['count'])
             self.save()
-            print(item)
         cart = self.cart.copy()
         return cart
 
