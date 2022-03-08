@@ -76,3 +76,8 @@ class card_list(View):
 
         }
         return render(request, 'landing/order/cart_list.html', context=context)
+
+
+class card_list_orderView(View):
+    def get(self, request):
+        return render(request, 'landing/order/cart_list_order_customer.html')
