@@ -30,7 +30,8 @@ class Order_itemViewSets(viewsets.ModelViewSet):
 
 
 class Order_itemsDeleteView(View):
-    def get(self, request, pk):
+    def post(self, request, pk):
+        print(request.POST)
         delete_order_item = Order_item.objects.get(id=pk)
         delete_order_item.delete()
         return render(request, 'landing/public/profile.html')
