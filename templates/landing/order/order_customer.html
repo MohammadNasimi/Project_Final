@@ -86,11 +86,15 @@
                                                     <td>{{ order_item.Product.name_product }}</td>
                                                     <td>{{ order_item.Product.price }}</td>
                                                     <td>{{ order_item.Count }}</td>
+                                                    {% csrf_token %}
                                                     <td><input type="number" id="tentacles" name="tentacles"
                                                                min="1" max="100" value="{{ order_item.Count }}"></td>
-                                                    <td><a href="{% url 'order:delete_order_item' order_item.id %}" class="">
-                                                        <i class="fa fa-trash " style="font-size:20px"></i>
-                                                    </a></td>
+                                                    <td>
+                                                        <button onclick="remove_item('{% url 'order:delete_order_item' order_item.id %}',{{ order_item.id }})"
+                                                                class="">
+                                                            <i class="fa fa-trash " style="font-size:20px"></i>
+                                                        </button>
+                                                    </td>
                                                 </tr>
                                                 </tr>
                                             {% endfor %}
@@ -138,4 +142,34 @@
             </div>
         </div>
     </div>
+    <script>
+        function remove_item(url, id) {
+            console.log(url)
+            console.log(id)
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            console.log(csrfmiddlewaretoken)
+            var sendInfo = {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                id: id,
+            };
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": csrfmiddlewaretoken
+                },
+                success: () => {
+                    alert("remove cart_item")
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'remove cart_item',
+                        timer: 10000
+                    })
+                },
+                data: sendInfo
+            });
+
+        }
+    </script>
 {% endblock %}
