@@ -31,10 +31,7 @@ class Cart(object):
         product_id = str(product)
         if product_id in self.cart:
             self.cart[product_id]['count'] = new_count
-            print(self.cart[product_id]['count'])
-            print(new_count)
             self.save()
-            print(self.cart[product_id]['count'])
 
     def data_product(self):
         product_ids = self.cart.keys()
