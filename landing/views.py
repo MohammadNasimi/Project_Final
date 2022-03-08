@@ -76,11 +76,16 @@ class LoginView(View):
         cart = Cart(request)
         user = Order_User(user)
         user.add_session(cart)
+        len_order_user = user.get_user()
         cart.clear()
+        # set cookie
         user = {
             'user': user,
         }
-        return render(request, 'landing/public/Home.html', context=user)
+        response = render(request, 'landing/public/Home.html', context=user)
+        response.set_cookie('count', len_order_user[3])
+
+        return response
 
 
 class LogoutView(View):
