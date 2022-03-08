@@ -37,10 +37,12 @@ class Order_itemsDeleteView(View):
         return render(request, 'landing/public/profile.html')
 
 
-class Order_itemsupdateView(View):
+class Order_itemsUpdateView(View):
     def post(self, request, pk):
-        print(request.POST)
-        print(pk)
+        order_item_get = Order_item.objects.get(id=pk)
+        order_item_get.Count = int(request.POST['number'])
+        order_item_get.save()
+        print(order_item_get.Count)
         return render(request, 'landing/public/profile.html')
 
 
