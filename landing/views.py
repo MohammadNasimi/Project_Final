@@ -71,6 +71,12 @@ class LoginView(View):
             messages.add_message(request, messages.ERROR, "your password wrong")
             return render(request, 'landing/public/Login.html')
         request.session['uid'] = user.id
+        from product.Cart import Cart
+        from order.order_item_add import Order_User
+        cart = Cart(request)
+        user = Order_User(user)
+        user.add_session(cart)
+        cart.clear()
         user = {
             'user': user,
         }
