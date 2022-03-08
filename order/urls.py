@@ -11,7 +11,7 @@ app_name = 'order'
 urlpatterns = [
     path('', include(router.urls)),
     path('delete_order_item/<int:pk>', Order_itemsDeleteView.as_view(), name='delete_order_item'),
-    path('delete_order_item_session/<int:pk>', Order_itemsDeleteView.as_view(), name='delete_order_item_session'),
+    path('delete_order_item_session/<int:pk>', Order_items_sessionDeleteView.as_view(), name='delete_order_item_session'),
     path('update_order_item/<int:pk>', Order_items_sessionDeleteView.as_view(), name='update_order_item'),
     path('card_list/', card_list.as_view(), name='card_list'),
 ]
