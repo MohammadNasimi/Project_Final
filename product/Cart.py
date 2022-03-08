@@ -27,6 +27,15 @@ class Cart(object):
             del self.cart[product_id]
             self.save()
 
+    def update(self, product, new_count):
+        product_id = str(product)
+        if product_id in self.cart:
+            self.cart[product_id]['count'] = new_count
+            print(self.cart[product_id]['count'])
+            print(new_count)
+            self.save()
+            print(self.cart[product_id]['count'])
+
     def data_product(self):
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)  # < QuerySet [<Product: soda>, <Product: devo>]>
