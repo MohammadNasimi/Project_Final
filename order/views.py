@@ -31,17 +31,19 @@ class Order_itemViewSets(viewsets.ModelViewSet):
 
 class Order_itemsDeleteView(View):
     def post(self, request, pk):
-        if not request.session.get('Cart_list'):
-            delete_order_item = Order_item.objects.get(id=pk)
-            delete_order_item.delete()
-            return render(request, 'landing/order/cart_list.html')
-        else:
-            from product.Cart import Cart
-            cart = Cart(request)
-            cart.remove(pk)
-            response = render(request, 'landing/order/cart_list.html')
-            response.set_cookie('count', len(cart))
-            return response
+        delete_order_item = Order_item.objects.get(id=pk)
+        delete_order_item.delete()
+        return render(request, 'landing/order/cart_list.html')
+
+
+class Order_items_sessionDeleteView(View):
+    def post(self, request, pk):
+        from product.Cart import Cart
+        cart = Cart(request)
+        cart.remove(pk)
+        response = render(request, 'landing/order/cart_list.html')
+        response.set_cookie('count', len(cart))
+        return response
 
 
 class Order_itemsUpdateView(View):
