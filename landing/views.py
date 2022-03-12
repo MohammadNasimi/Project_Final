@@ -77,7 +77,7 @@ class LoginView(View):
         user = Order_User(user)
         user.add_session(cart)
         len_order_user = user.get_user()
-        cart.clear()
+        cart.clear()  # remove session cart
         # set cookie
         user = {
             'user': user,
