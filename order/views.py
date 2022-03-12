@@ -29,11 +29,11 @@ class Order_itemViewSets(viewsets.ModelViewSet):
     serializer_class = Order_itemSerializer
 
 
-class Order_itemsDeleteView(View):
-    def post(self, request, pk):
-        delete_order_item = Order_item.objects.get(id=pk)
-        delete_order_item.delete()
-        return render(request, 'landing/order/cart_list.html')
+# class Order_itemsDeleteView(View):
+#     def post(self, request, pk):
+#         delete_order_item = Order_item.objects.get(id=pk)
+#         delete_order_item.delete()
+#         return render(request, 'landing/order/cart_list.html')
 
 
 class Order_items_sessionDeleteView(View):
@@ -46,12 +46,12 @@ class Order_items_sessionDeleteView(View):
         return response
 
 
-class Order_itemsUpdateView(View):
-    def post(self, request, pk):
-        order_item_get = Order_item.objects.get(id=pk)
-        order_item_get.Count = int(request.POST['number'])
-        order_item_get.save()
-        return render(request, 'landing/public/profile.html')
+# class Order_itemsUpdateView(View):
+#     def post(self, request, pk):
+#         order_item_get = Order_item.objects.get(id=pk)
+#         order_item_get.Count = int(request.POST['number'])
+#         order_item_get.save()
+#         return render(request, 'landing/public/profile.html')
 
 
 class Order_itemsUpdate_sessionView(View):
