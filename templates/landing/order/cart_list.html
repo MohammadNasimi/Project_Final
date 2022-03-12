@@ -16,7 +16,7 @@
                                 {% for product in data_product %}
                                     {% for key, value in data_cart.items %}
                                         {% if key == product.id|slugify %}
-                                            <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                            <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 {{ product.id }}">
                                                 <!-- Image -->
                                                 <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                                      data-mdb-ripple-color="light">
@@ -30,14 +30,14 @@
                                                 <!-- Image -->
                                             </div>
                                             {% csrf_token %}
-                                            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 {{ product.id }}">
                                                 <!-- Data -->
                                                 <p><strong>{{ product.name_product }}</strong></p>
                                                 <p>brand: {{ product.brand }}</p>
                                                 <button type="button" class="btn btn-primary btn-sm me-1 mb-2"
                                                         data-mdb-toggle="tooltip"
                                                         title="Remove item"
-                                                        onclick="remove_item('{% url 'order:delete_order_item_session' product.id %}')">
+                                                        onclick="remove_item('{% url 'order:delete_order_item_session' product.id %}',{{ product.id }})">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-danger btn-sm mb-2"
@@ -48,7 +48,7 @@
                                                 <!-- Data -->
                                             </div>
 
-                                            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 {{ product.id }}">
                                                 <!-- Quantity -->
                                                 <div class="d-flex mb-4" style="max-width: 300px">
                                                     <button class="btn btn-primary px-3 me-2"
@@ -58,7 +58,8 @@
                                                     </button>
 
                                                     <div class="form-outline">
-                                                        <input id="{{ product.id }}" min="1" name="{{ product.number_store }}"
+                                                        <input id="{{ product.id }}" min="1"
+                                                               name="{{ product.number_store }}"
                                                                max="{{ product.number_store }}"
                                                                value="{{ value.count }}"
                                                                type="number"
@@ -152,6 +153,7 @@
     <script>
         function remove_item(url, id) {
             csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            $(`.${id}`).remove()
             var sendInfo = {
                 csrfmiddlewaretoken: csrfmiddlewaretoken,
                 id: id,
