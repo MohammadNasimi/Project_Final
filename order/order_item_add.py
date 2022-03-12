@@ -18,18 +18,36 @@ class Order_User(object):
                     if Address_Order:
                         Order_item_user = Order.objects.filter(address_id=i, status_Order=1).values_list('order_items',
                                                                                                          flat=True).values(
-                            'order_items__Product_id')  # get list order_item id
+                            'order_items__Product_id', 'order_items__Count')  # get list order_item id
+                        Order_item_user_product_id = Order.objects.filter(address_id=i, status_Order=1).values_list(
+                            'order_items',
+                            flat=True)
                         Order_id = Order.objects.filter(address_id=i, status_Order=1).values_list('id',
                                                                                                   flat=True).first()  # get list order_item id
-                        return Order_item_user, Address_Order, Order_id, len(Order_item_user)
+                        if Order_item_user.exists() == True:
+                            return Order_item_user, Address_Order, Order_id, len(
+                                Order_item_user), Order_item_user_product_id
+                        else:
+                            Order_item_user = Order.objects.create(status_Order=1, off_code=1)
+                            return Order_item_user
 
     def add_session(self, cart):
         data_session = cart.data_cart()
-        product_exist_id = self.get_user()
+        product_exist_id = self.get_user()[0]
+        Order_item_user_product_id = self.get_user()[4]
+        dict_id_exist_product = {}
+        for i in range(len(product_exist_id)):
+            dict_id_exist_product[product_exist_id[i]['order_items__Product_id']] = Order_item_user_product_id[i]
         order_get_user_current = self.get_user()[2]
         order_user = Order.objects.get(id=order_get_user_current)
         for product_id, count in data_session.items():
-            product = Product.objects.get(id=product_id)
-            order_item_new = Order_item.objects.create(Product=product, Count=count['count'])
-            order_user.order_items.add(order_item_new)
-            order_user.save()
+            if int(product_id) in dict_id_exist_product.keys():
+
+                order_exist =Order_item.objects.get(id=dict_id_exist_product[int(product_id)])
+                order_exist.Count = order_exist.Count + int(count['count'])
+                order_exist.save()
+            else:
+                product = Product.objects.get(id=product_id)
+                order_item_new = Order_item.objects.create(Product=product, Count=int(count['count']))
+                order_user.order_items.add(order_item_new)
+                order_user.save()
