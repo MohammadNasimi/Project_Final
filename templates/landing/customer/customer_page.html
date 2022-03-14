@@ -2,6 +2,7 @@
 {% load i18n %}
 {% block title %} Login {% endblock %}
 {% block profile %}
+    {% csrf_token %}
     <div class="container rounded bg-white mb-5 ">
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 border-right ">
