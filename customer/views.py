@@ -22,18 +22,19 @@ class UserlistViewApi(generics.ListAPIView):
     # authentication_classes = [authentication.BasicAuthentication]
 
 
-class UserDetailViewApi(generics.RetrieveAPIView):
+class UserDetailViewApi(generics.ListAPIView):
     # log userDetailView
-    logger = logging.getLogger('project.developers')
-    logger.error("see user detail view ")
+    # logger = logging.getLogger('project.developers')
+    # logger.error("see user detail view ")
 
     serializer_class = CustomerSerializer
     queryset = Customer.objects.all()
     permission_classes = [permissions.IsAuthenticated, IsSuperuserPermission]
     # authentication_classes = [authentication.BasicAuthentication]
+    def get_queryset(self):
+        return Customer.objects.filter(user_id=self.request.user.id)
     renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
     template_name = 'landing/customer/customer_page.html'
-
 
 class UpdateUserView(View):
     def post(self, request, pk):
