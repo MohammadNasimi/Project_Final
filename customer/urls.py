@@ -6,7 +6,7 @@ from customer.views import UserlistViewApi, UserDetailViewApi, AddressDetailView
 app_name = 'customer'
 urlpatterns = [
     path('User_list/', UserlistViewApi.as_view(), name='User_list'),
-    path('User_Detail/<int:pk>', UserDetailViewApi.as_view(), name='User_Detail'),
+    path('User_Detail_login/', UserDetailViewApi.as_view(), name='User_Detail_login'),
     path('User_update/<int:pk>', UpdateUserView.as_view(), name='User_update'),
     path('Address_list/', AddresslistViewApi.as_view(), name='Address_list'),
     path('Address_Detail/<int:pk>', AddressDetailViewApi.as_view(), name='Address_Detail'),
