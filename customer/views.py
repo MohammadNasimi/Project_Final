@@ -28,8 +28,7 @@ class UserDetailViewApi(generics.ListAPIView):
     # logger.error("see user detail view ")
 
     serializer_class = CustomerSerializer
-    queryset = Customer.objects.all()
-    permission_classes = [permissions.IsAuthenticated, IsSuperuserPermission]
+    permission_classes = [permissions.IsAuthenticated]
     # authentication_classes = [authentication.BasicAuthentication]
     def get_queryset(self):
         return Customer.objects.filter(user_id=self.request.user.id)
