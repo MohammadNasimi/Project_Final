@@ -94,7 +94,9 @@ class LogoutView(View):
         if request.session.get('uid', None) is None:
             return render(request, 'landing/public/Home.html')
         del request.session['uid']
-        return render(request, 'landing/public/Home.html')
+        response = render(request, 'landing/public/Home.html')
+        response.delete_cookie('count')
+        return response
 
 
 class profileView(View):
