@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-06 00:38+0330\n"
-"PO-Revision-Date: 2022-03-06 00:39+0326\n"
+"POT-Creation-Date: 2022-03-14 15:38+0330\n"
+"PO-Revision-Date: 2022-03-14 15:41+0326\n"
 "Last-Translator: Mohammad Nasimi <mohammadnasimi6803@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -71,7 +71,7 @@ msgstr "مشتری"
 msgid "Customers"
 msgstr "مشتری ها"
 
-#: order/models.py:25
+#: order/models.py:25 templates/landing/order/cart_list.html:129
 msgid "Off_code"
 msgstr "کد تخفیف"
 
@@ -134,7 +134,7 @@ msgstr "خروج"
 
 #: templates/admin/base.html:75 templates/admin/change_form.html:18
 #: templates/landing/base/_base.html:57
-#: templates/landing/public/profile.html:8
+#: templates/landing/public/profile.html:9
 msgid "Home"
 msgstr "خانه"
 
@@ -203,22 +203,27 @@ msgid "please Check the address information before ordering "
 msgstr "لطفا قبل از سفارش از ادرس خود مطمین باشید"
 
 #: templates/landing/customer/address_customer.html:16
+#: templates/landing/customer/detail_address.html:8
 msgid "province"
 msgstr "استان"
 
 #: templates/landing/customer/address_customer.html:20
+#: templates/landing/customer/detail_address.html:10
 msgid "city"
 msgstr "شهر"
 
 #: templates/landing/customer/address_customer.html:24
+#: templates/landing/customer/detail_address.html:9
 msgid "town"
 msgstr "شهرک"
 
 #: templates/landing/customer/address_customer.html:28
+#: templates/landing/customer/detail_address.html:11
 msgid "street"
 msgstr "خیابان"
 
 #: templates/landing/customer/address_customer.html:32
+#: templates/landing/customer/detail_address.html:12
 msgid "alley"
 msgstr "کوی"
 
@@ -230,34 +235,99 @@ msgstr "کد پستی"
 msgid "create new Address"
 msgstr "ایجاد ادرس جدید"
 
-#: templates/landing/customer/customer_page.html:10
-#: templates/landing/public/profile.html:9
+#: templates/landing/customer/customer_page.html:11
+#: templates/landing/public/profile.html:10
 msgid "Profile"
 msgstr " پروفایل"
 
-#: templates/landing/customer/customer_page.html:15
+#: templates/landing/customer/customer_page.html:16
 msgid "Name"
 msgstr "نام:"
 
-#: templates/landing/customer/customer_page.html:21
+#: templates/landing/customer/customer_page.html:22
 msgid "Surname"
 msgstr "نام خانوادگی:"
 
-#: templates/landing/customer/customer_page.html:29
+#: templates/landing/customer/customer_page.html:30
 msgid "Mobile Number"
 msgstr "شماره همراه:"
 
-#: templates/landing/customer/customer_page.html:35
+#: templates/landing/customer/customer_page.html:36
 msgid "Email ID"
 msgstr "ایمیل:"
 
-#: templates/landing/customer/customer_page.html:46
+#: templates/landing/customer/customer_page.html:47
 msgid "Save Profile"
 msgstr "بروز رسانی پروفایل"
 
-#: templates/landing/customer/customer_page.html:52
+#: templates/landing/customer/customer_page.html:53
 msgid "Change password user name"
 msgstr " تغییر رمز ورود "
+
+#: templates/landing/customer/detail_address.html:13
+msgid "Plaque"
+msgstr "پلاک"
+
+#: templates/landing/customer/detail_address.html:14
+msgid "zip_code"
+msgstr "کد تخفیف"
+
+#: templates/landing/order/cart_list.html:12
+#| msgid "items"
+msgid "Cartitems"
+msgstr "تعداد سفارش ها"
+
+#: templates/landing/order/cart_list.html:37
+msgid "brand"
+msgstr "برند"
+
+#: templates/landing/order/cart_list.html:80
+msgid "one product"
+msgstr "یک محصول"
+
+#: templates/landing/order/cart_list.html:80
+#: templates/landing/order/cart_list.html:83
+#: templates/landing/order/cart_list.html:126
+#: templates/landing/order/cart_list.html:138
+#: templates/landing/product/Detail_view_product.html:41
+#: templates/landing/product/List_product.html:39
+msgid "Rial"
+msgstr "ریال"
+
+#: templates/landing/order/cart_list.html:83
+msgid "total_price"
+msgstr "قیمت کل محصول"
+
+#: templates/landing/order/cart_list.html:95
+msgid "Expected shipping delivery"
+msgstr "زمان مورد نیاز برای تحویل "
+
+#: templates/landing/order/cart_list.html:101
+msgid "We accept"
+msgstr "درگاه  پرداخت"
+
+#: templates/landing/order/cart_list.html:118
+msgid "Summary"
+msgstr "هزینه کل سبد خرید"
+
+#: templates/landing/order/cart_list.html:125
+msgid "Products price"
+msgstr "هزینه کل"
+
+#: templates/landing/order/cart_list.html:136
+msgid "Total amount"
+msgstr "هزینه سبد خرید"
+
+#: templates/landing/order/cart_list.html:142
+#| msgid "Canceled"
+msgid "canceled"
+msgstr "حذف  "
+
+#: templates/landing/order/cart_list.html:146
+#: templates/landing/order/order_customer.html:27
+#: templates/landing/order/order_customer.html:103
+msgid "Delivered"
+msgstr "پرداخت "
 
 #: templates/landing/order/order_customer.html:15
 #: templates/landing/order/order_customer.html:36
@@ -269,38 +339,33 @@ msgstr "حذف شده "
 msgid "Current"
 msgstr "جاری"
 
-#: templates/landing/order/order_customer.html:27
-#: templates/landing/order/order_customer.html:106
-msgid "Delivered"
-msgstr "پرداخت شده"
-
 #: templates/landing/order/order_customer.html:41
 #: templates/landing/order/order_customer.html:74
-#: templates/landing/order/order_customer.html:111
-#, fuzzy
-#| msgid "Addresses"
+#: templates/landing/order/order_customer.html:108
 msgid "Address Order"
 msgstr "آدرس ها"
 
 #: templates/landing/order/order_customer.html:46
-#: templates/landing/order/order_customer.html:78
-#: templates/landing/order/order_customer.html:116
-#, fuzzy
-#| msgid "Search product"
+#: templates/landing/order/order_customer.html:81
+#: templates/landing/order/order_customer.html:113
 msgid "name product"
-msgstr "جستجو محصول "
+msgstr "نام محصول"
 
 #: templates/landing/order/order_customer.html:47
-#: templates/landing/order/order_customer.html:79
-#: templates/landing/order/order_customer.html:117
+#: templates/landing/order/order_customer.html:82
+#: templates/landing/order/order_customer.html:114
 msgid "price"
-msgstr "rdlj"
+msgstr "قیمت"
 
 #: templates/landing/order/order_customer.html:48
-#: templates/landing/order/order_customer.html:80
-#: templates/landing/order/order_customer.html:118
+#: templates/landing/order/order_customer.html:83
+#: templates/landing/order/order_customer.html:115
 msgid "count"
 msgstr "تعداد"
+
+#: templates/landing/order/order_customer.html:74
+msgid "date order"
+msgstr "تاریخ سفارش"
 
 #: templates/landing/product/Detail_view_product.html:34
 msgid "41 reviews"
@@ -313,11 +378,6 @@ msgstr "تعداد موجود در فروشگاه:"
 #: templates/landing/product/Detail_view_product.html:40
 msgid "current price:"
 msgstr "قیمت:"
-
-#: templates/landing/product/Detail_view_product.html:41
-#: templates/landing/product/List_product.html:39
-msgid "Rial"
-msgstr "ریال"
 
 #: templates/landing/product/Detail_view_product.html:43
 #, python-format
@@ -339,10 +399,6 @@ msgstr "برگشت"
 #: templates/landing/product/Detail_view_product.html:68
 msgid "add to cart"
 msgstr "افزودن به سبد خرید"
-
-#: templates/landing/product/Detail_view_product.html:95
-msgid "product add to cart !!!!!!"
-msgstr "محصول به سبد خرید اضافه شد."
 
 #: templates/landing/product/List_product.html:41
 msgid "Detail products"
@@ -393,20 +449,18 @@ msgid ""
 msgstr ""
 
 #: templates/landing/public/password_change_form.html:49
-#, fuzzy
-#| msgid "Change password"
 msgid "Change my password"
-msgstr "رمز ورود "
+msgstr "تغییر رمز ورود "
 
-#: templates/landing/public/profile.html:10
+#: templates/landing/public/profile.html:11
 msgid "Address list"
 msgstr "آدرس ها"
 
-#: templates/landing/public/profile.html:12
+#: templates/landing/public/profile.html:13
 msgid "List Order"
 msgstr "سبد خرید"
 
-#: templates/landing/public/profile.html:13
+#: templates/landing/public/profile.html:14
 msgid "Logout"
 msgstr "خروج"
 
@@ -414,8 +468,8 @@ msgstr "خروج"
 msgid "create User"
 msgstr "ایجاد کاربر "
 
+#~ msgid "product add to cart !!!!!!"
+#~ msgstr "محصول به سبد خرید اضافه شد."
+
 #~ msgid "last login"
 #~ msgstr "اخرین ورود:"
-
-#~ msgid "zip_code"
-#~ msgstr "کد تخفیف"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-06 00:38+0330\n"
+"POT-Creation-Date: 2022-03-14 15:38+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Customers"
 msgstr ""
 
-#: order/models.py:25
+#: order/models.py:25 templates/landing/order/cart_list.html:129
 msgid "Off_code"
 msgstr ""
 
@@ -132,7 +132,7 @@ msgid "Log out"
 msgstr ""
 
 #: templates/admin/base.html:75 templates/admin/change_form.html:18
-#: templates/landing/base/_base.html:57 templates/landing/public/profile.html:8
+#: templates/landing/base/_base.html:57 templates/landing/public/profile.html:9
 msgid "Home"
 msgstr ""
 
@@ -199,22 +199,27 @@ msgid "please Check the address information before ordering "
 msgstr ""
 
 #: templates/landing/customer/address_customer.html:16
+#: templates/landing/customer/detail_address.html:8
 msgid "province"
 msgstr ""
 
 #: templates/landing/customer/address_customer.html:20
+#: templates/landing/customer/detail_address.html:10
 msgid "city"
 msgstr ""
 
 #: templates/landing/customer/address_customer.html:24
+#: templates/landing/customer/detail_address.html:9
 msgid "town"
 msgstr ""
 
 #: templates/landing/customer/address_customer.html:28
+#: templates/landing/customer/detail_address.html:11
 msgid "street"
 msgstr ""
 
 #: templates/landing/customer/address_customer.html:32
+#: templates/landing/customer/detail_address.html:12
 msgid "alley"
 msgstr ""
 
@@ -226,33 +231,96 @@ msgstr ""
 msgid "create new Address"
 msgstr ""
 
-#: templates/landing/customer/customer_page.html:10
-#: templates/landing/public/profile.html:9
+#: templates/landing/customer/customer_page.html:11
+#: templates/landing/public/profile.html:10
 msgid "Profile"
 msgstr ""
 
-#: templates/landing/customer/customer_page.html:15
+#: templates/landing/customer/customer_page.html:16
 msgid "Name"
 msgstr ""
 
-#: templates/landing/customer/customer_page.html:21
+#: templates/landing/customer/customer_page.html:22
 msgid "Surname"
 msgstr ""
 
-#: templates/landing/customer/customer_page.html:29
+#: templates/landing/customer/customer_page.html:30
 msgid "Mobile Number"
 msgstr ""
 
-#: templates/landing/customer/customer_page.html:35
+#: templates/landing/customer/customer_page.html:36
 msgid "Email ID"
 msgstr ""
 
-#: templates/landing/customer/customer_page.html:46
+#: templates/landing/customer/customer_page.html:47
 msgid "Save Profile"
 msgstr ""
 
-#: templates/landing/customer/customer_page.html:52
+#: templates/landing/customer/customer_page.html:53
 msgid "Change password user name"
+msgstr ""
+
+#: templates/landing/customer/detail_address.html:13
+msgid "Plaque"
+msgstr ""
+
+#: templates/landing/customer/detail_address.html:14
+msgid "zip_code"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:12
+msgid "Cartitems"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:37
+msgid "brand"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:80
+msgid "one product"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:80
+#: templates/landing/order/cart_list.html:83
+#: templates/landing/order/cart_list.html:126
+#: templates/landing/order/cart_list.html:138
+#: templates/landing/product/Detail_view_product.html:41
+#: templates/landing/product/List_product.html:39
+msgid "Rial"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:83
+msgid "total_price"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:95
+msgid "Expected shipping delivery"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:101
+msgid "We accept"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:118
+msgid "Summary"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:125
+msgid "Products price"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:136
+msgid "Total amount"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:142
+msgid "canceled"
+msgstr ""
+
+#: templates/landing/order/cart_list.html:146
+#: templates/landing/order/order_customer.html:27
+#: templates/landing/order/order_customer.html:103
+msgid "Delivered"
 msgstr ""
 
 #: templates/landing/order/order_customer.html:15
@@ -265,33 +333,32 @@ msgstr ""
 msgid "Current"
 msgstr ""
 
-#: templates/landing/order/order_customer.html:27
-#: templates/landing/order/order_customer.html:106
-msgid "Delivered"
-msgstr ""
-
 #: templates/landing/order/order_customer.html:41
 #: templates/landing/order/order_customer.html:74
-#: templates/landing/order/order_customer.html:111
+#: templates/landing/order/order_customer.html:108
 msgid "Address Order"
 msgstr ""
 
 #: templates/landing/order/order_customer.html:46
-#: templates/landing/order/order_customer.html:78
-#: templates/landing/order/order_customer.html:116
+#: templates/landing/order/order_customer.html:81
+#: templates/landing/order/order_customer.html:113
 msgid "name product"
 msgstr ""
 
 #: templates/landing/order/order_customer.html:47
-#: templates/landing/order/order_customer.html:79
-#: templates/landing/order/order_customer.html:117
+#: templates/landing/order/order_customer.html:82
+#: templates/landing/order/order_customer.html:114
 msgid "price"
 msgstr ""
 
 #: templates/landing/order/order_customer.html:48
-#: templates/landing/order/order_customer.html:80
-#: templates/landing/order/order_customer.html:118
+#: templates/landing/order/order_customer.html:83
+#: templates/landing/order/order_customer.html:115
 msgid "count"
+msgstr ""
+
+#: templates/landing/order/order_customer.html:74
+msgid "date order"
 msgstr ""
 
 #: templates/landing/product/Detail_view_product.html:34
@@ -304,11 +371,6 @@ msgstr ""
 
 #: templates/landing/product/Detail_view_product.html:40
 msgid "current price:"
-msgstr ""
-
-#: templates/landing/product/Detail_view_product.html:41
-#: templates/landing/product/List_product.html:39
-msgid "Rial"
 msgstr ""
 
 #: templates/landing/product/Detail_view_product.html:43
@@ -330,10 +392,6 @@ msgstr ""
 
 #: templates/landing/product/Detail_view_product.html:68
 msgid "add to cart"
-msgstr ""
-
-#: templates/landing/product/Detail_view_product.html:95
-msgid "product add to cart !!!!!!"
 msgstr ""
 
 #: templates/landing/product/List_product.html:41
@@ -388,15 +446,15 @@ msgstr ""
 msgid "Change my password"
 msgstr ""
 
-#: templates/landing/public/profile.html:10
+#: templates/landing/public/profile.html:11
 msgid "Address list"
 msgstr ""
 
-#: templates/landing/public/profile.html:12
+#: templates/landing/public/profile.html:13
 msgid "List Order"
 msgstr ""
 
-#: templates/landing/public/profile.html:13
+#: templates/landing/public/profile.html:14
 msgid "Logout"
 msgstr ""
 
