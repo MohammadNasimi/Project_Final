@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import DeleteView
 from rest_framework import viewsets, renderers
-from rest_framework import permissions
+from rest_framework import permissions, generics
 
 # Create your views here.
 from order.models import Order, Order_item
@@ -29,13 +28,6 @@ class Order_itemViewSets(viewsets.ModelViewSet):
     serializer_class = Order_itemSerializer
 
 
-# class Order_itemsDeleteView(View):
-#     def post(self, request, pk):
-#         delete_order_item = Order_item.objects.get(id=pk)
-#         delete_order_item.delete()
-#         return render(request, 'landing/order/cart_list.html')
-
-
 class Order_items_sessionDeleteView(View):
     def post(self, request, pk):
         from product.Cart import Cart
@@ -44,14 +36,6 @@ class Order_items_sessionDeleteView(View):
         response = render(request, 'landing/order/cart_list.html')
         response.set_cookie('count', len(cart))
         return response
-
-
-# class Order_itemsUpdateView(View):
-#     def post(self, request, pk):
-#         order_item_get = Order_item.objects.get(id=pk)
-#         order_item_get.Count = int(request.POST['number'])
-#         order_item_get.save()
-#         return render(request, 'landing/public/profile.html')
 
 
 class Order_itemsUpdate_sessionView(View):
@@ -77,17 +61,28 @@ class card_list(View):
         }
         return render(request, 'landing/order/cart_list.html', context=context)
 
+    # def get(self, request):
+    #     from core.models import User
+    #     user = User.objects.get(id=request.session.get('uid'))
+    #     from order.order_item_add import Order_User
+    #     user = Order_User(user)
+    #     print(user.get_user())
+    #     order_id = user.get_user()[2]
+    #     order_list = Order.objects.get(id=order_id)
+    #     context = {
+    #         'context': order_list
+    #     }
+    #     return render(request, 'landing/order/cart_list_order_customer.html', context=context)
 
-class card_list_orderView(View):
-    def get(self, request):
-        from core.models import User
-        user = User.objects.get(id=request.session.get('uid'))
-        from order.order_item_add import Order_User
-        user = Order_User(user)
-        print(user.get_user())
-        order_id = user.get_user()[2]
-        order_list = Order.objects.get(id=order_id)
-        context = {
-            'context': order_list
-        }
-        return render(request, 'landing/order/cart_list_order_customer.html', context=context)
+
+class card_list_orderView(generics.ListAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Order.objects.filter(address__customer__user_id=self.request.user.id, status_Order=1)
+
+    # def get(self, request, *args, **kwargs):
+    #     return self.list(request, *args, **kwargs)
+    renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
+    template_name = 'landing/order/cart_list_order_customer.html'
