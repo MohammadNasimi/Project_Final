@@ -16,7 +16,7 @@ class HomeView(TemplateView):
 
 
 class registerView(View):
-    # form_class = CustomerForm
+    form_class = CustomerForm
     # template_name = 'public/register'
 
     def get(self, request):
