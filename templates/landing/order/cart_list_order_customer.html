@@ -17,13 +17,13 @@
                             <div class="row">
                                 {% for res in results %}
                                     {% for order_item in res.order_items %}
-                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 {{ order_item.Product.id }}">
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 {{ order_item.id }}">
                                             <!-- Image -->
                                             <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                                  data-mdb-ripple-color="light">
                                                 <img src="{{ order_item.Product.image }}"
-                                                     class="w-100" alt="Blue Jeans Jacket"/>
-                                                <a href="#!">
+                                                     class="w-100" alt="dont exist picture"/>
+                                                <a href="">
                                                     <div class="mask"
                                                          style="background-color: rgba(251, 251, 251, 0.2)"></div>
                                                 </a>
@@ -37,7 +37,7 @@
                                             <button type="button" class="btn btn-primary btn-sm me-1 mb-2"
                                                     data-mdb-toggle="tooltip"
                                                     title="Remove item"
-                                                    onclick="remove_item('{% url 'order:delete_order_item_session' order_item.id %}',{{ order_item.id }})">
+                                                    onclick="remove_item('{% url 'order:delete_order_item' order_item.id %}',{{ order_item.id }})">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger btn-sm mb-2"
@@ -53,12 +53,12 @@
                                             <div class="d-flex mb-4" style="max-width: 300px">
                                                 <button class="btn btn-primary px-3 me-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepDown();
-                                                                update_item('{% url 'order:update_order_item_session' order_item.id %}',{{ order_item.id }});">
+                                                                update_item('{% url 'order:update_order_item' order_item.id %}',{{ order_item.id }});">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
 
                                                 <div class="form-outline">
-                                                    <input id="{{ order_item.Product.id }}" min="1"
+                                                    <input id="{{ order_item.id }}" min="1"
                                                            name="{{ order_item.Product.number_store }}"
                                                            max="{{ order_item.Product.number_store }}"
                                                            value="{{ order_item.Count }}"
@@ -68,7 +68,7 @@
 
                                                 <button class="btn btn-primary px-3 ms-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp();
-                                                                update_item('{% url 'order:update_order_item_session' order_item.id %}',{{ order_item.id }});">
+                                                                update_item('{% url 'order:update_order_item' order_item.id %}',{{ order_item.id }});">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                             </div>
@@ -188,13 +188,15 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                dataType: "json",
                 headers: {
                     "X-CSRFToken": csrfmiddlewaretoken
                 },
                 success: () => {
                 },
-                data: sendInfo
+                data: sendInfo,
+                error:function () {
+                    console.log(error)
+                }
             });
         }
     </script>
