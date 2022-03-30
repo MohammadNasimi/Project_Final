@@ -82,7 +82,20 @@ class card_list_orderView(generics.ListAPIView):
     def get_queryset(self):
         return Order.objects.filter(address__customer__user_id=self.request.user.id, status_Order=1)
 
-    # def get(self, request, *args, **kwargs):
-    #     return self.list(request, *args, **kwargs)
     renderer_classes = [renderers.JSONRenderer, renderers.TemplateHTMLRenderer]
     template_name = 'landing/order/cart_list_order_customer.html'
+
+
+class order_items_update_Api(View):
+    def post(self, request, pk):
+        order_item_update = Order_item.objects.get(id=pk)
+        order_item_update.Count = int(request.POST['number'])
+        order_item_update.save()
+        return render(request, 'landing/order/cart_list_order_customer.html')
+
+
+class order_items_delete_Api(View):
+    def post(self, request, pk):
+        order_item_delete = Order_item.objects.get(id=pk)
+        order_item_delete.delete()
+        return render(request, 'landing/order/cart_list_order_customer.html')
