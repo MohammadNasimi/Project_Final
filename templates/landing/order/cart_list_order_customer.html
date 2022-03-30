@@ -1,6 +1,201 @@
 {% extends "landing/base/_base.html" %}
 {% load static %}
-{% block title %} Home {% endblock %}
+{% load i18n %}
+{% block title %} cart list {% endblock %}
 {% block content %}
-    <h1> {{ context }}</h1>
+    {% csrf_token %}
+    <section class="h-100 gradient-custom">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center my-4">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">{% trans 'Cartitems' %}</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Single item -->
+                            <div class="row">
+                                {% for res in results %}
+                                    {% for order_item in res.order_items %}
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 {{ order_item.Product.id }}">
+                                            <!-- Image -->
+                                            <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                                 data-mdb-ripple-color="light">
+                                                <img src="{{ order_item.Product.image }}"
+                                                     class="w-100" alt="Blue Jeans Jacket"/>
+                                                <a href="#!">
+                                                    <div class="mask"
+                                                         style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                                </a>
+                                            </div>
+                                            <!-- Image -->
+                                        </div>
+                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 {{ order_item.id }}">
+                                            <!-- Data -->
+                                            <p><strong>{{ order_item.Product.name_product }}</strong></p>
+                                            <p>{% trans 'brand' %} : {{ order_item.Product.brand }}</p>
+                                            <button type="button" class="btn btn-primary btn-sm me-1 mb-2"
+                                                    data-mdb-toggle="tooltip"
+                                                    title="Remove item"
+                                                    onclick="remove_item('{% url 'order:delete_order_item_session' order_item.id %}',{{ order_item.id }})">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-sm mb-2"
+                                                    data-mdb-toggle="tooltip"
+                                                    title="Move to the wish list">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <!-- Data -->
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 {{ order_item.id }}">
+                                            <!-- Quantity -->
+                                            <div class="d-flex mb-4" style="max-width: 300px">
+                                                <button class="btn btn-primary px-3 me-2"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                                                update_item('{% url 'order:update_order_item_session' order_item.id %}',{{ order_item.id }});">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+
+                                                <div class="form-outline">
+                                                    <input id="{{ order_item.Product.id }}" min="1"
+                                                           name="{{ order_item.Product.number_store }}"
+                                                           max="{{ order_item.Product.number_store }}"
+                                                           value="{{ order_item.Count }}"
+                                                           type="number"
+                                                           class="form-control"/>
+                                                </div>
+
+                                                <button class="btn btn-primary px-3 ms-2"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                                                update_item('{% url 'order:update_order_item_session' order_item.id %}',{{ order_item.id }});">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                            <!-- Quantity -->
+
+                                            <!-- Price -->
+                                            <p class="text-start text-md-center">
+                                                <strong>{% trans 'one product' %}:{{ order_item.Product.price }} {% trans 'Rial' %}</strong>
+                                            </p>
+                                            <p class="text-start text-md-center">
+                                                <strong>{% trans 'total_price' %}:{{ order_item.total_price }} {% trans 'Rial' %}</strong>
+                                            </p>
+                                            <!-- Price -->
+                                        </div>
+
+                                    {% endfor %}
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p><strong>{% trans 'Expected shipping delivery' %}</strong></p>
+                            <p class="mb-0">12.10.2020 - 14.10.2020</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body">
+                            <p><strong>{% trans 'We accept' %}</strong></p>
+                            <img class="me-2" width="45px"
+                                 src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                                 alt="Visa"/>
+                            <img class="me-2" width="45px"
+                                 src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                                 alt="American Express"/>
+                            <img class="me-2" width="45px"
+                                 src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                                 alt="Mastercard"/>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">{% trans 'Summary' %}</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0
+                                    px-0 pb-0">
+                                    {% trans 'Products price' %}:
+                                    <span>{{ get_total_price }} {% trans 'Rial' %}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    {% trans 'Off_code' %}
+                                    <input class="text">
+                                </li>
+                                <li
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0
+                                    px-0 mb-3">
+                                    <div>
+                                        <strong>{% trans 'Total amount' %}</strong>
+                                    </div>
+                                    <span><strong>{{ get_total_price }} {% trans 'Rial' %}</strong></span>
+                                </li>
+                            </ul>
+                            <a href="">
+                                <button type="button"
+                                        class="btn btn-danger btn-lg btn-block">{% trans 'canceled' %}</button>
+                            </a>
+
+                            <a href="">
+                                <button type="button"
+                                        class="btn btn-success btn-lg btn-block">{% trans 'Delivered' %}</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function remove_item(url, id) {
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            $(`.${id}`).remove()
+            var sendInfo = {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                id: id,
+            };
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": csrfmiddlewaretoken
+                },
+                success: () => {
+                },
+                data: sendInfo
+            });
+
+        }
+
+        function update_item(url, id) {
+            var number = $(`#${id}`).val();
+            console.log(number)
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
+            console.log(csrfmiddlewaretoken)
+            var sendInfo = {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                id: id,
+                number: parseInt(number)
+            };
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                headers: {
+                    "X-CSRFToken": csrfmiddlewaretoken
+                },
+                success: () => {
+                },
+                data: sendInfo
+            });
+        }
+    </script>
 {% endblock %}
