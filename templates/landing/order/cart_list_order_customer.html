@@ -12,12 +12,12 @@
                         <div class="card-header py-3">
                             <h5 class="mb-0">{% trans 'Cartitems' %}</h5>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body ">
                             <!-- Single item -->
                             <div class="row">
                                 {% for res in results %}
                                     {% for order_item in res.order_items %}
-                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 {{ order_item.id }}">
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 {{ order_item.id }} {{ res.id }}">
                                             <!-- Image -->
                                             <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                                  data-mdb-ripple-color="light">
@@ -30,7 +30,7 @@
                                             </div>
                                             <!-- Image -->
                                         </div>
-                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 {{ order_item.id }}">
+                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 {{ order_item.id }} {{ res.id }}">
                                             <!-- Data -->
                                             <p><strong>{{ order_item.Product.name_product }}</strong></p>
                                             <p>{% trans 'brand' %} : {{ order_item.Product.brand }}</p>
@@ -48,7 +48,7 @@
                                             <!-- Data -->
                                         </div>
 
-                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 {{ order_item.id }}">
+                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 {{ order_item.id }} {{ res.id }}">
                                             <!-- Quantity -->
                                             <div class="d-flex mb-4" style="max-width: 300px">
                                                 <button class="btn btn-primary px-3 me-2"
@@ -137,10 +137,12 @@
                                                         <span><strong>{{ get_total_price }} {% trans 'Rial' %}</strong></span>
                                                     </li>
                                                 </ul>
-                                                <button type="button" onclick=" order_cancel('{% url 'order:Order_cancel' res.id %}');"
+                                                <button type="button"
+                                                        onclick=" order_cancel('{% url 'order:Order_cancel' res.id %}',{{ res.id }});"
                                                         class="btn btn-danger btn-lg btn-block">{% trans 'canceled' %}</button>
 
-                                                <button type="button" onclick=" order_delivery('{% url 'order:Order_delivery' res.id %}');"
+                                                <button type="button"
+                                                        onclick=" order_delivery('{% url 'order:Order_delivery' res.id %}',{{ res.id }});"
                                                         class="btn btn-success btn-lg
                                                         btn-block">{% trans 'Delivered' %}</button>
                                             </div>
@@ -198,7 +200,9 @@
             });
         }
 
-        function order_delivery(url) {
+        function order_delivery(url, id) {
+            $(`.${id}`).remove()
+            console.log(id)
             csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
             var sendInfo = {
                 csrfmiddlewaretoken: csrfmiddlewaretoken,
@@ -215,7 +219,8 @@
             });
         }
 
-        function order_cancel(url) {
+        function order_cancel(url,id) {
+            $(`.${id}`).remove()
             csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val()
             var sendInfo = {
                 csrfmiddlewaretoken: csrfmiddlewaretoken,
