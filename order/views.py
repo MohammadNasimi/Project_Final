@@ -122,7 +122,6 @@ class Order_delivery(View):
 class Order_cancel(View):
     def post(self, request, pk):
         order_delivery = Order.objects.get(id=pk)
-        print(order_delivery.status_Order)
         order_delivery.status_Order = 3
         order_delivery.save()
         return render(request, 'landing/order/cart_list_order_customer.html')
