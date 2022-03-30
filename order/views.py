@@ -99,3 +99,16 @@ class order_items_delete_Api(View):
         order_item_delete = Order_item.objects.get(id=pk)
         order_item_delete.delete()
         return render(request, 'landing/order/cart_list_order_customer.html')
+
+
+class Order_delivery(View):
+    def post(self, request, pk):
+        print(pk)
+        return render(request, 'landing/order/cart_list_order_customer.html')
+
+
+class Order_cancel(View):
+    def post(self, request, pk):
+        print(pk)
+        return render(request, 'landing/order/cart_list_order_customer.html')
+
