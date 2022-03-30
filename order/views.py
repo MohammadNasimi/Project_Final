@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from rest_framework import viewsets, renderers
 from rest_framework import permissions, generics
+from django.utils import timezone
 
 # Create your views here.
 from order.models import Order, Order_item
@@ -101,14 +102,27 @@ class order_items_delete_Api(View):
         return render(request, 'landing/order/cart_list_order_customer.html')
 
 
+
+
 class Order_delivery(View):
     def post(self, request, pk):
-        print(pk)
+        now = timezone.now
+        order_delivery = Order.objects.get(id=pk)
+        print(order_delivery.status_Order)
+        order_delivery.status_Order = 2
+        # create_new_order = Order.objects.create(created=now, last_updated=now, is_deleted=0, is_active=1,
+        #                                         status_Order=1, date=now,
+        #                                         address=order_delivery.address.id,
+        #                                         off_code=1)
+        # create_new_order.save()
+        order_delivery.save()
         return render(request, 'landing/order/cart_list_order_customer.html')
 
 
 class Order_cancel(View):
     def post(self, request, pk):
-        print(pk)
+        order_delivery = Order.objects.get(id=pk)
+        print(order_delivery.status_Order)
+        order_delivery.status_Order = 3
+        order_delivery.save()
         return render(request, 'landing/order/cart_list_order_customer.html')
-
