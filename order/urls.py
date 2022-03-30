@@ -2,7 +2,8 @@ from django.urls import path
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from order.views import OrderViewSets, Order_itemViewSets, card_list, \
-    Order_items_sessionDeleteView, Order_itemsUpdate_sessionView, card_list_orderView,order_items_update_Api,order_items_delete_Api
+    Order_items_sessionDeleteView, Order_itemsUpdate_sessionView, card_list_orderView, order_items_update_Api, \
+    order_items_delete_Api, Order_delivery, Order_cancel
 
 router = DefaultRouter()
 router.register('Order', OrderViewSets, basename='Order')
@@ -18,4 +19,6 @@ urlpatterns = [
          name='update_order_item_session'),
     path('card_list/', card_list.as_view(), name='card_list'),
     path('card_list_order/', card_list_orderView.as_view(), name='card_list_order'),
+    path('Order_delivery/<int:pk>', Order_delivery.as_view(), name='Order_delivery'),
+    path('Order_cancel/<int:pk>', Order_cancel.as_view(), name='Order_cancel'),
 ]
